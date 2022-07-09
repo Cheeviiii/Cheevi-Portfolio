@@ -10,7 +10,6 @@ export function App() {
       <Header />
       <Routes>
         <Route path="/" exact element={<Inicio />} />
-        <Route path="/projetos" exact element={<Projetos />} />
       </Routes>
     </BrowserRouter>
   );

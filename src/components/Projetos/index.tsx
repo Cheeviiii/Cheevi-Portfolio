@@ -1,7 +1,3 @@
 export function Projetos() {
-    return (
-        <div>
-            Projetos!
-        </div>
-    )
+  return <div>Projetos!</div>;
 }

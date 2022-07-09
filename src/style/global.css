@@ -8,7 +8,7 @@ body {
 }
 
 .btn-header {
-  @apply w-full text-center font-bold text-lg mx-3 uppercase;
+  @apply w-full text-center font-bold text-lg mx-3 uppercase cursor-pointer hover:text-red-500;
 }
 
 .active-link {
