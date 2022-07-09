@@ -5,7 +5,7 @@ import TrackVisibility from "react-on-screen";
 export function Sobre() {
   return (
     <div className="h-screen flex items-center justify-center" id="sobre">
-      <div className="w-full h-[500px] bg-[#141414] border-2 border-[#303030] flex items-center justify-center">
+      <div className="w-full h-[500px] bg-[#141414] border-4 border-[#303030] flex items-center justify-center">
         <TrackVisibility>
           {({ isVisible }) => (
             <div className="flex">

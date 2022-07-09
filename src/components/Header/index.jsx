@@ -11,9 +11,11 @@ export function Header() {
         </h1>
 
         <div className="flex items-center">
-          <p className="btn-header" onClick={() => scroll.scrollToTop()}>Home</p>
+          <p className="btn-header" onClick={() => scroll.scrollToTop()}>
+            Home
+          </p>
           <Link
-            activeClass=".active-link"
+            activeClass="active-link"
             className="btn-header"
             to="sobre"
             smooth={true}
@@ -21,7 +23,12 @@ export function Header() {
           >
             Sobre
           </Link>
-          <Link className="btn-header" to="projetos">
+          <Link
+            className="btn-header"
+            to="projetos"
+            smooth={true}
+            duration={500}
+          >
             Projetos
           </Link>
           <Link className="btn-header" to="contato">
