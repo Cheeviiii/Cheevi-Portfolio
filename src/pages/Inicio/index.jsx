@@ -6,11 +6,11 @@ import { Sobre } from "../../components/Sobre";
 
 export function Inicio() {
   return (
-    <div>
+    <div className="box-border">
       <MainBox />
       <Sobre />
       <Projects />
-      <Contato />
+      {/* <Contato /> */}
     </div>
   );
 }
