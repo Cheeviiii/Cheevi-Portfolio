@@ -35,7 +35,12 @@ export function Header() {
           >
             Projetos
           </Link>
-          <Link className="btn-header" to="contato">
+          <Link
+            className="btn-header"
+            to="contato"
+            smooth={true}
+            duration={500}
+          >
             Contato
           </Link>
         </div>
@@ -63,7 +68,9 @@ export function Header() {
               <div className="pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h1>LOGO</h1>
+                    <h1 className="font-bold text-3xl uppercase text-yellow-500">
+                      &lsaquo;Cheevi/&rsaquo;
+                    </h1>
                   </div>
                   <div className="-mr-2">
                     <Popover.Button className="inline-flex items-center justify-center focus:outline-none">

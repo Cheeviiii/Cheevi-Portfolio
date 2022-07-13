@@ -1,53 +1,5 @@
 import React, { useState } from "react";
-import TrackVisibility from "react-on-screen";
-
-const ProjetosMap = [
-  {
-    id: 1,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 2,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 3,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 4,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 5,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 6,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 7,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 8,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-  {
-    id: 9,
-    title: "Titulo",
-    img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
-  },
-];
+import { ProjetosMap } from "../../service/data";
 
 export function Projects() {
   const [showMore, setShowMore] = useState(3);
@@ -58,8 +10,8 @@ export function Projects() {
   };
 
   return (
-    <div
-      className="my-52 w-full flex items-center justify-center"
+    <section
+      className="my-52 w-full h-screen flex items-center justify-center"
       id="projetos"
     >
       <div className="w-full">
@@ -71,7 +23,7 @@ export function Projects() {
               {ProjetosMap.slice(0, showMore).map((item) => (
                 <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-[#1b1b1b] p-10">
                   <img
-                    className="w-[250px] h-[150px] md:w-[250px] md:h-[150px] md:rounded-lg"
+                    className="w-[250px] h-[150px] lg:w-[250px] lg:h-[150px] lg:rounded-lg"
                     src={item.img}
                     alt={item.title}
                   />
@@ -83,7 +35,7 @@ export function Projects() {
             </div>
             <div className="pt-5">
               {totalItem !== showMore ? (
-                ''
+                ""
               ) : (
                 <button className="btn" onClick={showMoreItems}>
                   Ver Mais
@@ -93,6 +45,6 @@ export function Projects() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

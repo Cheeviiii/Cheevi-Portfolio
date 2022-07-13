@@ -4,19 +4,19 @@ import TrackVisibility from "react-on-screen";
 
 export function Sobre() {
   return (
-    <div className="h-screen flex items-center" id="sobre">
+    <div className="h-screen flex items-center justify-center" id="sobre">
       <div className="w-full h-[500px] flex items-center">
-        <div className="w-full p-10 flex flex-col md:flex-row items-center justify-center bg-[#141414] border-4 border-[#303030] ">
-          <div className="">
+        <div className="w-full p-10 flex flex-col lg:flex-row items-center justify-center bg-[#141414] border-4 border-[#303030] ">
+          <div className="px-10">
             <img
-              className="rounded-3xl w-[300px] h-[300px]"
+              className="rounded-3xl w-[250px] h-[250px] md:w-[300px] md:h-[300px]"
               src="https://i.pinimg.com/564x/ea/57/20/ea57206b99b4aaadcd2baa2f9659c000.jpg"
               alt=""
             />
           </div>
-          <div className="flex flex-col items-center px-10 my-10">
+          <div className="flex flex-col items-center my-10">
             <h1 className="font-medium text-2xl ">Sobre Mim</h1>
-            <p className="w-[500px] text-center text-lg pt-5 ">
+            <p className="w-full md:w-[500px] text-center text-lg pt-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
               incidunt rem voluptates ab fugiat voluptatum eaque asperiores
               consectetur nobis animi obcaecati, suscipit illum. At dolorem
