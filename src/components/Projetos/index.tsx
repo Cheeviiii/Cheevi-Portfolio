@@ -18,32 +18,32 @@ const ProjetosMap = [
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
   {
-    id: 1,
+    id: 4,
     title: "Titulo",
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
   {
-    id: 2,
+    id: 5,
     title: "Titulo",
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
   {
-    id: 3,
+    id: 6,
     title: "Titulo",
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
   {
-    id: 1,
+    id: 7,
     title: "Titulo",
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
   {
-    id: 2,
+    id: 8,
     title: "Titulo",
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
   {
-    id: 3,
+    id: 9,
     title: "Titulo",
     img: "https://www.remansonews.com/wp-content/uploads/2017/04/maxresdefault.jpg",
   },
@@ -51,9 +51,10 @@ const ProjetosMap = [
 
 export function Projects() {
   const [showMore, setShowMore] = useState(3);
+  const [totalItem] = useState(3);
 
   const showMoreItems = () => {
-    setShowMore((prevValue) => prevValue + 3);
+    setShowMore((prevValue) => (prevValue = 100));
   };
 
   return (
@@ -81,9 +82,13 @@ export function Projects() {
               ))}
             </div>
             <div className="pt-5">
-              <button className="btn" onClick={showMoreItems}>
-                Ver Mais
-              </button>
+              {totalItem !== showMore ? (
+                ''
+              ) : (
+                <button className="btn" onClick={showMoreItems}>
+                  Ver Mais
+                </button>
+              )}
             </div>
           </div>
         </div>

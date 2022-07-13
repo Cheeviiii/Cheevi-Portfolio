@@ -2,7 +2,7 @@ import { GithubLogo, LinkedinLogo } from "phosphor-react";
 
 export function MainBox() {
   return (
-    <div className="w-full h-screen flex items-center justify-around px-10">
+    <div className="w-full h-screen flex items-center justify-center px-10">
       <div className="flex items-center justify-between">
         <div className="flex flex-col justify-center">
           <p className="text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInDown">
