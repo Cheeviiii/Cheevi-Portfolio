@@ -10,16 +10,16 @@ export function Projects() {
   };
 
   return (
-    <section
-      className="my-52 w-full h-screen flex items-center justify-center"
-      id="projetos"
-    >
-      <div className="w-full">
+    <section className="my-52 pt-52 md:pt-0 md:my-52 w-full md:h-screen flex items-center justify-center">
+      <div
+        className="w-full h-full flex items-center justify-center"
+        id="projetos"
+      >
         <div className="w-full p-5 border-4 border-[#303030] bg-[#141414]">
           <div className="flex flex-col items-center justify-center">
             <h1 className="text-4xl font-bold uppercase">Projetos</h1>
 
-            <div className="my-10 md:grid grid-cols-3">
+            <div className="my-10 grid md:grid-cols-3">
               {ProjetosMap.slice(0, showMore).map((item) => (
                 <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-[#1b1b1b] p-10">
                   <img
