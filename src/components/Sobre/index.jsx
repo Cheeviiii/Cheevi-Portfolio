@@ -1,6 +1,6 @@
 import { AddressBook, Envelope } from "phosphor-react";
 
-import TrackVisibility from "react-on-screen";
+import Link from "react-scroll/modules/components/Link";
 
 export function Sobre() {
   return (
@@ -23,9 +23,11 @@ export function Sobre() {
               consequuntur, architecto id nihil necessitatibus.
             </p>
             <div className="flex pt-10">
-              <button className="btn">
-                <AddressBook className="mx-2" size={32} /> CONTATO
-              </button>
+              <Link to='contato' smooth={true} duration={1000}>
+                <button className="btn">
+                  <AddressBook className="mx-2" size={32} /> CONTATO
+                </button>
+              </Link>
             </div>
           </div>
         </div>

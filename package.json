@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "@headlessui/react": "^1.6.6",
     "animate.css": "^4.1.1",
     "phosphor-react": "^1.4.1",

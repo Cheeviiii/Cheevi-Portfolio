@@ -3,7 +3,7 @@ import { ProjetosMap } from "../../service/data";
 
 export function Projects() {
   const [showMore, setShowMore] = useState(3);
-  const [totalItem] = useState(3);
+  const [totalItem] = useState(showMore);
 
   const showMoreItems = () => {
     setShowMore((prevValue) => (prevValue = 100));
@@ -34,12 +34,12 @@ export function Projects() {
               ))}
             </div>
             <div className="pt-5">
-              {totalItem !== showMore ? (
-                ""
-              ) : (
+              {totalItem >= showMore ? (
                 <button className="btn" onClick={showMoreItems}>
                   Ver Mais
                 </button>
+              ) : (
+                ''
               )}
             </div>
           </div>
