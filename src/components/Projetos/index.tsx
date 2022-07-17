@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { ProjetosMap } from "../../service/data";
+import { useNavigate } from "react-router-dom";
 
-export function Projects() {
+export function Projects({ slug }) {
   const [showMore, setShowMore] = useState(3);
   const [totalItem] = useState(showMore);
+
+  const navigate = useNavigate();
 
   const showMoreItems = () => {
     setShowMore((prevValue) => (prevValue = 100));
@@ -21,7 +24,11 @@ export function Projects() {
 
             <div className="my-10 grid md:grid-cols-3">
               {ProjetosMap.slice(0, showMore).map((item) => (
-                <div className="flex flex-col items-center justify-center cursor-pointer hover:bg-[#1b1b1b] p-10">
+                <div
+                  onClick={() => (location.href = `${item.link}`)}
+                  className="flex flex-col items-center justify-center cursor-pointer hover:bg-[#1b1b1b] p-10"
+                  key={item.id}
+                >
                   <img
                     className="w-[250px] h-[150px] lg:w-[250px] lg:h-[150px] lg:rounded-lg"
                     src={item.img}
@@ -39,7 +46,7 @@ export function Projects() {
                   Ver Mais
                 </button>
               ) : (
-                ''
+                ""
               )}
             </div>
           </div>
