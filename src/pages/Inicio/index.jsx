@@ -6,7 +6,7 @@ import { Sobre } from "../../components/Sobre";
 
 export function Inicio() {
   return (
-    <div className="w-full box-border">
+    <div className="">
       <MainBox />
       <Sobre />
       <Projects />

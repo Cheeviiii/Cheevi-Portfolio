@@ -4,21 +4,30 @@ export function MainBox() {
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="flex items-center justify-center xl:justify-between">
-        <div className="flex flex-col items-center xl:items-start justify-center">
-          <p className="text-2xl md:text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInDown">
+        <div className="flex flex-col items-center justify-center">
+          <p className="text-xl md:text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInDown">
             Olá, eu sou
           </p>
-          <h1 className="text-5xl font-medium uppercase text-yellow-500 py-5 animate__animated animate__fadeInLeft">
+          <h1 className="text-4xl font-medium uppercase text-yellow-500 py-2 md:py-5 animate__animated animate__fadeInLeft">
             Diogo Souza.
           </h1>
-          <p className="text-2xl md:text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInUp">
+          <p className="text-xl md:text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInUp">
             Desenvolvedor Front-end
           </p>
-          <div className="flex items-center justify-center pt-10">
-            <button className="btn-mainbox animate__animated animate__lightSpeedInLeft">
+          <div className="w-full flex items-center justify-center pt-10">
+            <button
+              className="btn-mainbox animate__animated animate__lightSpeedInLeft"
+              onClick={() =>
+                (location.href =
+                  "https://www.linkedin.com/in/diogo-souza-alves-77345b220/")
+              }
+            >
               <LinkedinLogo className="mx-2" size={32} /> Linkedln
             </button>
-            <button className="btn-mainbox animate__animated animate__lightSpeedInRight">
+            <button
+              className="btn-mainbox animate__animated animate__lightSpeedInRight"
+              onClick={() => (location.href = "https://github.com/Cheeviiii")}
+            >
               <GithubLogo className="mx-2" size={32} /> Github
             </button>
           </div>

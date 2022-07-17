@@ -20,7 +20,7 @@ body {
 }
 
 .btn-mainbox {
-  @apply border-2 md:border-4 border-yellow-500 rounded-2xl p-2 md:p-4 md:px-10 text-lg uppercase font-bold mx-5 flex items-center hover:border-red-500 transition-colors;
+  @apply border-2 md:border-4 border-yellow-500 rounded-2xl py-2 w-[150px] md:p-4 md:px-10 text-base md:text-lg uppercase m-1 font-bold flex items-center justify-center hover:border-red-500 transition-colors;
 }
 
 ::-webkit-scrollbar {

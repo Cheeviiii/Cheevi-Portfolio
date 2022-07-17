@@ -30,7 +30,7 @@ export function Contato() {
       id="contato"
     >
       <div className="bg-[#141414] border-4 border-[#303030] w-full p-5 flex flex-col items-center justify-center">
-        <h1 className="font-bold text-3xl uppercase">
+        <h1 className="font-bold text-xl md:text-3xl uppercase">
           Quer entrar em contato?
         </h1>
         <div className="my-10">
@@ -41,7 +41,7 @@ export function Contato() {
           >
             <div className="flex flex-col">
               <input
-                className="w-[350px] h-[45px] px-2 font-semibold rounded text-black outline-none"
+                className="md:w-[350px] h-[45px] px-2 font-semibold rounded text-black outline-none"
                 type="text"
                 placeholder="Nome"
                 name="user_name"
@@ -51,7 +51,7 @@ export function Contato() {
 
             <div className="pt-5">
               <input
-                className="w-[350px] h-[45px] px-2 rounded font-semibold text-black outline-none"
+                className="md:w-[350px] h-[45px] px-2 rounded font-semibold text-black outline-none"
                 type="text"
                 placeholder="Email"
                 name="user_email"
@@ -61,7 +61,7 @@ export function Contato() {
 
             <div className="pt-5">
               <input
-                className="w-[350px] h-[45px] px-2 rounded font-semibold text-black outline-none"
+                className="md:w-[350px] h-[45px] px-2 rounded font-semibold text-black outline-none"
                 type="text"
                 placeholder="Sobre"
                 name="user_sobre"
@@ -71,7 +71,7 @@ export function Contato() {
 
             <div className="pt-5">
               <textarea
-                className="w-[350px] px-2 rounded font-semibold text-black outline-none"
+                className="w-[200px] md:w-[350px] px-2 rounded font-semibold text-black outline-none"
                 cols="30"
                 rows="5"
                 placeholder="Digite Sua Mensagem..."
@@ -82,7 +82,7 @@ export function Contato() {
 
             <div className="pt-5">
               <button
-                className="bg-yellow-300 w-[350px] h-10 text-black font-bold uppercase text-xl rounded-xl cursor-pointer hover:scale-110 transition-transform"
+                className="bg-yellow-300 w-[200px] md:w-[350px] h-10 text-black font-bold uppercase text-xl rounded-xl cursor-pointer hover:scale-110 transition-transform"
                 value="Send"
               >
                 Enviar
