@@ -1,6 +1,7 @@
 import AnimeDatabaseImg from "../assets/AnimeDatabase.png";
 import WeatherApp from '../assets/WeatherApp.png'
 import MangaKari from '../assets/MangaKari.png'
+import ControleFinanceiro from '../assets/ControleFinanceiro.png'
 
 export const ProjetosMap = [
   {
@@ -20,9 +21,9 @@ export const ProjetosMap = [
   },
   {
     id: 3,
-    title: "Site de Leitura de Mangas (Não Terminado!)",
-    slug: "site-de-leitura-de-mangas",
-    img: MangaKari,
-    link: 'https://mangakari.vercel.app/'
+    title: "Aplicativo de controle financeiro",
+    slug: "aplicativo-de-controle-financeiro",
+    img: ControleFinanceiro,
+    link: 'https://controle-financeiro-weld.vercel.app/'
   },
 ];
