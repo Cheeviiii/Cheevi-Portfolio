@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { ProjetosMap } from "../../service/data";
 import { useNavigate } from "react-router-dom";
 
-export function Projects({ slug }) {
+export function Projects() {
   const [showMore, setShowMore] = useState(3);
   const [totalItem] = useState(showMore);
 
   const navigate = useNavigate();
 
   const showMoreItems = () => {
-    setShowMore((prevValue) => (prevValue = 100));
+    setShowMore((prevValue) => (prevValue = 9));
   };
 
   return (
@@ -46,7 +46,7 @@ export function Projects({ slug }) {
                   Ver Mais
                 </button>
               ) : (
-                ""
+                <button className="btn">Ver Todos</button>
               )}
             </div>
           </div>

@@ -27,6 +27,9 @@ export function Header() {
           >
             Sobre
           </Link>
+          <Link className="btn-header" to="skills" smooth={true} duration={500}>
+            Skills
+          </Link>
           <Link
             className="btn-header"
             to="projetos"
@@ -90,6 +93,15 @@ export function Header() {
                       duration={500}
                     >
                       Sobre
+                    </Link>
+                    <Link
+                      activeClass="active-link"
+                      className="btn-header"
+                      to="skills"
+                      smooth={true}
+                      duration={500}
+                    >
+                      Skills
                     </Link>
                     <Link
                       className="btn-header"

@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { CheckCircle } from "phosphor-react";
 
 export function Contato() {
   const form = useRef();
+  const [status, setStatus] = useState("");
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -15,7 +17,8 @@ export function Contato() {
         "QfrnYm8Knk3Egx6uR"
       )
       .then((result) => {
-        console.log(result.text);
+        console.log("SUCCESS", result);
+        setStatus("SUCCESS");
       })
       .catch((error) => {
         console.log(error);
@@ -33,6 +36,7 @@ export function Contato() {
         <h1 className="font-bold text-xl md:text-3xl uppercase">
           Quer entrar em contato?
         </h1>
+        {status && renderAlert()}
         <div className="my-10">
           <form
             className="flex flex-col items-center justify-center"
@@ -94,3 +98,15 @@ export function Contato() {
     </section>
   );
 }
+
+const renderAlert = () => (
+  <div className="px-5 pt-5">
+    <div className="bg-green-700 px-7 p-1 rounded-xl">
+      <div className="flex items-center gap-2">
+        <CheckCircle size={32} />
+        <h1>Sucesso!</h1>
+      </div>
+      <p className="pt-2">Email enviado com sucesso!</p>
+    </div>
+  </div>
+);

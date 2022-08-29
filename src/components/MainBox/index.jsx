@@ -15,21 +15,20 @@ export function MainBox() {
             Desenvolvedor Front-end
           </p>
           <div className="w-full flex items-center justify-center pt-10">
-            <button
+            <a
               className="btn-mainbox animate__animated animate__lightSpeedInLeft"
-              onClick={() =>
-                (location.href =
-                  "https://www.linkedin.com/in/diogo-souza-alves-77345b220/")
-              }
+              href="https://www.linkedin.com/in/diogo-souza-alves-77345b220/"
+              target="_blank"
             >
               <LinkedinLogo className="mx-2" size={32} /> Linkedln
-            </button>
-            <button
+            </a>
+            <a
               className="btn-mainbox animate__animated animate__lightSpeedInRight"
-              onClick={() => (location.href = "https://github.com/Cheeviiii")}
+              href="https://github.com/Cheeviiii"
+              target="_blank"
             >
               <GithubLogo className="mx-2" size={32} /> Github
-            </button>
+            </a>
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 import AnimeDatabaseImg from "../assets/AnimeDatabase.png";
 import WeatherApp from '../assets/WeatherApp.png'
-import MangaKari from '../assets/MangaKari.png'
 import ControleFinanceiro from '../assets/ControleFinanceiro.png'
 
 export const ProjetosMap = [
