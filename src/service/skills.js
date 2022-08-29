@@ -2,7 +2,7 @@ import javascript from '../assets/javascript.png'
 import typescript from '../assets/typescript.png'
 import react from '../assets/react.png'
 import html from '../assets/html5.png'
-import css3 from '../assets/css3.png'
+import css3 from '../assets/CSS3.png'
 
 export const skillsmap = [
     {
