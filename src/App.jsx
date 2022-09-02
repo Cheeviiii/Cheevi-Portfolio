@@ -4,14 +4,14 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Inicio } from "./pages/Inicio";
 import { ProjectView } from "./pages/ProjectView";
+import { ProjetosMap } from "./service/data";
 
 export function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route path="/" exact element={<Inicio />} />
-        <Route path="/projeto/:slug" element={<ProjectView />}/>
+        <Route path="/projeto/:slug" element={<ProjectView data={ProjetosMap} />}/>
       </Routes>
       <Footer />
     </BrowserRouter>
