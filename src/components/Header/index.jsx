@@ -9,42 +9,35 @@ import { Fragment } from "react";
 export function Header() {
   return (
     <Popover className="relative">
-      <nav className="bg-[#141414] h-28 border-b-4 border-b-[#303030] w-full p-5 flex items-center justify-between md:justify-around">
-        <h1 className="font-bold text-3xl uppercase text-yellow-500">
-          &lsaquo;Cheevi/&rsaquo;
+      <nav className="fixed bg-gray-900 h-28 w-full p-5 flex items-center justify-between md:justify-around">
+        <h1 className="font-bold text-4xl uppercase text-blue-500">
+          <span className="text-white">Che</span>evi
         </h1>
 
         <div className="hidden items-center md:flex">
           <p className="btn-header" onClick={() => scroll.scrollToTop()}>
-            Home
+            <span className="text-blue-500 p-1">/</span>Inicio
           </p>
           <Link
             activeClass="active-link"
-            className="btn-header"
-            to="sobre"
-            smooth={true}
-            duration={500}
-          >
-            Sobre
-          </Link>
-          <Link className="btn-header" to="skills" smooth={true} duration={500}>
-            Skills
-          </Link>
-          <Link
             className="btn-header"
             to="projetos"
             smooth={true}
             duration={500}
           >
-            Projetos
+            <span className="text-blue-500 p-1">/</span>Projetos
+          </Link>
+          <Link className="btn-header" to="sobre" smooth={true} duration={500}>
+            <span className="text-blue-500 p-1">/</span>Sobre
           </Link>
           <Link
             className="btn-header"
             to="contato"
             smooth={true}
             duration={500}
+            offset={-60}
           >
-            Contato
+            <span className="text-blue-500 p-1">/</span>Contato
           </Link>
         </div>
 
@@ -67,12 +60,12 @@ export function Header() {
             focus
             className="absolute top-0 inset-x-0 p-2 transtion trasnform origin-top-right md:hidden"
           >
-            <div className="rounded-lg shadow-lg ring-black ring-opacity-5 bg-[#141414] divide-y-2 divide-gray-50">
+            <div className="rounded-lg shadow-lg ring-black ring-opacity-5 bg-gray-900 divide-y-2 divide-gray-50">
               <div className="pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h1 className="font-bold text-3xl uppercase text-yellow-500">
-                      &lsaquo;Cheevi/&rsaquo;
+                    <h1 className="font-bold text-4xl uppercase text-blue-500">
+                      <span className="text-white">Che</span>evi
                     </h1>
                   </div>
                   <div className="-mr-2">
@@ -84,7 +77,12 @@ export function Header() {
                 </div>
                 <div className="mt-6">
                   <nav className="grid gap-y-6">
-                    <Link className="btn-header">Home</Link>
+                    <p
+                      className="btn-header"
+                      onClick={() => scroll.scrollToTop()}
+                    >
+                      <span className="text-blue-500 p-1">/</span>Inicio
+                    </p>
                     <Link
                       activeClass="active-link"
                       className="btn-header"
@@ -92,7 +90,7 @@ export function Header() {
                       smooth={true}
                       duration={500}
                     >
-                      Sobre
+                      <span className="text-blue-500 p-1">/</span>Sobre
                     </Link>
                     <Link
                       activeClass="active-link"
@@ -101,7 +99,7 @@ export function Header() {
                       smooth={true}
                       duration={500}
                     >
-                      Skills
+                      <span className="text-blue-500 p-1">/</span>Skills
                     </Link>
                     <Link
                       className="btn-header"
@@ -109,10 +107,10 @@ export function Header() {
                       smooth={true}
                       duration={500}
                     >
-                      Projetos
+                      <span className="text-blue-500 p-1">/</span>Projetos
                     </Link>
                     <Link className="btn-header" to="contato">
-                      Contato
+                      <span className="text-blue-500 p-1">/</span>Contato
                     </Link>
                   </nav>
                 </div>

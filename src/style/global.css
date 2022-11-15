@@ -2,25 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
-  @apply bg-[#1b1b1b] bg-cover text-white font-medium;
+  @apply bg-gray-900 text-white font-medium;
   -webkit-font-smoothing: antialiased;
 }
 
 .btn-header {
-  @apply w-full text-center font-bold text-lg mx-3 uppercase cursor-pointer hover:text-red-500;
+  @apply w-full text-center font-bold text-2xl mx-3 uppercase cursor-pointer hover:text-blue-500;
 }
 
 .active-link {
-  @apply text-center font-bold text-lg mx-3 border-b-2 border-b-yellow-500 uppercase;
+  @apply text-center font-bold text-lg mx-3 border-b-2 border-b-blue-500 uppercase;
 }
 
 .btn {
-  @apply border-4 border-yellow-500 rounded-2xl p-4 px-10 text-lg uppercase font-bold mx-5 flex items-center hover:border-red-500 transition-colors;
+  @apply border-4 border-blue-500 rounded-2xl p-4 px-10 text-lg uppercase font-bold mx-5 flex items-center hover:border-blue-500 transition-colors;
 }
 
 .btn-mainbox {
-  @apply border-2 md:border-4 border-yellow-500 rounded-2xl py-2 w-[150px] md:w-full md:p-4 md:px-10 text-base md:text-lg uppercase m-1 font-bold flex items-center justify-center hover:border-red-500 transition-colors;
+  @apply border-2 md:border-4 border-blue-500 rounded-2xl py-2 w-[150px] md:w-full md:p-4 md:px-10 text-base md:text-lg uppercase m-1 font-bold flex items-center justify-center hover:border-red-500 transition-colors;
 }
 
 ::-webkit-scrollbar {
@@ -33,6 +39,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
-  background-color: #eab308;
+  @apply bg-blue-500 rounded-md
 }

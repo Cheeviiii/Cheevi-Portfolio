@@ -1,42 +1,35 @@
-import { GithubLogo, LinkedinLogo } from "phosphor-react";
+import { Link } from "react-scroll";
+import MainImage from "../../assets/mainbox.png";
 
 export function MainBox() {
   return (
     <div className="w-full h-screen flex items-center justify-center">
-      <div className="flex items-center justify-center xl:justify-between">
-        <div className="flex flex-col items-center justify-center">
-          <p className="text-xl md:text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInDown">
-            Olá, eu sou
+      <div className="flex flex-col gap-5 items-center lg:items-start justify-center">
+        <div className="md:w-[575px]">
+          <p className=" text-2xl md:text-5xl font-bold text-gray-200 text-center lg:text-start">
+            Olá, me chamo <span className="text-blue-500">Diogo</span> sou{" "}
+            <span className="text-blue-500">desenvolvedor front-end</span>
           </p>
-          <h1 className="text-4xl font-medium uppercase text-yellow-500 py-2 md:py-5 animate__animated animate__fadeInLeft">
-            Diogo Souza.
-          </h1>
-          <p className="text-xl md:text-4xl font-medium uppercase text-gray-200 animate__animated animate__fadeInUp">
-            Desenvolvedor Front-end
-          </p>
-          <div className="w-full flex items-center justify-center pt-10">
-            <a
-              className="btn-mainbox animate__animated animate__lightSpeedInLeft"
-              href="https://www.linkedin.com/in/diogo-souza-alves-77345b220/"
-              target="_blank"
-            >
-              <LinkedinLogo className="mx-2" size={32} /> Linkedln
-            </a>
-            <a
-              className="btn-mainbox animate__animated animate__lightSpeedInRight"
-              href="https://github.com/Cheeviiii"
-              target="_blank"
-            >
-              <GithubLogo className="mx-2" size={32} /> Github
-            </a>
-          </div>
         </div>
+        <div className="w-[300px]">
+          <p className="text-gray-500 font-bold text-center lg:text-start text-sm md:text-xl">
+            estou sempre procurando evoluir e aprender novas tecnologias
+          </p>
+        </div>
+        <div className="pt-10">
+          <Link
+            className="border-2 border-blue-500 px-8 p-2 rounded-lg cursor-pointer"
+            to="contato"
+            smooth={true}
+            duration={500}
+          >
+            Entrar em contato
+          </Link>
+        </div>
+      </div>
 
-        <img
-          className="w-[600px] h-[600px] animate__animated animate__zoomIn hidden xl:block"
-          src="https://flexjob.fr/wp-content/uploads/2020/11/formation-mieux-teletravailler.png"
-          alt=""
-        />
+      <div className="hidden lg:block">
+        <img src={MainImage} alt="" />
       </div>
     </div>
   );

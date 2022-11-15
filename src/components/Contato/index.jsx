@@ -1,11 +1,18 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { CheckCircle } from "phosphor-react";
+import {
+  CheckCircle,
+  DiscordLogo,
+  FacebookLogo,
+  LinkedinLogo,
+  TwitterLogo,
+} from "phosphor-react";
 
 export function Contato() {
   const form = useRef();
   const [status, setStatus] = useState("");
 
+  /* Função para enviar o email */
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -21,42 +28,76 @@ export function Contato() {
         setStatus("SUCCESS");
       })
       .catch((error) => {
-        console.log(error);
+        console.log("ERROR", error);
+        setStatus("ERROR");
       });
 
     e.target.reset();
   };
 
   return (
-    <section
-      className="w-full h-screen flex items-center justify-center"
+    <div
+      className="w-full h-screen flex flex-col gap-10 items-center justify-center"
       id="contato"
     >
-      <div className="bg-[#141414] border-4 border-[#303030] w-full p-5 flex flex-col items-center justify-center">
-        <h1 className="font-bold text-xl md:text-3xl uppercase">
-          Quer entrar em contato?
+      {/* Header */}
+      <div className="w-full flex items-center justify-around">
+        <h1 className="text-2xl font-bold uppercase">
+          <span className="text-blue-500">/ </span>Contato
         </h1>
-        {status && renderAlert()}
+        <span />
+      </div>
+
+      {/* Rede sociais para contato */}
+      <div className="flex items-center justify-center">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-5">
+          <a
+            className="flex items-center gap-2 text-2xl font-bold cursor-pointer hover:text-blue-500"
+            target="_blank"
+            href="https://www.linkedin.com/in/diogo-souza-alves-77345b220/"
+          >
+            <LinkedinLogo size={42} />
+            Linkedin
+          </a>
+          <a
+            className="flex items-center gap-2 text-2xl font-bold cursor-pointer hover:text-blue-500"
+            target="_blank"
+            href="https://www.facebook.com/username.passwordddd"
+          >
+            <FacebookLogo size={42} />
+            Facebook
+          </a>
+          <p
+            className="flex items-center gap-2 text-2xl font-bold"
+          >
+            <DiscordLogo size={42} />
+            CheeVi.?#5064
+          </p>
+        </div>
+      </div>
+
+      {/* Formulario para contato */}
+      <div className="w-[350px] md:w-[700px] bg-gray-700 flex flex-col rounded-[46px] items-center justify-center">
+        {status == "SUCCESS" ? renderAlertSuccess() : ""}
+        {status == "ERROR" ? renderAlertError() : ""}
         <div className="my-10">
           <form
             className="flex flex-col items-center justify-center"
             ref={form}
             onSubmit={sendEmail}
           >
-            <div className="flex flex-col">
+            <div className="flex flex-col md:flex-row gap-3">
               <input
-                className="md:w-[350px] h-[45px] px-2 font-semibold rounded text-black outline-none"
+                className="md:w-[300px] h-[46px] px-5 font-semibold rounded-lg text-black outline-none"
                 type="text"
                 placeholder="Nome"
                 name="user_name"
                 required
               />
-            </div>
 
-            <div className="pt-5">
               <input
-                className="md:w-[350px] h-[45px] px-2 rounded font-semibold text-black outline-none"
-                type="text"
+                className="md:w-[300px] h-[46px] px-5 font-semibold rounded-lg text-black outline-none"
+                type="email"
                 placeholder="Email"
                 name="user_email"
                 required
@@ -65,9 +106,9 @@ export function Contato() {
 
             <div className="pt-5">
               <input
-                className="md:w-[350px] h-[45px] px-2 rounded font-semibold text-black outline-none"
+                className="md:w-[610px] h-[46px] px-5 font-semibold rounded-lg text-black outline-none"
                 type="text"
-                placeholder="Sobre"
+                placeholder="Titulo"
                 name="user_sobre"
                 required
               />
@@ -75,10 +116,10 @@ export function Contato() {
 
             <div className="pt-5">
               <textarea
-                className="w-[200px] md:w-[350px] px-2 rounded font-semibold text-black outline-none"
+                className="w-[230px] md:w-[610px] h-[226px] p-2 rounded-lg font-semibold text-black outline-none"
                 cols="30"
                 rows="5"
-                placeholder="Digite Sua Mensagem..."
+                placeholder="Assunto"
                 name="message"
                 required
               ></textarea>
@@ -86,7 +127,7 @@ export function Contato() {
 
             <div className="pt-5">
               <button
-                className="bg-yellow-300 w-[200px] md:w-[350px] h-10 text-black font-bold uppercase text-xl rounded-xl cursor-pointer hover:scale-110 transition-transform"
+                className="bg-blue-500 w-[100px] h-10 text-white font-bold uppercase text-xl rounded-xl cursor-pointer hover:scale-110 transition-transform"
                 value="Send"
               >
                 Enviar
@@ -95,18 +136,31 @@ export function Contato() {
           </form>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
-const renderAlert = () => (
+/* Alertas */
+const renderAlertSuccess = () => (
   <div className="px-5 pt-5">
-    <div className="bg-green-700 px-7 p-1 rounded-xl">
+    <div className="w-[250px] bg-green-600 p-1 rounded-xl flex flex-col items-center gap-2">
       <div className="flex items-center gap-2">
         <CheckCircle size={32} />
-        <h1>Sucesso!</h1>
+        <h1 className="text-2xl">Sucesso!</h1>
       </div>
-      <p className="pt-2">Email enviado com sucesso!</p>
+      <p className="text-base font-semibold">Email enviado com sucesso!</p>
+    </div>
+  </div>
+);
+
+const renderAlertError = () => (
+  <div className="px-5 pt-5">
+    <div className="w-[250px] bg-red-700 p-1 rounded-xl flex flex-col items-center gap-2">
+      <div className="flex items-center gap-2">
+        <CheckCircle size={32} />
+        <h1 className="text-2xl">Erro!</h1>
+      </div>
+      <p className="text-base font-semibold">Ops! Algo deu errado!</p>
     </div>
   </div>
 );

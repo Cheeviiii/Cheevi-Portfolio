@@ -1,22 +1,34 @@
-import { skillsmap } from '../../service/skills';
-
-export function Skills() {
+export function Skills({ data }) {
   return (
-    <section className="my-52 py-52 h-screen flex items-center justify-center" id="skills">
-      <div className="w-full h-full flex items-center">
-        <div className="w-full p-10 flex flex-col lg:flex-row items-center justify-center gap-4 bg-[#141414] border-4 border-[#303030] ">
-          <div className="flex flex-col items-center my-10">
-            <h1 className="font-medium text-3xl uppercase">Skills</h1>
-            <div className='p-10'>
-              <div className='flex flex-col md:flex-row items-center justify-center gap-6'>
-                {skillsmap.map(item => (
-                  <img src={item.image}  className="w-24"/>
-                ))}
-              </div>
+    <div className="w-full h-screen flex flex-col gap-10 items-center justify-center">
+      {/* Header */}
+      <div className="w-full flex items-center justify-around">
+        <h1 className="text-2xl font-bold uppercase">
+          <span className="text-blue-500">/ </span>Skills
+        </h1>
+        <span />
+      </div>
+
+      {/* Mapeamento das skills */}
+      <div className="grid auto-rows-auto md:grid-cols-2 gap-4">
+        {data.map((item) => (
+          <div
+            className="w-full flex flex-col border-2 border-gray-100 items-center p-2 rounded-xl"
+            key={item.id}
+          >
+            <h1 className="text-2xl text-gray-100 font-bold uppercase">
+              {item.title}
+            </h1>
+            <div className="flex gap-1">
+              {item.skills.map((item) => (
+                <p className="text-base text-gray-500 font-semibold" key={item.id}>
+                  {item.title}
+                </p>
+              ))}
             </div>
           </div>
-        </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

@@ -6,15 +6,17 @@ import { Projects } from "../../components/Projetos";
 import { Skills } from "../../components/Skills";
 import { Sobre } from "../../components/Sobre";
 
+import { SkillsData } from "../../service/data";
+
 export function Inicio() {
   return (
-    <div className="">
+    <main>
       <Header />
       <MainBox />
-      <Sobre />
-      <Skills />
       <Projects />
+      <Skills data={SkillsData} />
+      <Sobre />
       <Contato />
-    </div>
+    </main>
   );
 }
