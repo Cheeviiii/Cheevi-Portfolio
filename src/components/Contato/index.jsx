@@ -59,17 +59,7 @@ export function Contato() {
             <LinkedinLogo size={42} />
             Linkedin
           </a>
-          <a
-            className="flex items-center gap-2 text-2xl font-bold cursor-pointer hover:text-blue-500"
-            target="_blank"
-            href="https://www.facebook.com/username.passwordddd"
-          >
-            <FacebookLogo size={42} />
-            Facebook
-          </a>
-          <p
-            className="flex items-center gap-2 text-2xl font-bold"
-          >
+          <p className="flex items-center gap-2 text-2xl font-bold">
             <DiscordLogo size={42} />
             CheeVi.?#5064
           </p>
@@ -77,7 +67,7 @@ export function Contato() {
       </div>
 
       {/* Formulario para contato */}
-      <div className="w-[350px] md:w-[700px] bg-gray-700 flex flex-col rounded-[46px] items-center justify-center">
+      <div className="w-[350px] md:w-[700px] bg-[#1b1b1b] flex flex-col rounded-[46px] items-center justify-center">
         {status == "SUCCESS" ? renderAlertSuccess() : ""}
         {status == "ERROR" ? renderAlertError() : ""}
         <div className="my-10">

@@ -9,12 +9,12 @@
 }
 
 body {
-  @apply bg-gray-900 text-white font-medium;
+  @apply bg-[#0e0e0e] text-white font-medium;
   -webkit-font-smoothing: antialiased;
 }
 
 .btn-header {
-  @apply w-full text-center font-bold text-2xl mx-3 uppercase cursor-pointer hover:text-blue-500;
+  @apply w-full text-center font-bold text-lg mx-3 cursor-pointer hover:text-blue-500;
 }
 
 .active-link {
