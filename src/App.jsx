@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Footer } from "./components/Footer";
 import { Projects } from "./pages/Projects";
 import { Inicio } from "./pages/Inicio";
 import { ProjectView } from "./pages/ProjectView";
@@ -22,7 +21,6 @@ export function App() {
           element={<ProjectView data={ProjetosData} />}
         />
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }

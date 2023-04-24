@@ -5,7 +5,7 @@ import { GithubLogo, Globe } from "phosphor-react";
 export const ProjetoViewer = ({ data, slug }) => {
   console.log(slug);
   return (
-    <div className="w-full h-screen">
+    <div className="relative w-full h-screen">
       {/* Header do componente */}
       <div className="flex items-center justify-center">
         <Link to="/" className="text-5xl uppercase m-4 text-blue-500">
@@ -19,7 +19,7 @@ export const ProjetoViewer = ({ data, slug }) => {
         .map((card, index) => (
           <div
             key={index}
-            className="flex flex-col xl:flex-row items-center justify-center gap-5 h-screen"
+            className="flex flex-col xl:flex-row items-center justify-center gap-5 h-[800px]"
           >
             <img
               src={card.img}

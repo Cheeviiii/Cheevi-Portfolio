@@ -1,6 +1,9 @@
 export function Skills({ data }) {
   return (
-    <div className="w-full h-screen flex flex-col gap-10 items-center justify-center">
+    <div
+      className="w-full h-screen flex flex-col gap-10 items-center justify-center"
+      id="skills"
+    >
       {/* Header */}
       <div className="w-full flex items-center justify-around">
         <h1 className="text-2xl font-bold uppercase">
@@ -21,7 +24,10 @@ export function Skills({ data }) {
             </h1>
             <div className="flex gap-1">
               {item.skills.map((item) => (
-                <p className="text-base text-gray-500 font-semibold" key={item.id}>
+                <p
+                  className="text-base text-gray-500 font-semibold"
+                  key={item.id}
+                >
                   {item.title}
                 </p>
               ))}

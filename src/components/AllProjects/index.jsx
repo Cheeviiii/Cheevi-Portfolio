@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const AllProjects = ({ projetos }) => {
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full">
       <div className="flex flex-col gap-5 items-center justify-center">
         {/* Titulo */}
         <h1 className="text-4xl uppercase font-bold">Projetos</h1>

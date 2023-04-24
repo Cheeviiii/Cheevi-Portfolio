@@ -16,6 +16,10 @@ const menu = [
     to: "sobre",
   },
   {
+    name: "Skills",
+    to: "skills",
+  },
+  {
     name: "Contato",
     to: "contato",
   },
@@ -27,7 +31,7 @@ export function Header() {
       <nav className="md:fixed w-full p-5 flex items-center justify-between md:justify-around">
         <div className="hidden bg-[#1b1b1b] p-3 rounded-3xl items-center md:flex">
           <p className="btn-header" onClick={() => scroll.scrollToTop()}>
-           Inicio
+            Inicio
           </p>
           {menu.map((item) => (
             <Link
@@ -64,8 +68,7 @@ export function Header() {
             <div className="rounded-lg shadow-lg ring-black ring-opacity-5 bg-[#1b1b1b] divide-y-2 divide-gray-50">
               <div className="pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
-                  <div>
-                  </div>
+                  <div></div>
                   <div className="-mr-2">
                     <Popover.Button className="inline-flex items-center justify-center focus:outline-none">
                       <span className="sr-only">Close Button</span>
@@ -78,8 +81,7 @@ export function Header() {
                     <p
                       className="btn-header"
                       onClick={() => scroll.scrollToTop()}
-                    >
-                    </p>
+                    ></p>
                     {menu.map((item) => (
                       <Link
                         activeClass="active-link"

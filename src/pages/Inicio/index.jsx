@@ -7,16 +7,18 @@ import { Skills } from "../../components/Skills";
 import { Sobre } from "../../components/Sobre";
 
 import { SkillsData } from "../../service/data";
+import { Footer } from "../../components/Footer";
 
 export function Inicio() {
   return (
-    <main>
+    <>
       <Header />
       <MainBox />
       <Projects />
       <Skills data={SkillsData} />
       <Sobre />
       <Contato />
-    </main>
+      <Footer />
+    </>
   );
 }
