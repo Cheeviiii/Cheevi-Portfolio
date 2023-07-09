@@ -5,6 +5,7 @@ import { Inicio } from "./pages/Inicio";
 import { ProjectView } from "./pages/ProjectView";
 import { ProjetosData } from "./service/data";
 import { NavBar } from "./components/Navbar";
+import { Contato } from "./pages/contato";
 
 export function App() {
   return (
@@ -20,8 +21,9 @@ export function App() {
         />
         <Route
           path="/projeto/:slug"
-          element={<ProjectView data={ProjetosData} />}
+          element={<ProjectView />}
         />
+        <Route path="/contato" element={<Contato />}/>
       </Routes>
     </BrowserRouter>
   );

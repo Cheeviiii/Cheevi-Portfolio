@@ -26,10 +26,26 @@ export function FormContato() {
       .then((result) => {
         console.log("SUCCESS", result);
         setStatus("SUCCESS");
+
+        const timeout = setTimeout(() => {
+          setStatus("")
+        }, 3000)
+
+        return () => {
+          clearTimeout(timeout)
+        }
       })
       .catch((error) => {
         console.log("ERROR", error);
         setStatus("ERROR");
+
+        const timeout = setTimeout(() => {
+          setStatus("")
+        }, 3000)
+
+        return () => {
+          clearTimeout(timeout)
+        }
       });
 
     e.target.reset();
@@ -41,9 +57,9 @@ export function FormContato() {
       id="contato"
     >
       {/* Header */}
-      <div className="w-full flex items-center justify-around">
-        <h1 className="text-2xl font-bold uppercase">
-          <span className="text-blue-500">/ </span>Contato
+      <div className="w-full flex items-center justify-center">
+        <h1 className="text-2xl font-bold lowercase text-[#c1c1c1]">
+          _Contato
         </h1>
         <span />
       </div>
@@ -52,22 +68,22 @@ export function FormContato() {
       <div className="flex items-center justify-center">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-5">
           <a
-            className="flex items-center gap-2 text-2xl font-bold cursor-pointer hover:text-blue-500"
+            className="flex items-center gap-2 text-2xl font-bold cursor-pointer text-[#c1c1c1] hover:text-red-500"
             target="_blank"
             href="https://www.linkedin.com/in/diogo-souza-alves-77345b220/"
           >
             <LinkedinLogo size={42} />
             Linkedin
           </a>
-          <p className="flex items-center gap-2 text-2xl font-bold">
+          <p className="flex items-center gap-2 text-2xl text-[#c1c1c1] font-bold">
             <DiscordLogo size={42} />
-            CheeVi.?#5064
+            Cheevi
           </p>
         </div>
       </div>
 
       {/* Formulario para contato */}
-      <div className="w-[350px] md:w-[700px] bg-[#1b1b1b] flex flex-col rounded-[46px] items-center justify-center">
+      <div className="w-[350px] md:w-[700px] bg-[#131313] rounded-2xl shadow-xl flex flex-col items-center justify-center">
         {status == "SUCCESS" ? renderAlertSuccess() : ""}
         {status == "ERROR" ? renderAlertError() : ""}
         <div className="my-10">
@@ -78,7 +94,7 @@ export function FormContato() {
           >
             <div className="flex flex-col md:flex-row gap-3">
               <input
-                className="md:w-[300px] h-[46px] px-5 font-semibold rounded-lg text-black outline-none"
+                className="md:w-[300px] h-[46px] px-5 font-semibold bg-transparent border-b-2 border-b-red-500 text-white outline-none placeholder:text-white"
                 type="text"
                 placeholder="Nome"
                 name="user_name"
@@ -86,7 +102,7 @@ export function FormContato() {
               />
 
               <input
-                className="md:w-[300px] h-[46px] px-5 font-semibold rounded-lg text-black outline-none"
+                className="md:w-[300px] h-[46px] px-5 font-semibold  bg-transparent border-b-2 border-b-red-500 text-white outline-none placeholder:text-white"
                 type="email"
                 placeholder="Email"
                 name="user_email"
@@ -96,7 +112,7 @@ export function FormContato() {
 
             <div className="pt-5">
               <input
-                className="md:w-[610px] h-[46px] px-5 font-semibold rounded-lg text-black outline-none"
+                className="md:w-[610px] h-[46px] px-5 font-semibold  bg-transparent border-b-2 border-b-red-500 text-white outline-none placeholder:text-white"
                 type="text"
                 placeholder="Titulo"
                 name="user_sobre"
@@ -106,7 +122,7 @@ export function FormContato() {
 
             <div className="pt-5">
               <textarea
-                className="w-[230px] md:w-[610px] h-[226px] p-2 rounded-lg font-semibold text-black outline-none"
+                className="w-[230px] md:w-[610px] h-[226px] p-2 rounded-lg font-semibold bg-transparent border-2 border-red-500 text-white outline-none placeholder:text-white"
                 cols="30"
                 rows="5"
                 placeholder="Assunto"
@@ -117,7 +133,7 @@ export function FormContato() {
 
             <div className="pt-5">
               <button
-                className="bg-blue-500 w-[100px] h-10 text-white font-bold uppercase text-xl rounded-xl cursor-pointer hover:scale-110 transition-transform"
+                className="bg-red-500 w-[100px] h-10 text-white font-bold uppercase text-xl rounded-xl cursor-pointer hover:bg-red-800 transition-colors"
                 value="Send"
               >
                 Enviar
@@ -133,24 +149,24 @@ export function FormContato() {
 /* Alertas */
 const renderAlertSuccess = () => (
   <div className="px-5 pt-5">
-    <div className="w-[250px] bg-green-600 p-1 rounded-xl flex flex-col items-center gap-2">
+    <div className="w-[300px] bg-green-700 p-1 rounded-xl flex flex-col items-center gap-2">
       <div className="flex items-center gap-2">
         <CheckCircle size={32} />
-        <h1 className="text-2xl">Sucesso!</h1>
+        <h1 className="text-2xl font-bold uppercase">Sucesso</h1>
       </div>
-      <p className="text-base font-semibold">Email enviado com sucesso!</p>
+      <p className="text-base lowercase">Email enviado com sucesso!</p>
     </div>
   </div>
 );
 
 const renderAlertError = () => (
   <div className="px-5 pt-5">
-    <div className="w-[250px] bg-red-700 p-1 rounded-xl flex flex-col items-center gap-2">
+    <div className="w-[300px] bg-red-700 p-1 rounded-xl flex flex-col items-center gap-2">
       <div className="flex items-center gap-2">
         <CheckCircle size={32} />
-        <h1 className="text-2xl">Erro!</h1>
+        <h1 className="text-2xl font-bold uppercase">Erro!</h1>
       </div>
-      <p className="text-base font-semibold">Ops! Algo deu errado!</p>
+      <p className="text-base lowercase">Ops! Algo deu errado.</p>
     </div>
   </div>
 );

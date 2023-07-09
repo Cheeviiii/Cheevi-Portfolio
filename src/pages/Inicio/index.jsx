@@ -1,6 +1,5 @@
 import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/default-highlight";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { Footer } from "../../components/Footer";
 
 export const Inicio = () => {
   const code = `function sayHello() {
@@ -44,7 +43,7 @@ export const Inicio = () => {
           </div>
         </div>
 
-        <div className="p-10 w-[500px] h-[] flex flex-col gap-14 bg-[#131313] shadow-2xl rounded-xl">
+        <div className="p-10 w-[500px] h-auto flex flex-col gap-14 bg-[#131313] shadow-2xl rounded-xl">
           <div className="flex flex-col gap-5">
             <div className="flex gap-3">
               <img
