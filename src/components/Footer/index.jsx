@@ -2,7 +2,7 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-transparent w-full p-5  flex gap-10 items-center justify-around bottom-0">
+    <footer className="bg-transparent flex gap-10 items-center justify-around bottom-0">
       <h1 className="font-bold text-2xl md:text-4xl uppercase text-blue-500">
         <span className="text-white">Che</span>evi
       </h1>

@@ -2,48 +2,54 @@ import { animateScroll as scroll } from "react-scroll";
 
 import { Popover, Transition } from "@headlessui/react";
 
-import { Link } from "react-scroll";
+/* import { Link } from "react-scroll"; */
 import { List, X } from "phosphor-react";
 import { Fragment } from "react";
 
+import { Link } from "react-router-dom";
+
 const menu = [
   {
-    name: "Projetos",
+    name: "_inicio",
+    to: "/",
+  },
+  {
+    name: "_projetos",
     to: "projetos",
   },
   {
-    name: "Sobre",
+    name: "_sobre",
     to: "sobre",
-  },
-  {
-    name: "Skills",
-    to: "skills",
-  },
-  {
-    name: "Contato",
-    to: "contato",
   },
 ];
 
-export function Header() {
+export const NavBar = () => {
   return (
-    <Popover className="relative">
-      <nav className="md:fixed w-full p-5 flex items-center justify-between md:justify-around">
-        <div className="hidden bg-[#1b1b1b] p-3 rounded-3xl items-center md:flex">
-          <p className="btn-header" onClick={() => scroll.scrollToTop()}>
-            Inicio
-          </p>
+    <Popover className="relative block">
+      <nav className="md:fixed w-full p-5 flex bg-[#0e0e0e] border-b border-[#363636] items-center justify-between md:justify-between">
+        <div>
+          <Link to="/" className="text-3xl uppercase m-4 text-red-500">
+            &lsaquo;Cheevi/&rsaquo;
+          </Link>
+        </div>
+        <div className="hidden items-center gap-5 md:flex">
           {menu.map((item) => (
             <Link
-              activeClass="active-link"
-              className="btn-header"
+              className="font-semibold text-lg  text-[#c2c2c2] cursor-pointer hover:text-red-500"
               to={item.to}
-              smooth={true}
-              duration={500}
             >
               {item.name}
             </Link>
           ))}
+        </div>
+
+        <div>
+          <Link
+            to="contato"
+            className="font-semibold text-lg text-[#c2c2c2] cursor-pointer hover:text-red-500"
+          >
+            _contact-me
+          </Link>
         </div>
 
         <div className="-mr-2 md:hidden">
@@ -89,8 +95,8 @@ export function Header() {
                         to={item.to}
                         smooth={true}
                         duration={500}
+                        key={item.name}
                       >
-                        <span className="text-blue-500 p-1">/</span>
                         {item.name}
                       </Link>
                     ))}
@@ -103,4 +109,4 @@ export function Header() {
       </nav>
     </Popover>
   );
-}
+};

@@ -17,7 +17,7 @@ export function Skills({ data }) {
         {data.map((item) => (
           <div
             className="w-full flex flex-col border-2 border-gray-100 items-center p-2 rounded-xl"
-            key={item.id}
+            key={item.title}
           >
             <h1 className="text-2xl text-gray-100 font-bold uppercase">
               {item.title}
@@ -26,7 +26,7 @@ export function Skills({ data }) {
               {item.skills.map((item) => (
                 <p
                   className="text-base text-gray-500 font-semibold"
-                  key={item.id}
+                  key={item.title}
                 >
                   {item.title}
                 </p>

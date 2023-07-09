@@ -8,7 +8,7 @@ import {
   TwitterLogo,
 } from "phosphor-react";
 
-export function Contato() {
+export function FormContato() {
   const form = useRef();
   const [status, setStatus] = useState("");
 

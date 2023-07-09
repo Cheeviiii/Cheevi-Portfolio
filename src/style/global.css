@@ -9,24 +9,9 @@
 }
 
 body {
-  @apply bg-[#0e0e0e] text-white font-medium;
+  background: #0e0e0e;
+  color: white;
   -webkit-font-smoothing: antialiased;
-}
-
-.btn-header {
-  @apply w-full text-center font-bold text-lg mx-3 cursor-pointer hover:text-blue-500;
-}
-
-.active-link {
-  @apply text-center font-bold text-lg mx-3 border-b-2 border-b-blue-500 uppercase;
-}
-
-.btn {
-  @apply border-4 border-blue-500 rounded-2xl p-4 px-10 text-lg uppercase font-bold mx-5 flex items-center hover:border-blue-500 transition-colors;
-}
-
-.btn-mainbox {
-  @apply border-2 md:border-4 border-blue-500 rounded-2xl py-2 w-[150px] md:w-full md:p-4 md:px-10 text-base md:text-lg uppercase m-1 font-bold flex items-center justify-center hover:border-red-500 transition-colors;
 }
 
 ::-webkit-scrollbar {
@@ -39,5 +24,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-blue-500 rounded-md
+  background: rgb(255, 60, 60);
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(121, 11, 11);
+  border-radius: 10px;
 }

@@ -15,10 +15,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: "Roboto, sans-serif",
-      },
-      backgroundImage: {
-        bgmain: "url(../assets/bg.jpg)",
+        sans: "Fira code, sans-serif",
       },
       boxShadow: {
         '3xl': '9px 13px 8px rgba(0, 0, 0, 0.50)'

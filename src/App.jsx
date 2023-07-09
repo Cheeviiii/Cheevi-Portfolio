@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
-import { Projects } from "./pages/Projects";
+import { TodosProjetos } from "./pages/Projetos";
 import { Inicio } from "./pages/Inicio";
 import { ProjectView } from "./pages/ProjectView";
 import { ProjetosData } from "./service/data";
+import { NavBar } from "./components/Navbar";
 
 export function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <NavBar />
       <Routes>
         <Route path="/" exact element={<Inicio />} />
         <Route
           path="/projetos"
           exact
-          element={<Projects data={ProjetosData} />}
+          element={<TodosProjetos />}
         />
         <Route
           path="/projeto/:slug"
