@@ -28,24 +28,24 @@ export function FormContato() {
         setStatus("SUCCESS");
 
         const timeout = setTimeout(() => {
-          setStatus("")
-        }, 3000)
+          setStatus("");
+        }, 3000);
 
         return () => {
-          clearTimeout(timeout)
-        }
+          clearTimeout(timeout);
+        };
       })
       .catch((error) => {
         console.log("ERROR", error);
         setStatus("ERROR");
 
         const timeout = setTimeout(() => {
-          setStatus("")
-        }, 3000)
+          setStatus("");
+        }, 3000);
 
         return () => {
-          clearTimeout(timeout)
-        }
+          clearTimeout(timeout);
+        };
       });
 
     e.target.reset();
@@ -53,7 +53,7 @@ export function FormContato() {
 
   return (
     <div
-      className="w-full h-screen flex flex-col gap-10 items-center justify-center"
+      className="container mx-auto py-20 flex flex-col gap-10 items-center justify-center"
       id="contato"
     >
       {/* Header */}
@@ -66,7 +66,7 @@ export function FormContato() {
 
       {/* Rede sociais para contato */}
       <div className="flex items-center justify-center">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-5">
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-center gap-5">
           <a
             className="flex items-center gap-2 text-2xl font-bold cursor-pointer text-[#c1c1c1] hover:text-red-500"
             target="_blank"
@@ -122,7 +122,7 @@ export function FormContato() {
 
             <div className="pt-5">
               <textarea
-                className="w-[230px] md:w-[610px] h-[226px] p-2 rounded-lg font-semibold bg-transparent border-2 border-red-500 text-white outline-none placeholder:text-white"
+                className="w-[270px] md:w-[610px] h-[226px] px-5 rounded-lg font-semibold bg-transparent border-2 border-red-500 text-white outline-none placeholder:text-white"
                 cols="30"
                 rows="5"
                 placeholder="Assunto"

@@ -3,9 +3,9 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { TodosProjetos } from "./pages/Projetos";
 import { Inicio } from "./pages/Inicio";
 import { ProjectView } from "./pages/ProjectView";
-import { ProjetosData } from "./service/data";
 import { NavBar } from "./components/Navbar";
 import { Contato } from "./pages/contato";
+import { Footer } from './components/Footer'
 
 export function App() {
   return (
@@ -16,7 +16,6 @@ export function App() {
         <Route path="/" exact element={<Inicio />} />
         <Route
           path="/projetos"
-          exact
           element={<TodosProjetos />}
         />
         <Route
@@ -25,6 +24,7 @@ export function App() {
         />
         <Route path="/contato" element={<Contato />}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }

@@ -33,3 +33,7 @@ body {
   background: rgb(121, 11, 11);
   border-radius: 10px;
 }
+
+.selected {
+  color: red;
+}

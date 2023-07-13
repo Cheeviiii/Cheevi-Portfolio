@@ -17,18 +17,11 @@ export const TodosProjetos = () => {
     };
 
     fetchPosts();
-
-    /* fetch("http://localhost:5000/posts")
-      .then((res) => res.json())
-      .then((data) => {
-        setPosts(data);
-        setLoading(false);
-      }); */
   }, []);
 
   return (
-    <div className="container mx-auto pt-10 pb-5">
-      <div className="md:pt-20 flex flex-col gap-5 items-center justify-center">
+    <div className="container mx-auto py-10 pb-5">
+      <div className="md:py-20 flex flex-col gap-5 items-center justify-center">
         <h1 className="text-4xl font-bold text-[#c2c2c2]">_projetos</h1>
 
         {isLoading == false ? (
