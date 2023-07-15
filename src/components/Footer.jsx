@@ -22,7 +22,7 @@ export const Footer = () => {
   ];
 
   return (
-    <footer className="bg-transparent text-white p-4">
+    <footer className="bg-transparent text-white p-4 top-0">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
         <div>
           <p>&copy; {new Date().getFullYear()} Cheevi</p>

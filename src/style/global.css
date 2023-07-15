@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 * {
-  padding: 0;
-  margin: 0;
+  padding: auto 0;
+  margin: auto 0;
+
   box-sizing: border-box;
 }
 
@@ -32,8 +33,4 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(121, 11, 11);
   border-radius: 10px;
-}
-
-.selected {
-  color: red;
 }
