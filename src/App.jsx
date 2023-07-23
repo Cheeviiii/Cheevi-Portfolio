@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { TodosProjetos } from "./pages/Projetos";
 import { Inicio } from "./pages/Inicio";
 import { NavBar } from "./components/Navbar";
-import { Contato } from "./pages/contato";
+import { Contato } from "./pages/Contato";
 import { Footer } from "./components/Footer";
 import { Sobre } from "./pages/Sobre";
 
