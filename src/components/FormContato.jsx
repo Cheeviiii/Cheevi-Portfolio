@@ -58,7 +58,7 @@ export function FormContato() {
     >
       {/* Header */}
       <div className="w-full flex items-center justify-center">
-        <h1 className="text-2xl font-bold lowercase text-[#c1c1c1]">
+        <h1 className="text-3xl font-bold lowercase text-[#c1c1c1]">
           _Contato
         </h1>
         <span />
