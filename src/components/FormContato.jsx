@@ -1,12 +1,8 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import {
-  CheckCircle,
-  DiscordLogo,
-  FacebookLogo,
-  LinkedinLogo,
-  TwitterLogo,
-} from "phosphor-react";
+import { CheckCircle, DiscordLogo, LinkedinLogo } from "phosphor-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function FormContato() {
   const form = useRef();
@@ -18,34 +14,34 @@ export function FormContato() {
 
     emailjs
       .sendForm(
-        "service_zqdupod",
-        "template_4n7it5e",
+        import.meta.env.VITE_EMAILJS_SERVICE,
+        import.meta.env.VITE_EMAILJS_TEMPLATE,
         form.current,
-        "QfrnYm8Knk3Egx6uR"
+        import.meta.env.VITE_EMAILJS_KEY
       )
-      .then((result) => {
-        console.log("SUCCESS", result);
-        setStatus("SUCCESS");
-
-        const timeout = setTimeout(() => {
-          setStatus("");
-        }, 3000);
-
-        return () => {
-          clearTimeout(timeout);
-        };
+      .then(() => {
+        toast.success("Email enviado com sucesso.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       })
-      .catch((error) => {
-        console.log("ERROR", error);
-        setStatus("ERROR");
-
-        const timeout = setTimeout(() => {
-          setStatus("");
-        }, 3000);
-
-        return () => {
-          clearTimeout(timeout);
-        };
+      .catch(() => {
+        throw toast.error("Algo de errado deu errado!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
       });
 
     e.target.reset();
@@ -84,8 +80,7 @@ export function FormContato() {
 
       {/* Formulario para contato */}
       <div className="w-[350px] md:w-[700px] bg-[#131313] rounded-2xl shadow-xl flex flex-col items-center justify-center">
-        {status == "SUCCESS" ? renderAlertSuccess() : ""}
-        {status == "ERROR" ? renderAlertError() : ""}
+        <ToastContainer />
         <div className="my-10">
           <form
             className="flex flex-col items-center justify-center"
