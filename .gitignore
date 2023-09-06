@@ -36,3 +36,5 @@ next-env.d.ts
 
 prisma
 .env
+./src/lib
+./src/app/api
