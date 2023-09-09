@@ -1,5 +1,3 @@
-"use client";
-
 import { useState } from "react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
 import * as S from "./styles";
