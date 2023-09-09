@@ -16,4 +16,6 @@ export const Sobre = tw.div`w-full`
 
 export const Assunto = tw.div`w-full`
 
-export const Textarea = tw.textarea`resize-none h-48 rounded text-black focus:outline-none`
+export const Textarea = tw.textarea`resize-none px-1 h-48 rounded text-black focus:outline-none`
+
+export const Button = tw.button`bg-red-500 px-5 h-10 rounded-3xl font-bold uppercase mt-2 hover:bg-red-800 transition-colors`

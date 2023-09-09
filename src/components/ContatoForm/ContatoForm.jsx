@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-export function Contato() {
+export function ContatoForm() {
   return (
     <S.Container>
       <S.Title>CONTATO</S.Title>
@@ -28,6 +28,8 @@ export function Contato() {
             <S.Textarea />
           </S.Label>
         </S.Assunto>
+
+        <S.Button>Enviar</S.Button>
       </S.Form>
     </S.Container>
   );
