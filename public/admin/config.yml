@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: willianjusten/willianjusten.com.br
-  base_url: https://willianjusten.com.br/
+  repo: Cheeviiii/Portfolio
+  base_url: http://localhost:3000
+  branch: 'portfolio'
   auth_endpoint: api/auth/ # Essa rota vai ser muito importante mais para frente
 
 media_folder: public/assets/img
@@ -27,8 +28,8 @@ collections:
           widget: 'datetime',
           format: 'YYYY-MM-DD hh:mm:ss'
         }
-      - { label: 'Post Image', name: 'image', widget: 'image', required: false }
+      - { label: 'Post Image', name: 'image', widget: 'image', required: true }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'string' }
 
-      - { label: 'Body', name: 'body', widget: 'markdown' 
+      - { label: 'Body', name: 'body', widget: 'markdown' }
