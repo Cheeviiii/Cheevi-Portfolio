@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: Cheeviiii/Portfolio
-  base_url: http://localhost:3000
+  base_url: https://cheevi-portfolio-git-portfolio-cheeviiii.vercel.app/
   branch: 'portfolio'
   auth_endpoint: api/auth/ # Essa rota vai ser muito importante mais para frente
 
