@@ -1,10 +1,10 @@
 import tw from "tailwind-styled-components";
 
-export const Container = tw.div`w-[500px] flex flex-col mb-4`;
+export const Container = tw.div`w-[300px] md:w-[500px] flex flex-col mb-4`;
 
 export const Title = tw.h1`text-lg font-semibold`;
 
-export const Content = tw.div`relative pt-2 flex items-center gap-2`;
+export const Content = tw.div`relative pt-2 flex items-center justify-center gap-2`;
 
 export const Percentage = tw.div`block`
 

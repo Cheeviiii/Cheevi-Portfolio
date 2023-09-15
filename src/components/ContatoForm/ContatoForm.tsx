@@ -24,7 +24,7 @@ export function ContatoForm() {
         <S.Sobre>
           <S.Label>
             Sobre
-            <S.Input type="text" name="user_sobre" required />
+            <S.InputSobre type="text" name="user_sobre" required />
           </S.Label>
         </S.Sobre>
 

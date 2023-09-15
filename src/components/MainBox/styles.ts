@@ -17,4 +17,4 @@ export const Span = tw.span`font-bold text-transparent text-red-500`
 
 export const Title = tw.div`flex flex-col items-center justify-center gap-5`
 
-export const P = tw.p`text-2xl font-normal`
+export const P = tw.p`text-xl md:text-2xl font-normal`
