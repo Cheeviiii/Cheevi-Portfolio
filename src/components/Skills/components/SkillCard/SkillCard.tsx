@@ -1,16 +1,15 @@
+import Image from "next/image";
 import * as S from "./styles";
 
-export function SkillCard({ name, percentage }: any) {
+type SkillProps = {
+  img: string,
+}
+
+export function SkillCard({ img }: SkillProps) {
   return (
     <S.Container>
-      <S.Title>{name}</S.Title>
       <S.Content>
-        <S.Percentage>
-          <S.PercentageSpan>{percentage}%</S.PercentageSpan>
-        </S.Percentage>
-        <S.PercentageProgressBox>
-          <S.PercentageProgress style={{ width: `${percentage}%` }} />
-        </S.PercentageProgressBox>
+        <Image width={130} src={img} alt="xD"/>
       </S.Content>
     </S.Container>
   );
