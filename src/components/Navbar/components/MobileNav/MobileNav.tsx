@@ -1,6 +1,7 @@
 import { HiXMark } from "react-icons/hi2";
 import { Button } from "../Button";
 import * as S from "./styles";
+import Link from "next/link";
 
 type MobileNavProps = {
   isOpen: boolean;
@@ -21,7 +22,9 @@ export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
             <S.MenuContent>
               <S.MenuLinkList>
                 {menu.map((item: any, index: any) => (
-                  <S.MenuLink key={index}>{item.title}</S.MenuLink>
+                  <S.MenuLink key={index}>
+                    <Link href={item.to} onClick={toggleMenu}>{item.title}</Link>
+                  </S.MenuLink>
                 ))}
               </S.MenuLinkList>
             </S.MenuContent>
