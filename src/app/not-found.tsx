@@ -13,7 +13,7 @@ export default function NotFound() {
         <p>Pagina não encontrada</p>
       </div>
       <Link
-        className="border-2 px-5 py-1 hover:bg-red-500 transition-colors"
+        className="border-2 px-5 py-1 hover:bg-blue-500 transition-colors"
         href="/"
       >
         Voltar para o inicio

@@ -6,8 +6,8 @@ export const Nav = tw.nav`flex items-center justify-between`;
 
 export const Title = tw.a`text-3xl lowercase`
 
-export const Span = tw.span`text-red-500`
+export const Span = tw.span`text-blue-500`
 
 export const ul = tw.ul`gap-5 hidden lg:flex`;
 
-export const li = tw.li`text-xl cursor-pointer transition-colors hover:text-red-600`
+export const li = tw.li`text-xl cursor-pointer transition-colors hover:text-blue-600`

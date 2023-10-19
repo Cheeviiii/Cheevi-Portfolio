@@ -11,9 +11,9 @@ export const H3 = tw.h3`text-3xl uppercase`
 
 export const H1 = tw.h1`text-5xl font-bold`
 
-export const Imagem = tw.img`w-64 animation-spin`
+export const Imagem = tw.img`w-96 animation-spin`
 
-export const Span = tw.span`font-bold text-transparent text-red-500`
+export const Span = tw.span`font-bold text-transparent text-blue-500`
 
 export const Title = tw.div`flex flex-col items-center justify-center gap-5`
 
