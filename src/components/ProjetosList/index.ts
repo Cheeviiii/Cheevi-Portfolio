@@ -1,1 +1,0 @@
-export { ProjetosList } from './ProjetosList'

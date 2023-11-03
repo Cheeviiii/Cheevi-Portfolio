@@ -1,1 +1,0 @@
-export { ProjetoCard } from "./ProjetoCard";

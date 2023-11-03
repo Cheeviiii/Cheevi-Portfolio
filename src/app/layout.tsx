@@ -10,7 +10,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Inicio",
+  title: "Diogo S. | Portfolio",
   description: "Portoflio",
 };
 

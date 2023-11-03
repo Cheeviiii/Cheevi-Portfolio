@@ -1,42 +1,63 @@
-"use client"
+"use client";
 
 import { ToastContainer } from "react-toastify";
 import sendEmail from "./function/sendEmail";
-import * as S from "./styles";
 
 export function ContatoForm() {
   return (
-    <S.Container>
+    <section className="w-full flex flex-col items-center justify-center py-10">
       <ToastContainer />
-      <S.Title>CONTATO</S.Title>
-      <S.Form onSubmit={sendEmail}>
-        <S.NomeEmail>
-          <S.Label>
-            Nome <S.Input type="text" name="user_name" required />
-          </S.Label>
+      <h1 className="text-5xl font-bold mb-10">CONTATO</h1>
+      <form className="flex flex-col items-center justify-center gap-2" onSubmit={sendEmail}>
+        <div className="flex flex-col md:flex-row gap-2 md:gap-5">
+          <label className="flex flex-col">
+            Nome
+            <input
+              className="w-[300px] h-[40px] rounded px-1 text-black focus:border-2 focus:border-blue-500 outline-none transition-colors"
+              type="text"
+              name="user_name"
+              required
+            />
+          </label>
 
-          <S.Label>
+          <label className="flex flex-col">
             Email
-            <S.Input type="email" name="user_email" required />
-          </S.Label>
-        </S.NomeEmail>
+            <input
+              className="w-[300px] h-[40px] rounded px-1 text-black focus:border-2 focus:border-blue-500 outline-none transition-colors"
+              type="email"
+              name="user_email"
+              required
+            />
+          </label>
+        </div>
 
-        <S.Sobre>
-          <S.Label>
+        <div className="w-full mt-2">
+          <label className="flex flex-col">
             Sobre
-            <S.InputSobre type="text" name="user_sobre" required />
-          </S.Label>
-        </S.Sobre>
+            <input
+              className="w-full h-[40px] rounded px-1 text-black focus:border-2 focus:border-blue-500 outline-none transition-colors"
+              type="text"
+              name="user_sobre"
+              required
+            />
+          </label>
+        </div>
 
-        <S.Assunto>
-          <S.Label>
+        <div className="w-full mt-2">
+          <label className="flex flex-col">
             Assunto
-            <S.Textarea name="message" required />
-          </S.Label>
-        </S.Assunto>
+            <textarea
+              className="resize-none px-1 h-48 rounded text-black focus:border-2 focus:border-blue-500 focus:outline-none"
+              name="message"
+              required
+            />
+          </label>
+        </div>
 
-        <S.Button>Enviar</S.Button>
-      </S.Form>
-    </S.Container>
+        <button className="bg-blue-500 px-5 h-10 rounded-3xl font-bold uppercase mt-2 hover:bg-blue-800 transition-colors">
+          Enviar
+        </button>
+      </form>
+    </section>
   );
 }
