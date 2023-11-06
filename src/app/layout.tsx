@@ -14,11 +14,7 @@ export const metadata: Metadata = {
   description: "Portoflio",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
       <body className={roboto.className}>

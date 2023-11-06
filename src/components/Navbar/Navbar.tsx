@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import { HiBars3, HiXMark } from "react-icons/hi2";
-import { Button } from "./components/Button";
-import { MobileNav } from "./components/MobileNav";
+import { Button } from "./Button";
+import { MobileNav } from "./MobileNav";
 import Link from "next/link";
 
 const menu = [
   { title: "Home", to: "/" },
   { title: "Projetos", to: "projetos" },
   { title: "Sobre", to: "sobre" },
-  { title: "Contato", to: "contato" },
+  { title: "Contato", to: "#contact" },
 ];
 
 export function Navbar() {
@@ -27,14 +27,14 @@ export function Navbar() {
   };
 
   return (
-    <header className="w-full flex-row items-center justify-between bg-black/25 p-5 shadow-2xl">
-      <nav className="flex items-center justify-between">
-        <a className="text-3xl lowercase" href="/">
-          <span className="text-blue-500">&lsaquo;</span>Cheevi<span className="text-blue-500">/&rsaquo;</span>
+    <header className="w-full fixed bg-white flex-row items-center justify-between p-5">
+      <div className="flex items-center justify-between">
+        <a className="text-3xl font-bold lowercase" href="/">
+          <span className="text-blue">&lsaquo;</span>Cheevi<span className="text-blue">/&rsaquo;</span>
         </a>
         <ul className="gap-5 hidden lg:flex">
           {menu.map((item, index) => (
-            <li className="text-xl cursor-pointer transition-colors hover:text-blue-600" key={index}>
+            <li className="text-xl font-bold uppercase cursor-pointer transition-colors hover:text-blue" key={index}>
               <Link href={item.to}>{item.title}</Link>
             </li>
           ))}
@@ -47,7 +47,7 @@ export function Navbar() {
 
           <MobileNav isOpen={isOpen} toggleMenu={toggleMenu} menu={menu} />
         </div>
-      </nav>
+      </div>
     </header>
   );
 }

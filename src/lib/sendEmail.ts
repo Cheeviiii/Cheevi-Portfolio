@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
-async function sendEmail(e: any) {
+export default async function sendEmail(e: any) {
   e.preventDefault();
 
   try {
@@ -28,5 +28,3 @@ async function sendEmail(e: any) {
     return console.log(err);
   }
 };
-
-export default sendEmail;

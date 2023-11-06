@@ -1,63 +1,77 @@
 "use client";
 
 import { ToastContainer } from "react-toastify";
-import sendEmail from "./function/sendEmail";
+import { BsLinkedin, BsDiscord } from "react-icons/bs";
+import sendEmail from "../../lib/sendEmail";
 
 export function ContatoForm() {
   return (
-    <section className="w-full flex flex-col items-center justify-center py-10">
+    <section
+      className="container h-[650px] m-auto p-auto flex flex-col items-center justify-center my-[156px]"
+      id="contact"
+    >
       <ToastContainer />
-      <h1 className="text-5xl font-bold mb-10">CONTATO</h1>
-      <form className="flex flex-col items-center justify-center gap-2" onSubmit={sendEmail}>
-        <div className="flex flex-col md:flex-row gap-2 md:gap-5">
-          <label className="flex flex-col">
-            Nome
+      <div className="w-full flex items-center pl-5 md:pl-[120px] gap-[15px] md:gap-[5px]">
+        <h1 className="text-2xl uppercase font-bold ">Contato</h1>
+        <div className="w-[220px] md:w-[522px] h-[2px] bg-blue" />
+      </div>
+      <div className="flex items-center md:items-start flex-col md:flex-row gap-[51px] mt-[69px]">
+        <div className="flex flex-col gap-[22px] pt-2">
+          <a href="#" className="flex items-center gap-2 text-2xl font-bold hover:text-blue">
+            <BsLinkedin size={32} />
+            Linkedin
+          </a>
+          <h1 className="flex items-center gap-2 text-2xl font-bold hover:text-blue">
+            <BsDiscord size={32} />
+            Cheevi
+          </h1>
+        </div>
+        <form
+          className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-[#1B1B1B] rounded-[26px] md:rounded-[46px]"
+          onSubmit={sendEmail}
+        >
+          <div className="flex flex-col md:flex-row gap-[14px]">
             <input
-              className="w-[300px] h-[40px] rounded px-1 text-black focus:border-2 focus:border-blue-500 outline-none transition-colors"
+              className="w-[298px] h-[40px] rounded px-1 text-black font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
               type="text"
               name="user_name"
+              placeholder="Nome"
               required
             />
-          </label>
 
-          <label className="flex flex-col">
-            Email
             <input
-              className="w-[300px] h-[40px] rounded px-1 text-black focus:border-2 focus:border-blue-500 outline-none transition-colors"
+              className="w-[298px] h-[40px] rounded px-1 text-black font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
               type="email"
               name="user_email"
+              placeholder="Email"
               required
             />
-          </label>
-        </div>
+          </div>
 
-        <div className="w-full mt-2">
-          <label className="flex flex-col">
-            Sobre
+          <div className="flex">
             <input
-              className="w-full h-[40px] rounded px-1 text-black focus:border-2 focus:border-blue-500 outline-none transition-colors"
+              className="w-[298px] md:w-[610px] h-[40px] rounded px-1 text-black font-bold focus:outline text-lg focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
               type="text"
               name="user_sobre"
+              placeholder="Sobre"
               required
             />
-          </label>
-        </div>
+          </div>
 
-        <div className="w-full mt-2">
-          <label className="flex flex-col">
-            Assunto
+          <div className="flex">
             <textarea
-              className="resize-none px-1 h-48 rounded text-black focus:border-2 focus:border-blue-500 focus:outline-none"
+              className="w-[298px] md:w-[610px] h-[228px] resize-none rounded font-bold text-black text-lg focus:outline focus:outline-blue outline-none pl-5 pt-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
               name="message"
+              placeholder="Assunto"
               required
             />
-          </label>
-        </div>
+          </div>
 
-        <button className="bg-blue-500 px-5 h-10 rounded-3xl font-bold uppercase mt-2 hover:bg-blue-800 transition-colors">
-          Enviar
-        </button>
-      </form>
+          <button className="w-[107px] h-[42px] bg-blue rounded-[13px] text-white font-bold uppercase mt-2 hover:bg-blue transition-colors">
+            Enviar
+          </button>
+        </form>
+      </div>
     </section>
   );
 }
