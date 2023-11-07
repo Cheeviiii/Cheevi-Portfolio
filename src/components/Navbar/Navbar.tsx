@@ -9,7 +9,7 @@ import Link from "next/link";
 const menu = [
   { title: "Home", to: "/" },
   { title: "Projetos", to: "projetos" },
-  { title: "Sobre", to: "sobre" },
+  { title: "Sobre", to: "#about" },
   { title: "Contato", to: "#contact" },
 ];
 
@@ -34,7 +34,7 @@ export function Navbar() {
         </a>
         <ul className="gap-5 hidden lg:flex">
           {menu.map((item, index) => (
-            <li className="text-xl font-bold uppercase cursor-pointer transition-colors hover:text-blue" key={index}>
+            <li className="text-xl font-bold cursor-pointer transition-colors hover:text-blue" key={index}>
               <Link href={item.to}>{item.title}</Link>
             </li>
           ))}

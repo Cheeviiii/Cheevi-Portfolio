@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { ContatoForm } from "@/components/ContatoForm";
-import { Skills } from "@/components/Skills";
+import About from "@/components/About";
 import vector from "@/assets/developer-vector.svg";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
           <Image className="hidden md:flex" src={vector} alt="Vector" />
         </div>
       </section>
-      <Skills />
+      <About />
       <ContatoForm />
     </main>
   );
