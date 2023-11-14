@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import Foto from "../../../public/images/Rectangle 4.svg";
@@ -15,7 +15,7 @@ const SkillsData: SkillsProps = {
   Banco_de_dados: ["PostgreSQL", "MongoDB"],
 };
 
-export default function About() {
+export function About() {
   const [selected, setSelected] = useState<string | null>("Web");
 
   const handleCategoryChange = (category: string) => {
@@ -35,8 +35,9 @@ export default function About() {
       <div className="w-full flex text-left pl-3 md:pl-[120px] mt-5">
         <div className="w-[32rem] flex flex-col gap-5">
           <p className="text-gray font-bold text-xl">
-            Sou desenvolvedor web em busca de constante de aprimoramento e aprendizado, estou constantemente procurando
-            a melhorar minhas habilidades
+            Sou <span className="text-blue">desenvolvedor web</span> em busca de
+            constante de aprimoramento e aprendizado, estou constantemente
+            procurando a melhorar minhas habilidades
           </p>
 
           <div className="flex flex-col gap-2">
@@ -50,13 +51,17 @@ export default function About() {
                 Web
               </button>
               <button
-                className={`px-5 py-1 text-white rounded ${selected === "Linguagens" ? "bg-blue" : "bg-gray"}`}
+                className={`px-5 py-1 text-white rounded ${
+                  selected === "Linguagens" ? "bg-blue" : "bg-gray"
+                }`}
                 onClick={() => handleCategoryChange("Linguagens")}
               >
                 Linguagens
               </button>
               <button
-                className={`px-5 py-1 text-white rounded ${selected === "Banco_de_dados" ? "bg-blue" : "bg-gray"}`}
+                className={`px-5 py-1 text-white rounded ${
+                  selected === "Banco_de_dados" ? "bg-blue" : "bg-gray"
+                }`}
                 onClick={() => handleCategoryChange("Banco_de_dados")}
               >
                 Databases

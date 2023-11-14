@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { HiBars3, HiXMark } from "react-icons/hi2";
+import { HiBars3 } from "react-icons/hi2";
 import { Button } from "./Button";
 import { MobileNav } from "./MobileNav";
 import Link from "next/link";
@@ -29,8 +29,8 @@ export function Navbar() {
   return (
     <header className="w-full fixed bg-white flex-row items-center justify-between p-5">
       <div className="flex items-center justify-between">
-        <a className="text-3xl font-bold lowercase" href="/">
-          <span className="text-blue">&lsaquo;</span>Cheevi<span className="text-blue">/&rsaquo;</span>
+        <a className="text-3xl font-bold" href="/">
+          <span className="text-blue">&lsaquo;</span>Diogo<span className="text-blue">/&rsaquo;</span>
         </a>
         <ul className="gap-5 hidden lg:flex">
           {menu.map((item, index) => (
