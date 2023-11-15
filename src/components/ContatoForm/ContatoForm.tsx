@@ -11,13 +11,16 @@ export function ContatoForm() {
       id="contact"
     >
       <ToastContainer />
-      <div className="w-full flex items-center pl-5 md:pl-[120px] gap-[15px] md:gap-[5px]">
+      <div className="w-full flex items-center pl-5 gap-[15px] md:gap-[5px]">
         <h1 className="text-2xl uppercase font-bold ">Contato</h1>
         <div className="w-[220px] md:w-[522px] h-[2px] bg-blue" />
       </div>
-      <div className="flex items-center md:items-start flex-col md:flex-row gap-[51px] mt-[69px]">
+      <div className="flex items-center lg:items-start flex-col lg:flex-row gap-[51px] mt-[69px]">
         <div className="flex flex-col gap-[22px] pt-2">
-          <a href="#" className="flex items-center gap-2 text-2xl font-bold hover:text-blue">
+          <a
+            href="#"
+            className="flex items-center gap-2 text-2xl font-bold hover:text-blue"
+          >
             <BsLinkedin size={32} />
             Linkedin
           </a>
@@ -67,7 +70,7 @@ export function ContatoForm() {
             />
           </div>
 
-          <button className="w-[107px] h-[42px] bg-blue rounded-[13px] text-white font-bold uppercase mt-2 hover:bg-blue transition-colors">
+          <button className="w-[107px] h-[42px] bg-blue rounded-[13px] text-white font-bold uppercase mt-2  transition-colors hover:bg-blue-dark">
             Enviar
           </button>
         </form>

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Introduction() {
   return (
-    <section className="w-full h-[45rem] md:h-[36rem] flex justify-center">
+    <section className="w-full h-[45rem] md:h-[36rem] flex justify-center md:my-[120px]">
       <div className="flex items-center justify-center text-center md:text-left">
         <div className="md:w-[32rem]">
           <h1 className="text-5xl font-bold">

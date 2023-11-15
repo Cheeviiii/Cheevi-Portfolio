@@ -24,15 +24,15 @@ export function About() {
 
   return (
     <section
-      className="container h-[650px] m-auto p-auto flex flex-col items-center justify-center my-[156px]"
+      className="container h-[800px] m-auto p-auto flex flex-col items-center justify-center "
       id="about"
     >
-      <div className="w-full flex items-center pl-5 md:pl-[120px] gap-[15px] md:gap-[5px]">
+      <div className="w-full flex items-center gap-[15px] pl-5 md:gap-[5px]">
         <h1 className="text-2xl uppercase font-bold ">Sobre</h1>
         <div className="w-[180px] md:w-[522px] h-[2px] bg-blue" />
       </div>
 
-      <div className="w-full flex text-left pl-3 md:pl-[120px] mt-5">
+      <div className="w-full flex text-left pl-5 mt-5">
         <div className="w-[32rem] flex flex-col gap-5">
           <p className="text-gray font-bold text-xl">
             Sou <span className="text-blue">desenvolvedor web</span> em busca de
