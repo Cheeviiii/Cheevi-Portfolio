@@ -6,7 +6,7 @@ import { getProjetos } from "@/Utils/getProjetos";
 
 export default function Home() {
   return (
-    <main className="container m-auto p-auto pt-5 md:pt-16">
+    <main className="container m-auto p-auto pt-5 md:pt-16" id="home">
       <Introduction />
       <Projetos projetos={getProjetos} />
       <About />

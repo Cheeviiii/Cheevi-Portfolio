@@ -81,8 +81,6 @@ export function About() {
             )}
           </div>
         </div>
-
-        <Image className="hidden md:block" width={320} src={Foto} alt="test" />
       </div>
     </section>
   );

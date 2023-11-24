@@ -7,7 +7,7 @@ import { MobileNav } from "./MobileNav";
 import Link from "next/link";
 
 const menu = [
-  { title: "Home", to: "/" },
+  { title: "Home", to: "#home" },
   { title: "Projetos", to: "#projects" },
   { title: "Sobre", to: "#about" },
   { title: "Contato", to: "#contact" },
@@ -26,6 +26,14 @@ export function Navbar() {
     }
   };
 
+  const scrollTo = (id: any) => {
+    const sectionRef = document.getElementById(id);
+
+    if (sectionRef) {
+      sectionRef.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <header className="w-full fixed bg-white flex-row items-center justify-between p-5">
       <div className="flex items-center justify-between">
@@ -39,7 +47,7 @@ export function Navbar() {
               className="text-xl font-bold cursor-pointer transition-colors hover:text-blue"
               key={index}
             >
-              <Link href={item.to}>{item.title}</Link>
+              <a onClick={() => scrollTo(item.to.substring(1))}>{item.title}</a>
             </li>
           ))}
         </ul>
