@@ -57,7 +57,8 @@ export function Projetos({ projetos }: ProjetosType) {
       </div>
 
       <a
-        href=""
+        href="https://github.com/cheeviz?tab=repositories"
+        target="_blank"
         className="text-3xl font-bold text-white bg-gray p-2 px-5 rounded-lg cursor-pointer transition-colors hover:bg-blue mt-10"
       >
         Todos Projetos
