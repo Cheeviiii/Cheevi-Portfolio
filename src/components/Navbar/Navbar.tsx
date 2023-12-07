@@ -65,17 +65,15 @@ export function Navbar() {
 
   return (
     <header
-      id="navbar-scroll"
-      className={`w-full fixed bg-transparent flex-row items-center justify-between p-5 ${
-        visible ? "opacity-0 duration-500" : "duration-500 opacity-100"
-      }`}
+      className={`w-full fixed bg-transparent flex-row items-center justify-between p-5 
+      `}
     >
-      <div className="flex lg:flex-col gap-5 items-center justify-between lg:justify-center">
+      <div className={`flex ${visible ? "flex-row justify-between duration-500" : "duration-500 lg:flex-col lg:justify-center"}  gap-5 items-center`}>
         <a className="text-3xl font-bold" href="/">
           <span className="text-blue">&lsaquo;</span>Diogo
           <span className="text-blue">/&rsaquo;</span>
         </a>
-        <ul className="gap-5 hidden lg:flex lg:bg-gray lg:p-2 lg:rounded-full">
+        <ul className="w-fullgap-5 hidden lg:flex lg:bg-gray lg:p-2 lg:rounded-full">
           {menu.map((item, index) => (
             <li
               className="text-white text-xl font-bold cursor-pointer transition-all duration-200 hover:bg-white hover:text-black hover:rounded-full p-1 px-2"
