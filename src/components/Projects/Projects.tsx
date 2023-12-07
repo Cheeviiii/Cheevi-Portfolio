@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { CardProject } from ".";
 import Link from "next/link";
+import { DeleteModal } from "../Modals/DeleteModal";
+import { LoadingSpinner } from "../Loading";
 
 interface ProjectsProps {
   id: string;
@@ -16,6 +18,8 @@ interface ProjectsProps {
 export function Projects() {
   const [projects, setProjects] = useState<ProjectsProps[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [idDelete, setIDDelete] = useState("");
 
   const getProjects = async () => {
     try {
@@ -35,14 +39,14 @@ export function Projects() {
   };
 
   const onDelete = async (id: string) => {
-    await fetch(`/api/projects/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
-      },
-    });
-
+    setIsOpen(!isOpen);
+    setIDDelete(id);
     getProjects();
+  };
+
+  const closeModal = () => {
+    setIsOpen(!isOpen);
+    setIDDelete("");
   };
 
   useEffect(() => {
@@ -51,23 +55,25 @@ export function Projects() {
 
   return (
     <div className="h-screen mx-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      {loading ? (
-        "Carregando..."
-      ) : (
-        <div className="h-full flex flex-col gap-5 overflow-y-auto">
-          <Link
-            href="projects/create"
-            className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-blue transition-colors hover:bg-blue-dark"
-          >
-            Criar projeto
-          </Link>
+      <DeleteModal isOpen={isOpen} closeModal={closeModal} id={idDelete} getProjects={getProjects} />
+
+      <div className="h-full flex flex-col gap-5 overflow-y-auto">
+        <Link
+          href="projects/create"
+          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-blue transition-colors hover:bg-blue-dark"
+        >
+          Criar projeto
+        </Link>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
           <div className="grid grid-cols-2 2xl:grid-cols-3 gap-5">
             {projects.map((item, index) => (
               <CardProject key={index} item={item} onDelete={onDelete} />
             ))}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

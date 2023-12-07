@@ -78,7 +78,6 @@ export function FormCreateProject() {
 
   return (
     <form className="w-full h-screen overflow-y-auto py-16" onSubmit={onCreatePostProject}>
-      <ToastContainer />
       <div className="w-[750px] m-auto p-auto p-10 py-10 bg-[#f5f5f5] shadow-2xl">
         <div className="flex flex-col gap-1">
           <label className="text-base font-bold uppercase">Nome do projeto</label>

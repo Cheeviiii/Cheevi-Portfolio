@@ -7,7 +7,7 @@ export async function GET(req: Request) {
     const projects = await prisma.project.findMany();
     const secretKey = req.headers.get("x-api-key");
 
-    if (!secretKey || secretKey !== process.env.API_KEY) {
+    if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
       throw new Error("Sem autorização");
     }
 
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
 
     const secretKey = req.headers.get("x-api-key");
 
-    if (!secretKey || secretKey !== process.env.API_KEY) {
+    if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
       return Response.json({ message: "Opa parça, precisa de autorização para passar daqui!" });
     }
 
