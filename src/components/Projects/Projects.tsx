@@ -11,7 +11,7 @@ interface ProjectsProps {
   title: string;
   image: string;
   description: string;
-  publised: boolean;
+  published: boolean;
   repository: string;
 }
 
@@ -67,10 +67,16 @@ export function Projects() {
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <div className="grid grid-cols-2 2xl:grid-cols-3 gap-5">
-            {projects.map((item, index) => (
-              <CardProject key={index} item={item} onDelete={onDelete} />
-            ))}
+          <div>
+            {projects.length > 0 ? (
+              <div className="grid grid-cols-2 2xl:grid-cols-3 gap-5">
+                {projects.map((item, index) => (
+                  <CardProject key={index} item={item} onDelete={onDelete} />
+                ))}
+              </div>
+            ) : (
+              <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
+            )}
           </div>
         )}
       </div>

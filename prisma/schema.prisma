@@ -15,6 +15,6 @@ model Project {
   title       String
   image       String
   description String
-  publised    Boolean @default(false)
+  published    Boolean @default(false)
   repository  String
 }

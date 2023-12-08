@@ -8,28 +8,28 @@ export async function GET(req: Request) {
     const secretKey = req.headers.get("x-api-key");
 
     if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
-      throw new Error("Sem autorização");
+      return new Response("Sem autorização", { status: 401 });
     }
 
     return Response.json(projects);
-  } catch (error: any) {
-    console.error(error.message);
-    return Response.json({ error: error.message });
+  } catch (error) {
+    console.error(error);
+    return new Response("Erro interno do servidor", { status: 500 });
   }
 }
 
 export async function POST(req: Request) {
   try {
-    const { title, image, description, repository, publised } = await req.json();
+    const { title, image, description, repository, published } = await req.json();
 
     if (!title || !image || !description) {
-      throw new Error("Faltando coisa ai...");
+      return new Response("Verfique se todas as informações estão preenchidas", { status: 400 });
     }
 
     const secretKey = req.headers.get("x-api-key");
 
     if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
-      return Response.json({ message: "Opa parça, precisa de autorização para passar daqui!" });
+      return new Response("Sem autorização", { status: 401 });
     }
 
     const projects = await prisma.project.create({
@@ -37,16 +37,14 @@ export async function POST(req: Request) {
         title: title,
         image: image,
         description: description,
-        publised: publised,
+        published: published,
         repository: repository,
       },
     });
 
     return Response.json(projects);
-  } catch (error: any) {
+  } catch (error) {
     console.error(error);
-    return new Response(error, {
-      status: 404,
-    });
+    return new Response("Erro interno do servidor", { status: 500 });
   }
 }

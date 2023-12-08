@@ -13,7 +13,7 @@ export function FormCreateProject() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [publised, setPublised] = useState(false);
+  const [published, setPublished] = useState(false);
   const [repository, setRepository] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -44,12 +44,13 @@ export function FormCreateProject() {
     e.preventDefault();
 
     setButtonText("Enviando...");
+
     const dados = {
       title,
       description,
       image,
       repository,
-      publised,
+      published,
     };
 
     try {
@@ -62,17 +63,17 @@ export function FormCreateProject() {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        /* console.log(data); */
+        toast.success("Projeto criado com sucesso!");
         router.push("/admin/projects");
       } else {
-        console.log("Erro na solicitação");
-        toast.error("Algo está faltando");
+        const errorText = await response.text();
+        console.log("Erro na solicitação", response.status);
+        toast.error(errorText || "Erro desconhecido");
       }
 
       setButtonText("Enviar");
     } catch (error) {
-      console.log(error);
+      console.error("Erro durante a solicitação", error);
     }
   };
 
@@ -129,7 +130,7 @@ export function FormCreateProject() {
 
         <div className="flex mt-5">
           <label className="text-base font-bold uppercase">Deixar publico?</label>
-          <input type="checkbox" className="w-12" checked={publised} onChange={() => setPublised(!publised)} />
+          <input type="checkbox" className="w-12" checked={published} onChange={() => setPublished(!published)} />
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
@@ -144,7 +145,10 @@ export function FormCreateProject() {
         </div>
 
         <div className="w-full flex items-center justify-center mt-5">
-          <button type="submit" className=" w-32 bg-blue p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-dark uppercase">
+          <button
+            type="submit"
+            className=" w-32 bg-blue p-2 text-xl font-medium text-white transition-colors  rounded-lg hover:bg-blue-dark uppercase"
+          >
             {buttonText}
           </button>
         </div>
