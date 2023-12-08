@@ -4,7 +4,6 @@ import { ContatoForm } from "@/components/ContatoForm";
 import { About } from "@/components/About";
 import { Introduction } from "@/components/Introduction";
 import { Projetos } from "@/components/Projetos";
-import { getProjetos } from "@/Utils/getProjetos";
 import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -25,7 +24,7 @@ export default function Home() {
       <Navbar />
       <main className="container m-auto p-auto pt-5 md:pt-16" id="home">
         <Introduction />
-        <Projetos projetos={getProjetos} />
+        <Projetos />
         <About />
         <ContatoForm />
       </main>
