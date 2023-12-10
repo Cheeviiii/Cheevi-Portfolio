@@ -1,4 +1,4 @@
-import { Projects } from "@/components/Projects";
+import { Projects } from "@/components/ProjetosDashboard";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@/components/Loading";
 

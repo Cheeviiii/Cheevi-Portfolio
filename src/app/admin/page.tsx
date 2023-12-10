@@ -1,3 +1,4 @@
+import { ProjetosStatus } from "@/components/ProjetosDashboard";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -9,10 +10,8 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col m-5">
-      <h1 className="text-7xl px-10">
-        Usuário: <b>{session?.user?.name}</b>
-      </h1>
+    <div className="w-[1350px] mx-[125px]">
+      <ProjetosStatus />
     </div>
   );
 }

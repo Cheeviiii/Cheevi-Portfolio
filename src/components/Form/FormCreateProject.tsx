@@ -26,9 +26,12 @@ export function FormCreateProject() {
     if (file) {
       setFileName(file.name);
       const reader = new FileReader();
+     
 
       reader.onloadend = () => {
+        const base64img = reader.result as string
         setImage(reader.result as string);
+        console.log(base64img.length)
       };
       reader.readAsDataURL(file);
     }

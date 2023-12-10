@@ -18,21 +18,14 @@ export function CardProject({ item, onDelete }: CardProps) {
     <div className="w-full bg-[#f1f1f1] rounded-xl flex flex-col items-center p-5 gap-3 shadow-xl">
       <img
         className="w-[350px] h-[200px] md:w-[1250px] md:h-[250px] rounded"
-        src={
-          item?.image == "" ? "https://i.pinimg.com/564x/b2/94/84/b2948421b6515de63269cd97760ebe10.jpg" : item?.image
-        }
+        src={item?.image == "" ? "https://i.pinimg.com/564x/b2/94/84/b2948421b6515de63269cd97760ebe10.jpg" : item?.image}
         alt={item?.title}
       />
       <h1 className="w-full text-4xl font-bold text-left">{item?.title}</h1>
       <p className=" text-lg font-medium">{item?.description}</p>
 
       <div className="w-full text-lg font-medium text-left flex gap-2">
-        Status:{" "}
-        {item?.published ? (
-          <p className="text-[#44ff33] font-bold">Publicado</p>
-        ) : (
-          <p className="text-[#ff3333]">Não publicado</p>
-        )}
+        Status: {item?.published ? <p className="text-[#44ff33] font-bold">Publicado</p> : <p className="text-[#ff3333]">Não publicado</p>}
       </div>
 
       <div className="w-full flex gap-2 md:left-0 mt-3">

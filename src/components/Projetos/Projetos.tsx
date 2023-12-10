@@ -5,10 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "../Loading";
 
-type ProjetosType = {
-  projetos: ProjetosProps[];
-};
-
 interface ProjetosProps {
   title: string;
   description: string;
@@ -21,30 +17,32 @@ export function Projetos() {
   const [projetos, setProjetos] = useState<ProjetosProps[]>([]);
   const [Loading, setLoading] = useState<boolean>(true);
 
-  const getProjects = async () => {
-    try {
-      const response = await fetch("/api/projects", {
-        method: "GET",
-        headers: {
-          "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
-        },
-      });
+  useEffect(() => {
+    const getProjetos = async () => {
+      try {
+        const response = await fetch("/api/projects", {
+          method: "GET",
+          headers: {
+            "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
+          },
+        });
 
-      if (response.ok) {
+        if (!response.ok) {
+          throw new Error("Erro na solicitação");
+        }
+
         const data = await response.json();
         setProjetos(data);
         setLoading(false);
-      } else {
-        console.log(response);
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {}
-  };
+    };
+
+    getProjetos();
+  }, []);
 
   const projetosPublicados = projetos.filter((projetos) => projetos.published === true);
-
-  useEffect(() => {
-    getProjects();
-  }, []);
 
   return (
     <section className="container m-auto p-auto flex flex-col items-center justify-center py-[156px]" id="projects">
@@ -57,31 +55,29 @@ export function Projetos() {
         <LoadingSpinner />
       ) : (
         <>
-          <div className="grid grid-rows-1 lg:grid-cols-2 gap-5 mt-5">
-            {projetosPublicados.slice(0, 4).map((item: ProjetosProps, index) => (
-              <div key={index} className="bg-[#f1f1f1] rounded-xl flex flex-col items-center p-5 gap-3 shadow-xl">
-                <Image
-                  className="w-[350px] h-[200px] md:w-[658px] md:h-[340px] rounded"
-                  width={658}
-                  height={340}
-                  src={item.image}
-                  alt={item.title}
-                />
-                <h1 className="w-full text-4xl font-bold text-left">{item.title}</h1>
-                <p className=" text-lg font-medium">{item.description}</p>
+          {projetosPublicados.length === 0 ? (
+            <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
+          ) : (
+            <div className="grid grid-rows-1 lg:grid-cols-2 gap-5 mt-5">
+              {projetosPublicados.slice(0, 4).map((item: ProjetosProps, index) => (
+                <div key={index} className="bg-[#f1f1f1] rounded-xl flex flex-col items-center p-5 gap-3 shadow-xl">
+                  <Image className="w-[350px] h-[200px] md:w-[658px] md:h-[340px] rounded" width={658} height={340} src={item.image} alt={item.title} />
+                  <h1 className="w-full text-4xl font-bold text-left">{item.title}</h1>
+                  <p className=" text-lg font-medium">{item.description}</p>
 
-                <div className="w-full md:left-0 mt-3">
-                  <a
-                    href={item.repository}
-                    target="_blank"
-                    className="bg-gray mt-2 rounded-xl text-xl cursor-pointer text-white px-3 text-center py-2 transition-colors hover:bg-blue-dark shadow-lg"
-                  >
-                    Repositório
-                  </a>
+                  <div className="w-full md:left-0 mt-3">
+                    <a
+                      href={item.repository}
+                      target="_blank"
+                      className="bg-gray mt-2 rounded-xl text-xl cursor-pointer text-white px-3 text-center py-2 transition-colors hover:bg-blue-dark shadow-lg"
+                    >
+                      Repositório
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <a
             href="https://github.com/cheeviz?tab=repositories"

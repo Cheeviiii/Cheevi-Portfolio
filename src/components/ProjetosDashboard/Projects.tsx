@@ -23,18 +23,22 @@ export function Projects() {
 
   const getProjects = async () => {
     try {
-      const projects = await fetch("/api/projects", {
+      const response = await fetch("/api/projects", {
         headers: {
           "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
         },
       });
 
-      const data = await projects.json();
+      if (!response.ok) {
+        throw new Error("Erro ao buscar projetos na API");
+      }
 
+
+      const data = await response.json();
       setProjects(data);
       setLoading(false);
     } catch (error: any) {
-      console.error("Erro ao buscar projetos na API:", error.message);
+      console.error(error);
     }
   };
 
