@@ -30,7 +30,19 @@ yarn install
 npm install
 ```
 
-4. **Inicie o servidor de desenvolvimento:**
+4. **Crie uma .env na raiz do projeto**
+```env
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=SECRET_KEY
+
+AUTH_USERNAME=USERNAME
+AUTH_PASSWORD=PASSWORD
+NEXT_PUBLIC_API_KEY=SUA_API_KEY_AQUI
+
+DATABASE_URL=URL_DO_POSTGRESSQL
+```
+
+5. **Inicie o servidor de desenvolvimento:**
 
 ```bash
 yarn run start
@@ -38,4 +50,4 @@ yarn run start
 npm run start
 ```
 
-5. **Abra o aplicativo em seu navegador em:** http://localhost:3000
+6. **Abra o aplicativo em seu navegador em:** http://localhost:3000
