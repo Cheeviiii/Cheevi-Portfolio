@@ -4,7 +4,7 @@ import { LoadingSpinner } from "@/components/Loading";
 
 export default function ProjectsPage() {
   return (
-    <div className="w-[1350px] mx-[125px]">
+    <div className="w-[1350px] mx-auto">
       <Suspense fallback={<LoadingSpinner />}>
         <Projects />
       </Suspense>
