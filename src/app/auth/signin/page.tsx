@@ -1,4 +1,4 @@
-import { FormSignIn } from "@/components/Form";
+import { FormSignIn } from "@/app/admin/components/Form";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 

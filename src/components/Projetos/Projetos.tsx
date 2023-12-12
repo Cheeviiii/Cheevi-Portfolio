@@ -60,10 +60,12 @@ export function Projetos() {
           ) : (
             <div className="grid grid-rows-1 lg:grid-cols-2 gap-5 mt-5">
               {projetosPublicados.slice(0, 4).map((item: ProjetosProps, index) => (
-                <div key={index} className="bg-[#f1f1f1] rounded-xl flex flex-col items-center p-5 gap-3 shadow-xl">
-                  <Image className="w-[350px] h-[200px] md:w-[658px] md:h-[340px] rounded" width={658} height={340} src={item.image} alt={item.title} />
-                  <h1 className="w-full text-4xl font-bold text-left">{item.title}</h1>
-                  <p className=" text-lg font-medium">{item.description}</p>
+                <div key={index} className="bg-[#f1f1f1] rounded-xl flex flex-col items-center justify-between p-5 gap-3 shadow-xl">
+                  <div className="flex flex-col gap-3">
+                    <Image className="w-[350px] h-[200px] md:w-[658px] md:h-[340px] rounded" width={658} height={340} src={item.image} alt={item.title} />
+                    <h1 className="w-full text-4xl font-bold text-left">{item.title}</h1>
+                    <p className=" text-lg font-medium">{item.description}</p>
+                  </div>
 
                   <div className="w-full md:left-0 mt-3">
                     <a
