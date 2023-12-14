@@ -6,7 +6,7 @@ Esse é meu portfolio onde mostro alguns dos meus projetos e sobre mim e minhas 
 
 Antes de começar, certifique-se que tenha o seguinte instalado em sua maquina:
 
-- Node.JS [Donwload](http://nodejs.org)
+- Node.JS [Download](http://nodejs.org)
 
 ## Como iniciar o projeto
 
