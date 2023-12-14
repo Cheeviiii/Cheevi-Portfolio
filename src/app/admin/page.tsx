@@ -1,7 +1,8 @@
 import { LoadingSpinner } from "@/components/Loading";
 
 import { Suspense } from "react";
-import { ProjetosStatus } from "./components/ProjetosDashboard";
+import { Last3Projects, ProjetosStatus } from "./components/ProjetosDashboard";
+import Link from "next/link";
 
 export default async function Dashboard() {
   return (
@@ -11,13 +12,16 @@ export default async function Dashboard() {
           <ProjetosStatus />
 
           <div className="w-full h-[500px] text-center flex justify-between">
-            <div className="container">
-              <div className="h-full flex items-center justify-center">
-                <h1 className="text-3xl font-bold">Ultimos projetos</h1>
+            <div className="container mt-[150px]">
+              <div className="h-full flex flex-col gap-5 items-start justify-center">
+                <h1 className="text-2xl font-bold uppercase">Últimos projetos</h1>
+
+                <Last3Projects />
+                <Link className="mx-[90px] px-5 p-2 bg-blue rounded-2xl text-white text-xl font-medium transition-colors hover:bg-blue-dark" href={'/admin/projects'}>Ver todos</Link>
               </div>
             </div>
 
-            <div className="container">test</div>
+            <div className="container"></div>
           </div>
         </div>
       </Suspense>

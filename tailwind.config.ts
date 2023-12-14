@@ -11,9 +11,9 @@ const config: Config = {
       "transparent": "transparent",
       "white":"#fff",
       "black": "#000000",
-      "blue": "#3C72FF",
+      "blue": "#1b40a6",
       "red": "#ff0505",
-      "blue-dark": "#1b40a6",
+      "blue-dark": "#3C72FF",
       "gray": "#535353",
     },
     extend: {

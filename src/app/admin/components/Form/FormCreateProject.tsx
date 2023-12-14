@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import imageCompression from "browser-image-compression";
 import "react-toastify/dist/ReactToastify.css";
@@ -45,7 +45,7 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
     }
   };
 
-  const onCreatePostProject = async (e: any) => {
+  const createProject = async (e: FormEvent) => {
     e.preventDefault();
 
     setButtonText("Enviando...");
@@ -92,7 +92,7 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
   };
 
   return (
-    <form className="w-full overflow-y-auto" onSubmit={onCreatePostProject}>
+    <form className="w-full overflow-y-auto" onSubmit={createProject}>
       <div className="w-[750px] p-10 bg-[#f5f5f5] rounded-2xl">
         <div className="flex flex-col gap-1">
           <label className="text-base font-bold uppercase">Nome do projeto</label>

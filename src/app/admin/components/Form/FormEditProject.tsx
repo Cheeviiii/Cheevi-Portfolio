@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { LoadingSpinner } from "../../../../components/Loading";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -81,7 +81,7 @@ export function FormEditProject({ id }: any) {
     }
   };
 
-  const onHandlePatch = async (e: any) => {
+  const onHandlePatch = async (e: FormEvent) => {
     e.preventDefault();
 
     setButtonText("Editando...");

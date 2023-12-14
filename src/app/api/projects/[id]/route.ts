@@ -45,7 +45,10 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
     });
 
     return Response.json(updatedUser, { status: 200 });
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+    return new Response("Erro interno do servidor", { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {

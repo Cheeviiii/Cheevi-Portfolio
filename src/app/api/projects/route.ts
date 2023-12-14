@@ -19,6 +19,12 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
+  const secretKey = req.headers.get("x-api-key");
+
+  if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
+    return new Response("Sem autorização", { status: 401 });
+  }
+
   try {
     const { title, image, description, repository, published } = await req.json();
 
@@ -26,16 +32,10 @@ export async function POST(req: Request) {
       return new Response("Verfique se todas as informações estão preenchidas", { status: 400 });
     }
 
-    const secretKey = req.headers.get("x-api-key");
-
-    if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
-      return new Response("Sem autorização", { status: 401 });
-    }
-
     const projects = await prisma.project.create({
       data: {
         title: title,
-        image: image,
+        image: image || '',
         description: description,
         published: published,
         repository: repository,
