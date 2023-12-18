@@ -1,20 +1,21 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     colors: {
-      "transparent": "transparent",
-      "white":"#fff",
-      "black": "#000000",
-      "blue": "#1b40a6",
-      "red": "#ff0505",
-      "blue-dark": "#3C72FF",
-      "gray": "#535353",
+      transparent: "transparent",
+      white: "#fff",
+      black: "#000000",
+      blue: {
+        200: "#3C72FF",
+        300: "#1b40a6",
+      },
+      red: "#ff0505",
+      gray: {
+        300: "#535353",
+        800: "#191d25"
+      },
     },
     extend: {
       backgroundImage: {

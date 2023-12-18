@@ -6,7 +6,7 @@ import Link from "next/link";
 import { DeleteModal, ModalCreateProject } from "../Modals";
 import { LoadingSpinner } from "@/components/Loading";
 
-interface ProjectsProps {
+export interface ProjectsProps {
   id: string;
   title: string;
   image: string;
@@ -64,11 +64,11 @@ export function Projects() {
   return (
     <div className="h-screen mx-10 pt-5 w-full m-auto p-auto overflow-y-auto">
       <DeleteModal isOpen={isOpen} closeModal={closeModal} id={idDelete} getProjects={getProjects} />
-      <ModalCreateProject isOpen={OpenCreateModal} closeModal={OpenModalCreate} getProjects={getProjects}/>
+      <ModalCreateProject isOpen={OpenCreateModal} closeModal={OpenModalCreate} getProjects={getProjects} />
 
       <div className="h-full flex flex-col gap-5 overflow-y-auto">
         <button
-          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-blue transition-colors hover:bg-blue-dark"
+          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-blue-300 transition-colors hover:bg-blue-200"
           onClick={OpenModalCreate}
         >
           Criar projeto
@@ -80,7 +80,7 @@ export function Projects() {
             {projects.length > 0 ? (
               <div className="grid grid-cols-2 2xl:grid-cols-3 gap-5">
                 {projects.map((item, index) => (
-                  <CardProject key={index} item={item} onDelete={onDelete} />
+                  <CardProject key={index} projeto={item} onDelete={onDelete} />
                 ))}
               </div>
             ) : (

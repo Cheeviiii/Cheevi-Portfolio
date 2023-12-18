@@ -30,7 +30,7 @@ export function DeleteModal({ isOpen, id, closeModal, getProjects }: DeleteProps
 
   return (
     <div className={isOpen ? "absolute w-full h-screen bg-[#00000069] backdrop-blur-sm inset-0 z-10" : "hidden"}>
-      <div className="bg-white w-[650px] p-5 m-auto p-auto rounded-2xl shadow-2xl">
+      <div className="bg-gray-800 w-[650px] p-5 m-auto p-auto rounded-2xl shadow-2xl">
         <div className="flex flex-col gap-5 p-10">
           <h1 className="font-bold text-2xl">Realmente deseja deletar esse projeto?</h1>
           <h1>ID: {id}</h1>
@@ -41,7 +41,7 @@ export function DeleteModal({ isOpen, id, closeModal, getProjects }: DeleteProps
             >
               {confirmText}
             </button>
-            <button className="bg-blue text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-blue-dark" onClick={closeModal}>
+            <button className="bg-blue-300 text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-blue-200" onClick={closeModal}>
               Cancelar
             </button>
           </div>

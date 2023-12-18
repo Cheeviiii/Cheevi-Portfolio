@@ -5,7 +5,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import { LoadingSpinner } from "../../../../components/Loading";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
-import imageCompression from 'browser-image-compression';
+import imageCompression from "browser-image-compression";
 
 interface ProjectsProps {
   id: string;
@@ -42,7 +42,7 @@ export function FormEditProject({ id }: any) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data)
+        console.log(data);
         setProject(data);
       } else {
         console.log(response);
@@ -57,20 +57,18 @@ export function FormEditProject({ id }: any) {
       setFileName(file.name);
 
       try {
-        const compressedFile = await imageCompression(file, {maxSizeMB: 0.01})
+        const compressedFile = await imageCompression(file, { maxSizeMB: 0.01 });
         const reader = new FileReader();
 
         reader.onloadend = () => {
-          let base64String = reader.result as string
+          let base64String = reader.result as string;
           setImage(base64String);
-          console.log(base64String.length)
+          console.log(base64String.length);
         };
 
         reader.readAsDataURL(compressedFile);
-
-      
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
     }
   };
@@ -91,6 +89,7 @@ export function FormEditProject({ id }: any) {
       description: project?.description,
       image: image,
       published: isPublished,
+      repository: project?.repository,
     };
 
     try {

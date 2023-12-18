@@ -2,6 +2,12 @@
 
 Esse é meu portfolio onde mostro alguns dos meus projetos e sobre mim e minhas skills.
 
+## Tecnológias usadas
+
+- NextJS
+- TailwindCSS
+- Prisma
+
 ## Pré-requisitos
 
 Antes de começar, certifique-se que tenha o seguinte instalado em sua maquina:

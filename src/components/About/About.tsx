@@ -1,85 +1,51 @@
-"use client";
-import { useState } from "react";
-import Image from "next/image";
-
-import Foto from "../../../public/images/Rectangle 4.svg";
-
-interface SkillsProps {
-  [key: string]: string[];
-}
-
-const SkillsData: SkillsProps = {
-  Web: ["HTML", "CSS", "Javascript"],
-  Linguagens: ["Javascript", "Typescript"],
-  Frameworks: ["React", "Next.js", "Prisma"],
-  Banco_de_dados: ["PostgreSQL", "MongoDB"],
-};
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { Skills } from ".";
+import { toast } from "react-toastify";
 
 export function About() {
-  const [selected, setSelected] = useState<string | null>("Web");
+  const handleDownload = () => {
+    const pdfPath = "/donwload/Curriculo.pdf";
 
-  const handleCategoryChange = (category: string) => {
-    setSelected(category);
+    const Link = document.createElement("a");
+    Link.href = pdfPath;
+    Link.download = "curriculo.pdf";
+
+    document.body.appendChild(Link);
+
+    Link.click();
+
+    document.body.removeChild(Link);
   };
 
   return (
-    <section
-      className="container h-[800px] m-auto p-auto flex flex-col items-center justify-center "
-      id="about"
-    >
-      <div className="w-full flex items-center gap-[15px] pl-5 md:gap-[5px]">
-        <h1 className="text-2xl uppercase font-bold ">Sobre</h1>
-        <div className="w-[180px] md:w-[522px] h-[2px] bg-blue" />
-      </div>
+    <section className="relative w-full h-[50rem] bg-[url(/images/aboutbg.jpg)] bg-cover bg-no-repeat  flex justify-center" id="about">
+      <div className="absolute bottom-0 top-0 inset-0 z-10 w-full bg-[#11141bab] backdrop-blur-sm" />
 
-      <div className="w-full flex text-left pl-5 mt-5">
-        <div className="w-[32rem] flex flex-col gap-5">
-          <p className="text-gray font-bold text-xl">
-            Sou <span className="text-blue">desenvolvedor web</span> em busca de
-            constante de aprimoramento e aprendizado, estou constantemente
-            procurando a melhorar minhas habilidades
+      <div className="relative md:w-2/3 flex flex-col gap-5 md:gap-10 md:flex-row items-center justify-center md:justify-between text-center md:text-left inset-0 z-20">
+        <div className="w-full">
+          <h1 className="text-3xl xl:text-7xl font-bold">Desenvolvedor front-end</h1>
+
+          <p className="md:w-2/3 text-xl md:text-xl font-medium mt-3">
+            Sou um desenvolvedor em busca de aprendizado e aprimoramento, estou constantemente procurando a melhorar minhas habilidades
           </p>
 
-          <div className="flex flex-col gap-2">
-            <div className="flex gap-2">
-              <button
-                className={`px-5 py-1 text-white rounded transition-colors ${
-                  selected === "Web" ? "bg-blue" : "bg-gray"
-                }`}
-                onClick={() => handleCategoryChange("Web")}
-              >
-                Web
-              </button>
-              <button
-                className={`px-5 py-1 text-white rounded ${
-                  selected === "Linguagens" ? "bg-blue" : "bg-gray"
-                }`}
-                onClick={() => handleCategoryChange("Linguagens")}
-              >
-                Linguagens
-              </button>
-              <button
-                className={`px-5 py-1 text-white rounded ${
-                  selected === "Banco_de_dados" ? "bg-blue" : "bg-gray"
-                }`}
-                onClick={() => handleCategoryChange("Banco_de_dados")}
-              >
-                Databases
-              </button>
-            </div>
+          <button className="bg-blue-300 w-32 py-3 mt-5 text-2xl font-bold rounded-xl transition-colors hover:bg-blue-200" onClick={handleDownload}>
+            CV
+          </button>
+        </div>
 
-            {selected && (
-              <div className="mt-3">
-                <ul>
-                  {SkillsData[selected].map((skill: any, index: any) => (
-                    <li className="text-xl font-medium text-gray" key={index}>
-                      - {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+        <div className="flex md:flex-col gap-6">
+          <a className="transition hover:scale-110" href="https://www.github.com/cheeviz" target="_blank">
+            <BsGithub className="" size={50} />
+          </a>
+          <a className="transition hover:scale-110" href="#">
+            <BsLinkedin className="" size={50} />
+          </a>
+        </div>
+
+        <div className="absolute bottom-0 w-full flex flex-col items-center justify-center md:my-10 gap-3">
+          <h1 className="text-4xl font-bold uppercase">Skills</h1>
+          <Skills />
         </div>
       </div>
     </section>

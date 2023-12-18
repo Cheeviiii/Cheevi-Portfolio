@@ -3,17 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { HiUser, HiClipboard } from "react-icons/hi2";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
   const pathname = usePathname();
 
   return (
-    <div className={`${open ? "w-72" : "w-20"} h-screen bg-[#1b1b1b] relative duration-500 transition-all`}>
+    <div className={`${open ? "w-72" : "w-20"} h-screen bg-[#1b1b1b] relative duration-700 transition-all`}>
       <button
-        className={`absolute rounded-full -right-3 top-9 w-7 border-2 border-white bg-blue text-white  ${
-          open ? "rotate-180 duration-500" : "duration-500"
-        }  transition-all`}
+        className={`absolute rounded-full -right-3 top-9 w-7 border-2 border-white text-white  transition-all duration-700 hover:scale-110 ${
+          open ? "rotate-180 " : ""
+        }`}
         onClick={() => setOpen(!open)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -23,8 +24,8 @@ export default function Sidebar() {
 
       <div className="flex flex-col items-center justify-center my-5">
         <img
-          className={`${
-            open ? "translate-x-0 duration-500" : "-translate-x-96 duration-500"
+          className={`duration-700 ${
+            open ? "translate-x-0" : "-translate-x-96"
           } w-32 border border-blue rounded-full font-bold uppercase text-white shadow-2xl`}
           src="https://i.pinimg.com/originals/16/ab/c1/16abc1944e3b8971a7313aad627433af.jpg"
           alt="Image"
@@ -35,35 +36,23 @@ export default function Sidebar() {
             <Link
               href={"/admin"}
               className={`${
-                pathname === "/admin" ? "bg-blue" : ""
-              } flex items-center gap-2 p-2 transition-colors text-white hover:bg-blue-dark rounded-2xl cursor-pointer`}
+                pathname === "/admin" ? "bg-blue-300" : ""
+              } flex items-center gap-2 p-2 transition-colors text-white hover:bg-blue-300 rounded-2xl cursor-pointer`}
             >
               <div className="p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-white w-7 h-7 ">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                  />
-                </svg>
+                <HiUser size={32} />
               </div>
-              <li className={`${open ? "" : "hidden"} text-2xl font-medium`}>Dashboard</li>
+              <li className={`${open ? "scale-100" : "scale-50 hidden"} text-2xl font-medium`}>Dashboard</li>
             </Link>
 
             <Link
               href={"/admin/projects"}
               className={`${
-                pathname === "/admin/projects" ? "bg-blue" : ""
-              } flex items-center gap-2 p-2 transition-colors  text-white hover:bg-blue-dark rounded-2xl cursor-pointer`}
+                pathname === "/admin/projects" ? "bg-blue-300" : ""
+              } flex items-center gap-2 p-2 transition-colors  text-white hover:bg-blue-300 rounded-2xl cursor-pointer`}
             >
               <div className="p-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-white">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"
-                  />
-                </svg>
+                <HiClipboard size={32} />
               </div>
               <li className={`${open ? "" : "hidden"} text-2xl font-medium`}>Projetos</li>
             </Link>

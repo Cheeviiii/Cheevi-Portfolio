@@ -34,7 +34,7 @@ export function ProjetosStatus() {
   const ProjetosNaoPostados = Projetos.filter((projetos) => projetos.published === false);
 
   return (
-    <div className="flex items-center justify-around my-5 gap-3">
+    <div className="flex items-center justify-around my-5 gap-3 text-black font-bold">
       <div className="bg-[#eafce6] w-[250px] rounded-2xl text-center p-5 shadow-xl">
         <h1 className="text-2xl">Postados</h1>
         <p className="text-4xl">{ProjetosPostados.length}</p>

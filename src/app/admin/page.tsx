@@ -17,7 +17,12 @@ export default async function Dashboard() {
                 <h1 className="text-2xl font-bold uppercase">Últimos projetos</h1>
 
                 <Last3Projects />
-                <Link className="mx-[90px] px-5 p-2 bg-blue rounded-2xl text-white text-xl font-medium transition-colors hover:bg-blue-dark" href={'/admin/projects'}>Ver todos</Link>
+                <Link
+                  className="mx-[85px] px-5 p-2 bg-blue-300 uppercase rounded-2xl text-white text-xl font-medium transition-colors hover:bg-blue-dark"
+                  href={"/admin/projects"}
+                >
+                  Ver todos
+                </Link>
               </div>
             </div>
 

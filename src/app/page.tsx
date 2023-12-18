@@ -2,7 +2,6 @@
 
 import { ContatoForm } from "@/components/ContatoForm";
 import { About } from "@/components/About";
-import { Introduction } from "@/components/Introduction";
 import { Projetos } from "@/components/Projetos";
 import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
@@ -22,10 +21,9 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="container m-auto p-auto pt-5 md:pt-16" id="home">
-        <Introduction />
-        <Projetos />
+      <main className="w-full m-auto p-auto" id="home">
         <About />
+        <Projetos />
         <ContatoForm />
       </main>
       <Footer />

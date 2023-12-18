@@ -18,7 +18,7 @@ export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
           </Button>
 
           <div className="fixed inset-0 flex items-center justify-center p-5">
-            <div className="bg-white border border-gray-500 rounded-3xl w-[500px] p-5">
+            <div className="bg-gray-800 border border-gray-500 rounded-3xl w-[500px] p-5">
               <ul className="flex-row">
                 {menu.map((item: any, index: any) => (
                   <li className="p-2 text-2xl font-medium border-b-2 cursor-pointer" key={index}>

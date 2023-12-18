@@ -93,12 +93,12 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
 
   return (
     <form className="w-full overflow-y-auto" onSubmit={createProject}>
-      <div className="w-[750px] p-10 bg-[#f5f5f5] rounded-2xl">
+      <div className="w-[750px] p-10 bg-[#2c2f36] rounded-2xl">
         <div className="flex flex-col gap-1">
           <label className="text-base font-bold uppercase">Nome do projeto</label>
           <input
             type="text"
-            className="w-full bg-[#e6e6e6] font-medium rounded p-2 transition-colors focus:outline-blue placeholder:text-gray shadow-xl"
+            className="w-full bg-white text-black font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
             placeholder="Portfolio Pessoal"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -108,9 +108,8 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
         <div className="flex flex-col gap-1 mt-5">
           <label className="text-base font-bold uppercase">Descrição do projeto</label>
           <textarea
-            className="h-[250px] resize-none bg-[#e6e6e6] font-medium rounded p-2 transition-colors focus:outline-blue placeholder:text-gray shadow-xl"
+            className="h-[250px] resize-none bg-white text-black font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
             placeholder="Descrição bem legal"
-            maxLength={224}
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -118,18 +117,18 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
 
         <div className="flex flex-col gap-1 mt-5">
           <label className="text-base font-bold uppercase">Imagem do projeto</label>
-          <div className="flex items-center gap-2 bg-[#e6e6e6] rounded p-2">
+          <div className="flex items-center gap-2 bg-white rounded p-2">
             <button
               type="button"
-              className="w-[150px] p-2 rounded bg-blue text-white font-medium transition-colors hover:bg-blue-dark"
+              className="w-[150px] p-2 rounded bg-blue-300 text-white-300 font-medium transition-colors hover:bg-blue-200"
               onClick={handleButtonClick}
             >
               Escolher Arquivo
             </button>
             {fileName ? (
-              <span className="text-lg font-medium text-gray">{fileName}</span>
+              <span className="text-lg font-medium text-gray-300">{fileName}</span>
             ) : (
-              <span className="text-lg font-medium text-gray">Nenhum arquivo</span>
+              <span className="text-lg font-medium text-gray-300">Nenhum arquivo</span>
             )}
           </div>
           <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" ref={fileInputRef} />
@@ -151,7 +150,7 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
           <label className="text-base font-bold uppercase">Repositório</label>
           <input
             type="text"
-            className="w-full bg-[#e6e6e6] font-medium rounded p-2 transition-colors focus:outline-blue placeholder:text-gray shadow-xl"
+            className="w-full bg-white text-black font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
             placeholder="Link do repositório do github"
             value={repository}
             onChange={(e) => setRepository(e.target.value)}
@@ -159,7 +158,7 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
         </div>
 
         <div className="w-full flex items-center justify-center mt-5">
-          <button type="submit" className=" w-32 bg-blue p-2 text-xl font-medium text-white transition-colors  rounded-lg hover:bg-blue-dark uppercase">
+          <button type="submit" className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase">
             {buttonText}
           </button>
         </div>

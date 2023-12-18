@@ -6,8 +6,8 @@ import { Button } from "./Button";
 import { MobileNav } from "./MobileNav";
 
 const menu = [
-  { title: "Projetos", to: "#projects" },
   { title: "Sobre", to: "#about" },
+  { title: "Projetos", to: "#projects" },
   { title: "Contato", to: "#contact" },
 ];
 
@@ -63,38 +63,30 @@ export function Navbar() {
     }
   };
 
+  const scrollHeader = ` ${visible ? "xl:w-[80%] bg-[#171718] xl:bg-[#171718f1] xl:translate-y-5" : "w-full bg-[#171718] xl:bg-transparent xl:translate-x-0"}`;
+
   return (
-    <header
-      className={`w-full fixed bg-transparent flex-row items-center justify-between p-5 
-      `}
-    >
-      <div
-        className={`flex ${
-          visible ? "flex-row justify-between duration-500" : "duration-500 lg:flex-col lg:justify-center"
-        }  gap-5 items-center`}
-      >
-        <a className="text-3xl font-bold" href="/">
-          <span className="text-blue">&lsaquo;</span>Diogo
-          <span className="text-blue">/&rsaquo;</span>
-        </a>
-        <ul className="w-fullgap-5 hidden lg:flex lg:bg-blue lg:p-2 lg:rounded-full shadow-xl">
-          {menu.map((item, index) => (
-            <li
-              className="text-white text-xl font-bold cursor-pointer transition-all duration-200 hover:bg-white hover:text-black hover:rounded-full p-1 px-2"
-              key={index}
-            >
-              <a onClick={() => scrollTo(item.to.substring(1))}>{item.title}</a>
-            </li>
-          ))}
-        </ul>
+    <header className={`fixed rounded flex items-center m-auto justify-between  z-50 inset-x-0 duration-700 p-5 ${scrollHeader}`}>
+      <a className="text-2xl md:text-5xl font-bold" href="/">
+        Diogo
+      </a>
+      <ul className="gap-5 hidden xl:flex lg:bg-blue-300 lg:p-2 lg:rounded-full shadow-xl">
+        {menu.map((item, index) => (
+          <li
+            className="text-white text-xl font-bold cursor-pointer transition-all duration-200 hover:bg-white hover:text-black hover:rounded-full p-1 px-2"
+            key={index}
+          >
+            <a onClick={() => scrollTo(item.to.substring(1))}>{item.title}</a>
+          </li>
+        ))}
+      </ul>
 
-        <div className="relative flex lg:hidden">
-          <Button onClick={toggleMenu}>
-            <HiBars3 size={32} />
-          </Button>
+      <div className="relative flex xl:hidden">
+        <Button onClick={toggleMenu}>
+          <HiBars3 size={32} />
+        </Button>
 
-          <MobileNav isOpen={isOpen} toggleMenu={toggleMenu} menu={menu} />
-        </div>
+        <MobileNav isOpen={isOpen} toggleMenu={toggleMenu} menu={menu} />
       </div>
     </header>
   );

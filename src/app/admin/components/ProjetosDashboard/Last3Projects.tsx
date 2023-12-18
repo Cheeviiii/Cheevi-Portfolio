@@ -42,12 +42,12 @@ export function Last3Projects() {
       {Projetos.map((item, index) => (
         <div
           key={index}
-          className={`flex items-center gap-5 bg-[#dfdfdf] rounded-xl p-5 h-16 shadow-xl cursor-pointer transition-transform duration-200 hover:scale-110 ${
+          className={`flex items-center gap-5 bg-gray-300 rounded-xl p-5 h-16 shadow-xl cursor-pointer transition-transform duration-200 hover:scale-110 ${
             index === 1 ? "m-3" : ""
           }`}
         >
           <div className="w-full flex items-center justify-between gap-5">
-            <img className="w-14 h-14 rounded-2xl drop-shadow-xl" src={item.image} alt={item.title} />
+            <img className="w-[40%] h-14 rounded drop-shadow-xl" src={item.image} alt={item.title} />
             <h1 className="text-xl font-bold">{item.title}</h1>
           </div>
         </div>
