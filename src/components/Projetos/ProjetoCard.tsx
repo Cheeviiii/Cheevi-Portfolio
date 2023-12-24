@@ -1,8 +1,8 @@
+import { ProjetoProps } from "@/types";
 import Image from "next/image";
-import { ProjetosProps } from "./Projetos";
 
 interface Projeto {
-  projeto: ProjetosProps;
+  projeto: ProjetoProps;
 }
 
 export default function ProjetoCard({ projeto }: Projeto) {

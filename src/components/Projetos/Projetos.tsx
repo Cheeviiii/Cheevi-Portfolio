@@ -3,17 +3,10 @@
 import { useEffect, useState } from "react";
 import { LoadingSpinner } from "../Loading";
 import ProjetoCard from "./ProjetoCard";
-
-export interface ProjetosProps {
-  title: string;
-  description: string;
-  image: string;
-  published: boolean;
-  repository: string;
-}
+import { ProjetoProps } from "@/types";
 
 export function Projetos() {
-  const [projetos, setProjetos] = useState<ProjetosProps[]>([]);
+  const [projetos, setProjetos] = useState<ProjetoProps[]>([]);
   const [Loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -58,7 +51,7 @@ export function Projetos() {
             <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
           ) : (
             <div className="grid grid-rows-1 lg:grid-cols-2 gap-5 mt-5">
-              {projetosPublicados.slice(0, 4).map((item: ProjetosProps, index) => (
+              {projetosPublicados.slice(0, 4).map((item: ProjetoProps, index) => (
                 <ProjetoCard key={index} projeto={item} />
               ))}
             </div>

@@ -1,4 +1,4 @@
-import { FormEditProject } from "@/app/admin/components/Form";
+import { FormEditProject } from "@/components/Form";
 import { LoadingSpinner } from "@/components/Loading";
 import { Suspense } from "react";
 

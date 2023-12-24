@@ -1,6 +1,5 @@
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { Skills } from ".";
-import { toast } from "react-toastify";
 
 export function About() {
   const handleDownload = () => {
