@@ -21,11 +21,11 @@ export function Projetos() {
 
         if (!response.ok) {
           throw new Error("Erro na solicitação");
+        } else {
+          const data = await response.json();
+          setProjetos(data);
+          setLoading(false);
         }
-
-        const data = await response.json();
-        setProjetos(data);
-        setLoading(false);
       } catch (error) {
         console.error(error);
       }

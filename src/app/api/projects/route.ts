@@ -15,6 +15,8 @@ export async function GET(req: Request) {
   } catch (error) {
     console.error(error);
     return new Response("Erro interno do servidor", { status: 500 });
+  } finally {
+    prisma.$disconnect();
   }
 }
 
@@ -35,7 +37,7 @@ export async function POST(req: Request) {
     const projects = await prisma.project.create({
       data: {
         title: title,
-        image: image || '',
+        image: image || "",
         description: description,
         published: published,
         repository: repository,
@@ -46,5 +48,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error(error);
     return new Response("Erro interno do servidor", { status: 500 });
+  } finally {
+    prisma.$disconnect();
   }
 }

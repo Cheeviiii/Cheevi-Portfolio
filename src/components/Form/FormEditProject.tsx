@@ -8,7 +8,11 @@ import imageCompression from "browser-image-compression";
 import { ProjetoProps } from "@/types";
 import { ToastError, ToastSuccess } from "@/lib/Toast";
 
-export function FormEditProject({ id }: any) {
+interface FormProps {
+  id: string;
+}
+
+export function FormEditProject({ id }: FormProps) {
   const [project, setProject] = useState<ProjetoProps | null>(null);
   const [image, setImage] = useState("");
   const [fileName, setFileName] = useState("");

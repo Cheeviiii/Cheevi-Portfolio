@@ -1,14 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import imageCompression from "browser-image-compression";
 import { ToastError, ToastSuccess } from "@/lib/Toast";
+import axios from "axios";
 
-export function FormCreateProject({ closeModal, getProjects }: any) {
+interface FormProps {
+  closeModal: () => void;
+  getProjects: () => void;
+}
+
+export function FormCreateProject({ closeModal, getProjects }: FormProps) {
   const [image, setImage] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [buttonText, setButtonText] = useState("Enviar");
+  const [Repos, setRepos] = useState([]);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -16,6 +23,20 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
   const [repository, setRepository] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    const getRepos = async () => {
+      const ReposResponse = await axios.get("https://api.github.com/users/cheeviz/repos", {
+        headers: {
+          Authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+        },
+      });
+      const res = ReposResponse.data;
+      const ReposURL = res.map((repo: any) => repo.html_url);
+      setRepos(ReposURL);
+    };
+    getRepos();
+  }, []);
 
   const handleFileChange = async (e: any) => {
     const file = e.target.files?.[0];
@@ -42,6 +63,11 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
+  };
+
+  const handleSelectChange = (event: any) => {
+    const selectedValue = event.target.value;
+    setRepository(selectedValue);
   };
 
   const createProject = async (e: FormEvent) => {
@@ -134,11 +160,11 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
           <p className="mt-1 text-sm font-medium text-gray-300">SVG, PNG, JPG</p>
         </div>
 
-        {/*  {image && (
+        {image && (
           <div className="mt-3">
             <img src={image} alt="Preview" className="w-[25%]" />
           </div>
-        )} */}
+        )}
 
         <div className="flex mt-5">
           <label className="text-base font-bold uppercase">Deixar publico?</label>
@@ -147,13 +173,16 @@ export function FormCreateProject({ closeModal, getProjects }: any) {
 
         <div className="flex flex-col gap-1 mt-5">
           <label className="text-base font-bold uppercase">Repositório</label>
-          <input
-            type="text"
-            className="w-full bg-transparent text-white border border-gray-300  font-medium rounded p-2 transition-colors focus:outline-none focus:border-white placeholder:text-gray-300 shadow-xl"
-            placeholder="Link do repositório do github"
-            value={repository}
-            onChange={(e) => setRepository(e.target.value)}
-          />
+          <select onChange={handleSelectChange} value={repository || ""} className="bg-transparent border border-gray-300  p-2 focus:border-white">
+            <option value="" className="bg-gray-400" disabled>
+              Escolha um repositório
+            </option>
+            {Repos.map((url: string, index: number) => (
+              <option key={index} value={url} className="bg-gray-400">
+                {url}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="w-full flex items-center justify-center mt-5">

@@ -1,8 +1,7 @@
-
 import { LoadingSpinner } from "@/components/Loading";
 
 import { Suspense } from "react";
-import { Last3Projects, ProjetosStatus } from "@/components/ProjetosDashboard";
+import { ProjetosStatus } from "@/components/ProjetosDashboard";
 
 export default async function Dashboard() {
   return (

@@ -48,6 +48,8 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   } catch (error) {
     console.error(error);
     return new Response("Erro interno do servidor", { status: 500 });
+  } finally {
+    prisma.$disconnect();
   }
 }
 
@@ -66,5 +68,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
   } catch (error) {
     console.error(error);
     return new Response("Erro interno do servidor", { status: 500 });
+  } finally {
+    prisma.$disconnect();
   }
 }

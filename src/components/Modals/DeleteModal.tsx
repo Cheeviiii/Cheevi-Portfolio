@@ -1,8 +1,7 @@
 "use client";
 
+import { ToastSuccess } from "@/lib/Toast";
 import { useState } from "react";
-import { toast } from "react-toastify";
-
 interface DeleteProps {
   isOpen: boolean;
   closeModal: () => void;
@@ -22,7 +21,7 @@ export function DeleteModal({ isOpen, id, closeModal, getProjects }: DeleteProps
       },
     });
 
-    toast.success("Projeto deletado.");
+    ToastSuccess("Projeto deletado.");
     setConfirmText("Confirmar");
     closeModal();
     getProjects();

@@ -22,5 +22,7 @@ export async function GET(req: Request) {
     console.log(error);
 
     return new Response("Erro interno no servidor", { status: 500 });
+  } finally {
+    prisma.$disconnect();
   }
 }
