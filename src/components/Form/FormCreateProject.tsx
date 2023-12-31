@@ -70,7 +70,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
     setRepository(selectedValue);
   };
 
-  const createProject = async (e: FormEvent) => {
+  const onCreateProject = async (e: FormEvent) => {
     e.preventDefault();
 
     setButtonText("Enviando...");
@@ -117,7 +117,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
   };
 
   return (
-    <form className="w-full overflow-y-auto" onSubmit={createProject}>
+    <form className="w-full overflow-y-auto" onSubmit={onCreateProject}>
       <div className="w-[750px] p-10 bg-gray-400 border border-gray-300 rounded-2xl">
         <div className="flex flex-col gap-1">
           <label className="text-base font-bold uppercase">Nome do projeto</label>

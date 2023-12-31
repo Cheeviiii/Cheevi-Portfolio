@@ -1,6 +1,6 @@
 "use client";
 
-import { ContatoForm } from "@/components/ContatoForm";
+import { Contato } from "@/components/Contato";
 import { About } from "@/components/About";
 import { Projetos } from "@/components/Projetos";
 import { useEffect } from "react";
@@ -24,7 +24,7 @@ export default function Home() {
       <main className="w-full m-auto p-auto" id="home">
         <About />
         <Projetos />
-        <ContatoForm />
+        <Contato />
       </main>
       <Footer />
     </>

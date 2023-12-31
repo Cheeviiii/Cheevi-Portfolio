@@ -1,6 +1,6 @@
 # Portfolio pessoal
 
-Esse é meu portfolio onde mostro alguns dos meus projetos e sobre mim e minhas skills.
+Esse é meu portfolio pessoal, onde mostro meus projetos, sobre mim e minhas skills, ainda em está em fase de construção, sempre venho tentando melhorar com novos aprendizados e novas técnicas
 
 ## Tecnológias usadas
 
@@ -41,12 +41,12 @@ npm install
 NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=SECRET_KEY
 
-AUTH_USERNAME=USERNAME
-AUTH_PASSWORD=PASSWORD
+AUTH_USERNAME=SEU_USERNAME
+AUTH_PASSWORD=SUA_SENHA
 NEXT_PUBLIC_API_KEY=SUA_API_KEY_AQUI
-NEXT_PUBLIC_GITHUB_TOKEN=TOKEN_GITHUB
+NEXT_PUBLIC_GITHUB_TOKEN=SEU_TOKEN_DO_GITHUB
 
-DATABASE_URL=URL_DO_POSTGRESSQL
+DATABASE_URL=URL_DO_POSTGRES
 ```
 
 5. **Inicie o servidor de desenvolvimento:**

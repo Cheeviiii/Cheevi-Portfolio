@@ -38,7 +38,6 @@ export function FormEditProject({ id }: FormProps) {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setProject(data);
       } else {
         console.log(response);

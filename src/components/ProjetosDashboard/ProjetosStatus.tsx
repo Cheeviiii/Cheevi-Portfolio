@@ -9,18 +9,18 @@ interface StatusProps {
   value: number;
 }
 
+const Status = ({ name, value }: StatusProps) => {
+  return (
+    <>
+      <h1 className="text-xl lg:text-2xl">{name}</h1>
+      <p className="text-4xl">{value}</p>
+    </>
+  );
+};
+
 export function ProjetosStatus() {
   const [Projetos, setProjetos] = useState<ProjetoProps[]>([]);
   const [Loading, setLoading] = useState(true);
-
-  const Status = ({ name, value }: StatusProps) => {
-    return (
-      <>
-        <h1 className="text-xl lg:text-2xl">{name}</h1>
-        <p className="text-4xl">{value}</p>
-      </>
-    );
-  };
 
   useEffect(() => {
     const getProjetos = async () => {
@@ -39,19 +39,35 @@ export function ProjetosStatus() {
     getProjetos();
   }, []);
 
-  const ProjetosPostados = Projetos.filter((projetos) => projetos.published === true);
-  const ProjetosNaoPostados = Projetos.filter((projetos) => projetos.published === false);
+  const ProjetosPostados = Projetos.filter(
+    (projetos) => projetos.published === true,
+  );
+  const ProjetosNaoPostados = Projetos.filter(
+    (projetos) => projetos.published === false,
+  );
 
   return (
     <div className="lg:max-w-full xl:max-w-[65%] m-auto flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-around my-5 font-bold">
       <div className="bg-black w-[250px] md:w-[200px] lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
-        {Loading ? <LoadingSpinner /> : <Status name="Postados" value={ProjetosPostados.length} />}
+        {Loading ? (
+          <LoadingSpinner />
+        ) : (
+          <Status name="Postados" value={ProjetosPostados.length} />
+        )}
       </div>
       <div className="bg-black w-[250px] md:w-[200px] lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
-        {Loading ? <LoadingSpinner /> : <Status name="Não Postados" value={ProjetosNaoPostados.length} />}
+        {Loading ? (
+          <LoadingSpinner />
+        ) : (
+          <Status name="Não Postados" value={ProjetosNaoPostados.length} />
+        )}
       </div>
       <div className="bg-black w-[250px] md:w-[200px]  lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
-        {Loading ? <LoadingSpinner /> : <Status name="Total de Projetos" value={Projetos.length} />}
+        {Loading ? (
+          <LoadingSpinner />
+        ) : (
+          <Status name="Total de Projetos" value={Projetos.length} />
+        )}
       </div>
     </div>
   );

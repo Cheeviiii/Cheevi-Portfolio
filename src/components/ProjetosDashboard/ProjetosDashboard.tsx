@@ -6,7 +6,7 @@ import { DeleteModal, ModalCreateProject } from "../Modals";
 import { LoadingSpinner } from "@/components/Loading";
 import { ProjetoProps } from "@/types";
 
-export function Projects() {
+export function ProjetosDashboard() {
   const [projects, setProjects] = useState<ProjetoProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
@@ -16,22 +16,27 @@ export function Projects() {
   const getProjects = async () => {
     try {
       const response = await fetch("/api/projects", {
+        method: "GET",
         headers: {
           "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
         },
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        const data = await response.json();
+        setProjects(data);
+        setLoading(false);
+      } else {
         throw new Error("Erro ao buscar projetos na API");
       }
-
-      const data = await response.json();
-      setProjects(data);
-      setLoading(false);
     } catch (error: any) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
 
   const onDelete = async (id: string) => {
     setIsOpen(!isOpen);
@@ -48,14 +53,19 @@ export function Projects() {
     setIDDelete("");
   };
 
-  useEffect(() => {
-    getProjects();
-  }, []);
-
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      <DeleteModal isOpen={isOpen} closeModal={closeModal} id={idDelete} getProjects={getProjects} />
-      <ModalCreateProject isOpen={OpenCreateModal} closeModal={OpenModalCreate} getProjects={getProjects} />
+      <DeleteModal
+        isOpen={isOpen}
+        closeModal={closeModal}
+        id={idDelete}
+        getProjects={getProjects}
+      />
+      <ModalCreateProject
+        isOpen={OpenCreateModal}
+        closeModal={OpenModalCreate}
+        getProjects={getProjects}
+      />
 
       <div className="h-full flex flex-col gap-5 overflow-y-auto">
         <button
@@ -75,7 +85,9 @@ export function Projects() {
                 ))}
               </div>
             ) : (
-              <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
+              <h1 className="text-2xl font-medium">
+                Nenhum projeto encontrado!
+              </h1>
             )}
           </div>
         )}

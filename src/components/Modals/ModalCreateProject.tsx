@@ -8,15 +8,31 @@ interface CreateProjectProps {
   getProjects: () => void;
 }
 
-export function ModalCreateProject({ isOpen, closeModal, getProjects }: CreateProjectProps) {
+export function ModalCreateProject({
+  isOpen,
+  closeModal,
+  getProjects,
+}: CreateProjectProps) {
   return (
-    <div className={isOpen ? "absolute w-full h-screen overflow-y-auto bg-[#00000069] backdrop-blur-sm inset-0 z-10" : "hidden"}>
+    <div
+      className={
+        isOpen
+          ? "absolute w-full h-screen overflow-y-auto bg-[#00000069] backdrop-blur-sm inset-0 z-10"
+          : "hidden"
+      }
+    >
       <div className="bg-gray-400 w-[1000px] border border-gray-300 p-5 m-auto p-auto rounded-2xl shadow-2xl">
-        <button className="bg-red text-white my-2 p-2 px-5 text-base uppercase font-bold rounded-xl" onClick={closeModal}>
+        <button
+          className="bg-red text-white my-2 p-2 px-5 text-base uppercase font-bold rounded-xl"
+          onClick={closeModal}
+        >
           fechar
         </button>
         <div className="w-full mx-[120px]">
-          <FormCreateProject closeModal={closeModal} getProjects={getProjects} />
+          <FormCreateProject
+            closeModal={closeModal}
+            getProjects={getProjects}
+          />
         </div>
       </div>
     </div>
