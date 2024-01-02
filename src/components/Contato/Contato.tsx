@@ -13,18 +13,18 @@ export function Contato() {
       <ToastContainer />
       <div className="w-full flex items-center pl-5 gap-[15px] md:gap-[5px]">
         <h1 className="text-2xl uppercase font-bold ">Contato</h1>
-        <div className="w-[220px] md:w-[522px] h-[2px] bg-blue-300" />
+        <div className="w-[220px] md:w-[522px] h-[2px] bg-red-100" />
       </div>
       <div className="flex items-center lg:items-start flex-col lg:flex-row gap-[51px] mt-[69px]">
         <div className="flex flex-col gap-[22px] pt-2">
           <a
             href="#"
-            className="flex items-center gap-2 text-2xl font-bold hover:text-blue-200"
+            className="flex items-center gap-2 text-2xl font-bold hover:text-red-100"
           >
             <BsLinkedin size={32} />
             Linkedin
           </a>
-          <h1 className="flex items-center gap-2 text-2xl font-bold hover:text-blue-200">
+          <h1 className="flex items-center gap-2 text-2xl font-bold hover:text-red-100">
             <BsDiscord size={32} />
             Cheevi
           </h1>

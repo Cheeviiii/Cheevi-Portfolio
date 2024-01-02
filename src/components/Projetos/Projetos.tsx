@@ -46,7 +46,7 @@ export function Projetos() {
     >
       <div className="w-full flex items-center pl-5 gap-[15px] md:gap-[5px]">
         <h1 className="text-3xl uppercase font-bold ">Projetos</h1>
-        <div className="w-[180px] md:w-[522px] h-[2px] bg-blue-300" />
+        <div className="w-[180px] md:w-[522px] h-[2px] bg-red-100" />
       </div>
 
       {Loading ? (
@@ -70,7 +70,7 @@ export function Projetos() {
           <a
             href="https://github.com/cheeviz?tab=repositories"
             target="_blank"
-            className="text-3xl font-bold text-white bg-gray-300 p-2 px-5 rounded-lg cursor-pointer transition-colors hover:bg-blue-200 mt-10"
+            className="text-3xl font-bold text-white bg-red-200 p-2 px-5 rounded-lg cursor-pointer transition-colors hover:bg-red-100 mt-10"
           >
             Todos Projetos
           </a>

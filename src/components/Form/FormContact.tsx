@@ -3,7 +3,7 @@ import sendEmail from "@/lib/sendEmail";
 export function FormContact() {
   return (
     <form
-      className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-gray-800 rounded-[26px] md:rounded-[46px]"
+      className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-[#17181a] rounded-[26px] md:rounded-[46px]"
       onSubmit={sendEmail}
     >
       <div className="flex flex-col md:flex-row gap-[14px]">
@@ -43,7 +43,7 @@ export function FormContact() {
         />
       </div>
 
-      <button className="w-[107px] h-[42px] bg-gray-300 rounded-[13px] text-white font-bold uppercase mt-2  transition-colors hover:bg-blue-300">
+      <button className="w-[107px] h-[42px] bg-gray-300 rounded-[13px] text-white font-bold uppercase mt-2  transition-colors hover:bg-red-200">
         Enviar
       </button>
     </form>
