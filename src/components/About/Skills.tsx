@@ -43,7 +43,7 @@ const SkillsData: SkillsData = {
     },
     {
       title: "Nextjs",
-      icon: "/images/nextjs.svg",
+      icon: "/images/nextjs.webp",
     },
     {
       title: "Prisma",
@@ -57,7 +57,7 @@ const SkillsData: SkillsData = {
     },
     {
       title: "Postgres",
-      icon: "/images/postgres.svg",
+      icon: "/images/Postgresql.png",
     },
   ],
 };
@@ -75,56 +75,31 @@ export function Skills() {
 
   return (
     <div className="md:w-[50%]">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-        <button
-          className={`px-5 py-1 text-white rounded  transition-colors ${skillSelected(
-            "Web",
-          )}`}
-          onClick={() => handleCategoryChange("Web")}
-        >
+      <div className="grid grid-cols-2 2xl:grid-cols-4 gap-2">
+        <button className={`px-5 py-1 text-white rounded  transition-colors ${skillSelected("Web")}`} onClick={() => handleCategoryChange("Web")}>
           Web
         </button>
-        <button
-          className={`px-5 py-1 text-white rounded ${skillSelected(
-            "Frameworks",
-          )}`}
-          onClick={() => handleCategoryChange("Frameworks")}
-        >
+        <button className={`px-5 py-1 text-white rounded ${skillSelected("Frameworks")}`} onClick={() => handleCategoryChange("Frameworks")}>
           Frameworks
         </button>
-        <button
-          className={`px-5 py-1 text-white rounded ${skillSelected(
-            "Linguagens",
-          )}`}
-          onClick={() => handleCategoryChange("Linguagens")}
-        >
+        <button className={`px-5 py-1 text-white rounded ${skillSelected("Linguagens")}`} onClick={() => handleCategoryChange("Linguagens")}>
           Linguagens
         </button>
-        <button
-          className={`px-5 py-1 text-white rounded ${skillSelected(
-            "Banco_de_dados",
-          )}`}
-          onClick={() => handleCategoryChange("Banco_de_dados")}
-        >
+        <button className={`px-5 py-1 text-white rounded ${skillSelected("Banco_de_dados")}`} onClick={() => handleCategoryChange("Banco_de_dados")}>
           Databases
         </button>
       </div>
 
       {selected && (
         <div className="mt-5">
-          <ul className="flex items-center justify-center gap-10">
+          <div className="flex items-center justify-center gap-10 bg-[#252729] border border-gray-300 p-2">
             {SkillsData[selected].map((skill: any, index: any) => (
-              <div
-                className="flex flex-col items-center justify-center gap-2"
-                key={index}
-              >
+              <div className="flex flex-col items-center justify-center gap-2" key={index}>
                 <img className="w-14 h-14" src={skill.icon} alt={skill.title} />
-                <li className="text-base font-medium uppercase">
-                  {skill.title}
-                </li>
+                <p className="text-base font-medium uppercase">{skill.title}</p>
               </div>
             ))}
-          </ul>
+          </div>
         </div>
       )}
     </div>

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { Button } from "./Button";
 import { MobileNav } from "./MobileNav";
+import { scrollTo } from "@/lib/scrollTo";
 
 const menu = [
   { title: "Sobre", to: "#about" },
@@ -24,19 +25,11 @@ export function Navbar() {
     }
   };
 
-  const scrollTo = (id: string) => {
-    const sectionRef = document.getElementById(id);
-
-    if (sectionRef) {
-      sectionRef.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <header
       className={`absolute rounded flex items-center m-auto justify-between lg:justify-around z-50 inset-x-0 duration-700 p-5`}
     >
-      <a className="text-2xl md:text-2xl font-bold text-red-200" href="/">
+      <a className="text-2xl md:text-2xl font-bold text-red-200" href="/" aria-label="home">
         {"<diogo />"}
       </a>
       <ul className="gap-5 hidden xl:flex lg:p-2 ">
