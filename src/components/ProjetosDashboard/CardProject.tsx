@@ -9,10 +9,10 @@ interface CardProps {
 
 export function CardProject({ projeto, onDelete }: CardProps) {
   return (
-    <div className="w-full border border-gray-300 rounded-xl flex flex-col items-center justify-between p-5 gap-5 shadow-xl">
-      <div className="w-full flex flex-col gap-5">
+    <div className="border border-gray-300 rounded-xl flex flex-col items-center justify-between p-5 gap-5">
+      <div className="flex flex-col gap-5">
         <img
-          className="h-[200px] rounded"
+          className="w-[350px] h-[200px] md:w-[658px] md:h-[200px] rounded-xl shadow-lg border border-gray-300"
           src={
             projeto.image == ""
               ? "https://www.pallenz.co.nz/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
@@ -20,12 +20,16 @@ export function CardProject({ projeto, onDelete }: CardProps) {
           }
           alt={projeto.title}
         />
-        <h1 className="w-full text-4xl font-bold text-left">{projeto?.title}</h1>
+        <h1 className="text-base font-bold text-left">{projeto?.title}</h1>
 
-        <div>
-          <p className=" text-lg font-medium">{projeto?.description}</p>
+        <div className="w-full flex items-start gap-2">
+          {projeto.types.map((type, index) => (
+            <p className="bg-red-200 p-1 rounded" key={index}>
+              {type}
+            </p>
+          ))}
         </div>
-
+        <p className="text-lg font-medium">{projeto?.description}</p>
         <div className="w-full text-lg font-medium text-left flex gap-2">
           Status: {projeto.published ? <p className="text-[#44ff33] font-bold">Publicado</p> : <p className="text-[#ff3333]">Não publicado</p>}
         </div>

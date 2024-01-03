@@ -4,7 +4,11 @@ const prisma = new PrismaClient();
 
 export async function GET(req: Request) {
   try {
-    const projects = await prisma.project.findMany();
+    const projects = await prisma.project.findMany({
+      orderBy: {
+        createdAt: "asc",
+      },
+    });
     const secretKey = req.headers.get("x-api-key");
 
     if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
@@ -28,7 +32,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { title, image, description, repository, published } = await req.json();
+    const { title, image, description, repository, published, types } = await req.json();
 
     if (!title || !image || !description) {
       return new Response("Verfique se todas as informações estão preenchidas", { status: 400 });
@@ -41,6 +45,7 @@ export async function POST(req: Request) {
         description: description,
         published: published,
         repository: repository,
+        types: types,
       },
     });
 

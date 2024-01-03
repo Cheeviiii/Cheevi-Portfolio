@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { LoadingSpinner } from "../Loading";
 import { useRouter } from "next/navigation";
 import imageCompression from "browser-image-compression";
 import { ProjetoProps } from "@/types";
 import { ToastError, ToastSuccess } from "@/lib/Toast";
+import { options } from ".";
 
 interface FormProps {
   id: string;
@@ -18,16 +19,13 @@ export function FormEditProject({ id }: FormProps) {
   const [fileName, setFileName] = useState("");
   const [isPublished, setIsPublished] = useState<boolean>(false);
   const [buttonText, setButtonText] = useState("Editar");
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const router = useRouter();
 
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setProject((prevProject: any) => ({ ...prevProject, [name]: value }));
-  };
-
+  // Puxar projeto pelo ID
   const getProject = async (id: string) => {
     try {
       const response = await fetch(`/api/projects/${id}`, {
@@ -39,12 +37,14 @@ export function FormEditProject({ id }: FormProps) {
       if (response.ok) {
         const data = await response.json();
         setProject(data);
+        setSelectedOptions([...data.types]);
       } else {
         console.log(response);
       }
     } catch (error) {}
   };
 
+  //Função para atualizar a imagem e compressando ela
   const handleFileChange = async (e: any) => {
     const file = e.target.files?.[0];
 
@@ -74,6 +74,7 @@ export function FormEditProject({ id }: FormProps) {
     }
   };
 
+  // Atualizar projeto
   const onHandlePatch = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -84,6 +85,7 @@ export function FormEditProject({ id }: FormProps) {
       description: project?.description,
       image: image,
       published: isPublished,
+      types: selectedOptions,
       repository: project?.repository,
     };
 
@@ -120,6 +122,17 @@ export function FormEditProject({ id }: FormProps) {
     getProject(id);
   }, [id]);
 
+  // Alterar dados
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setProject((prevProject: any) => ({ ...prevProject, [name]: value }));
+  };
+
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(event.target.selectedOptions, (option) => option.value);
+    setSelectedOptions(selectedValues);
+  };
+
   return (
     <>
       {project ? (
@@ -146,6 +159,23 @@ export function FormEditProject({ id }: FormProps) {
                 value={project?.description}
                 onChange={handleChange}
               />
+            </div>
+
+            <div className="flex flex-col mt-5">
+              <label className="text-base font-bold uppercase">Linguagens/Frameworks usados</label>
+              <select className="bg-transparent border border-gray-300  p-2 focus:border-white" multiple value={selectedOptions} onChange={handleTypeChange}>
+                {options.map((option, index) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+
+              <ul className="flex gap-2">
+                {selectedOptions.map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              </ul>
             </div>
 
             <div className="flex flex-col gap-1 mt-5">

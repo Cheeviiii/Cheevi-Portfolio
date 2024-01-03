@@ -5,4 +5,5 @@ export interface ProjetoProps {
   description: string;
   published: boolean;
   repository: string;
+  types: string[];
 }

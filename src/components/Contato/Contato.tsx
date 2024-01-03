@@ -1,5 +1,3 @@
-"use client";
-
 import { BsLinkedin, BsDiscord } from "react-icons/bs";
 import { FormContact } from "../Form";
 

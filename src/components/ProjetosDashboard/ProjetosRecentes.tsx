@@ -43,11 +43,7 @@ export function ProjetosRecentes() {
           }`}
         >
           <div className="w-full flex items-center justify-between gap-5">
-            <img
-              className="w-[40%] h-14 rounded drop-shadow-xl"
-              src={item.image}
-              alt={item.title}
-            />
+            <img className="w-[100px] h-14 rounded drop-shadow-xl" src={item.image} alt={item.title} />
             <h1 className="text-base font-bold">{item.title}</h1>
           </div>
         </div>

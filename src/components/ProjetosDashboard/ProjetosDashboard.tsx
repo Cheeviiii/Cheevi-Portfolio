@@ -55,17 +55,8 @@ export function ProjetosDashboard() {
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      <DeleteModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        id={idDelete}
-        getProjects={getProjects}
-      />
-      <ModalCreateProject
-        isOpen={OpenCreateModal}
-        closeModal={OpenModalCreate}
-        getProjects={getProjects}
-      />
+      <DeleteModal isOpen={isOpen} closeModal={closeModal} id={idDelete} getProjects={getProjects} />
+      <ModalCreateProject isOpen={OpenCreateModal} closeModal={OpenModalCreate} getProjects={getProjects} />
 
       <div className="h-full flex flex-col gap-5 overflow-y-auto">
         <button
@@ -85,9 +76,7 @@ export function ProjetosDashboard() {
                 ))}
               </div>
             ) : (
-              <h1 className="text-2xl font-medium">
-                Nenhum projeto encontrado!
-              </h1>
+              <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
             )}
           </div>
         )}

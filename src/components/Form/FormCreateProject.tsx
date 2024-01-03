@@ -5,6 +5,7 @@ import { FormEvent, useEffect, useRef, useState } from "react";
 import imageCompression from "browser-image-compression";
 import { ToastError, ToastSuccess } from "@/lib/Toast";
 import axios from "axios";
+import { options } from ".";
 
 interface FormProps {
   closeModal: () => void;
@@ -21,6 +22,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
   const [description, setDescription] = useState("");
   const [published, setPublished] = useState(false);
   const [repository, setRepository] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -81,6 +83,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
       image,
       repository,
       published,
+      types: selectedOptions,
     };
 
     try {
@@ -101,6 +104,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         setDescription("");
         setPublished(false);
         setRepository("");
+        setSelectedOptions([]);
 
         getProjects();
         closeModal();
@@ -116,9 +120,14 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
     }
   };
 
+  const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues = Array.from(event.target.selectedOptions, (option) => option.value);
+    setSelectedOptions(selectedValues);
+  };
+
   return (
-    <form className="w-full overflow-y-auto" onSubmit={onCreateProject}>
-      <div className="w-[750px] p-10 bg-gray-400 border border-gray-300 rounded-2xl">
+    <form className="w-full" onSubmit={onCreateProject}>
+      <div className="w-[750px] p-10 bg-gray-400 rounded-2xl">
         <div className="flex flex-col gap-1">
           <label className="text-base font-bold uppercase">Nome do projeto</label>
           <input
@@ -138,6 +147,23 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
+        </div>
+
+        <div className="flex flex-col mt-5">
+          <label className="text-base font-bold uppercase">Linguagens/Frameworks usados</label>
+          <select className="bg-transparent border border-gray-300  p-2 focus:border-white" multiple value={selectedOptions} onChange={handleTypeChange}>
+            {options.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <ul className="flex gap-2 mt-2">
+            {selectedOptions.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
         </div>
 
         <div className="flex flex-col gap-1 mt-5">

@@ -1,10 +1,7 @@
 import { LoadingSpinner } from "@/components/Loading";
 
 import { Suspense } from "react";
-import {
-  ProjetosRecentes,
-  ProjetosStatus,
-} from "@/components/ProjetosDashboard";
+import { ProjetosRecentes, ProjetosStatus } from "@/components/ProjetosDashboard";
 
 export default async function Dashboard() {
   return (
@@ -14,7 +11,7 @@ export default async function Dashboard() {
           <ProjetosStatus />
         </div>
 
-        <div className="w-[25%]">
+        <div className="w-[25%] pt-10">
           <ProjetosRecentes />
         </div>
       </Suspense>

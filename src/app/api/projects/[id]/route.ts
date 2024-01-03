@@ -25,7 +25,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }) 
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const id = params.id;
-  const { title, image, description, repository, published } = await req.json();
+  const { title, image, description, repository, published, types } = await req.json();
   const secretKey = req.headers.get("x-api-key");
 
   if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
@@ -40,6 +40,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
         image: image,
         description: description,
         repository: repository,
+        types: types,
         published: published,
       },
     });
