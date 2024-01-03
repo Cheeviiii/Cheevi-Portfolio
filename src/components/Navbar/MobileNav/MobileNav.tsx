@@ -1,6 +1,8 @@
 import { HiXMark } from "react-icons/hi2";
 import { Button } from "../Button";
 import Link from "next/link";
+import { useDarkMode } from "@/context/ThemeProvider";
+import { FaMoon, FaSun } from "react-icons/fa";
 
 type MobileNavProps = {
   isOpen: boolean;
@@ -9,6 +11,8 @@ type MobileNavProps = {
 };
 
 export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
+  const { darkMode, toggleDarkMode } = useDarkMode();
+
   return (
     <div className={`${isOpen ? "block" : "hidden"} relative`}>
       <div className="flex items-center justify-center">
@@ -18,7 +22,7 @@ export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
           </Button>
 
           <div className="fixed inset-0 flex items-center justify-center p-5">
-            <div className="bg-gray-800 border border-gray-500 rounded-3xl w-[500px] p-5">
+            <div className="bg-white dark:bg-gray-800 border border-gray-500 rounded-3xl w-[500px] p-5">
               <ul className="flex-row">
                 {menu.map((item: any, index: any) => (
                   <li className="p-2 text-2xl font-medium border-b-2 cursor-pointer" key={index}>
@@ -27,6 +31,9 @@ export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
                     </Link>
                   </li>
                 ))}
+                <Button className="mt-5" onClick={toggleDarkMode}>
+                  {darkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
+                </Button>
               </ul>
             </div>
           </div>

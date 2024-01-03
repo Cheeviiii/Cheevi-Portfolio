@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
+import { DarkModeProvider, useDarkMode } from "@/context/ThemeProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -16,10 +17,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={roboto.className}>
-        {children}
-        <Analytics />
-      </body>
+      <DarkModeProvider>
+        <body className={roboto.className}>
+          {children}
+          <Analytics />
+        </body>
+      </DarkModeProvider>
     </html>
   );
 }

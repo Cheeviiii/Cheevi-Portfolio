@@ -1,10 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { Button } from "./Button";
 import { MobileNav } from "./MobileNav";
 import { scrollTo } from "@/lib/scrollTo";
+import { useDarkMode } from "@/context/ThemeProvider";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const menu = [
   { title: "Sobre", to: "#about" },
@@ -14,6 +16,7 @@ const menu = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,26 +29,22 @@ export function Navbar() {
   };
 
   return (
-    <header
-      className={`absolute rounded flex items-center m-auto justify-between lg:justify-around z-50 inset-x-0 duration-700 p-5`}
-    >
+    <header className={`absolute rounded flex items-center m-auto justify-between lg:justify-around z-50 inset-x-0 duration-700 p-5`}>
       <a className="text-2xl md:text-2xl font-bold text-red-200" href="/" aria-label="home">
         {"<diogo />"}
       </a>
       <ul className="gap-5 hidden xl:flex lg:p-2 ">
         {menu.map((item, index) => (
           <li
-            className="text-white text-xl font-bold cursor-pointer transition-all duration-200 hover:bg-white hover:text-black hover:rounded-full p-1 px-2"
+            className="text-black dark:text-white text-xl font-bold cursor-pointer transition-all duration-200 hover:bg-black hover:dark:bg-white hover:text-white hover:dark:text-black hover:rounded-full p-1 px-2"
             key={index}
           >
-            <a
-              onClick={() => scrollTo(item.to.substring(1))}
-              aria-label={item.title}
-            >
+            <a onClick={() => scrollTo(item.to.substring(1))} aria-label={item.title}>
               {item.title}
             </a>
           </li>
         ))}
+        <Button onClick={toggleDarkMode}>{darkMode ? <FaSun size={24} /> : <FaMoon size={24} />}</Button>
       </ul>
 
       <div className="relative flex xl:hidden">

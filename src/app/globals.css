@@ -2,10 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
-  background: #0f1011;
-  color: white;
+  @apply text-black bg-white dark:bg-[#0f1011] dark:text-white transition-colors;
 }
 
 ::-webkit-scrollbar {
