@@ -126,10 +126,10 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
   };
 
   return (
-    <form className="w-full" onSubmit={onCreateProject}>
+    <form className="w-full text-white" onSubmit={onCreateProject}>
       <div className="w-[750px] p-10 bg-gray-400 rounded-2xl">
         <div className="flex flex-col gap-1">
-          <label className="text-base font-bold uppercase">Nome do projeto</label>
+          <label className="text-base font-bold uppercase ">Nome do projeto</label>
           <input
             type="text"
             className="w-full bg-transparent text-white border border-gray-300 focus:border-white font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
@@ -153,7 +153,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
           <label className="text-base font-bold uppercase">Linguagens/Frameworks usados</label>
           <select className="bg-transparent border border-gray-300  p-2 focus:border-white" multiple value={selectedOptions} onChange={handleTypeChange}>
             {options.map((option, index) => (
-              <option key={index} value={option}>
+              <option className="text-white" key={index} value={option}>
                 {option}
               </option>
             ))}
@@ -161,7 +161,9 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
 
           <ul className="flex gap-2 mt-2">
             {selectedOptions.map((item, index) => (
-              <li key={index}>{item}</li>
+              <li className="text-white" key={index}>
+                {item}
+              </li>
             ))}
           </ul>
         </div>

@@ -5,8 +5,8 @@ import { HiBars3 } from "react-icons/hi2";
 import { Button } from "./Button";
 import { MobileNav } from "./MobileNav";
 import { scrollTo } from "@/lib/scrollTo";
-import { useDarkMode } from "@/context/ThemeProvider";
 import { FaSun, FaMoon } from "react-icons/fa";
+import DarkModeSwitch from "../DarkModeSwitch";
 
 const menu = [
   { title: "Sobre", to: "#about" },
@@ -16,7 +16,6 @@ const menu = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { darkMode, toggleDarkMode } = useDarkMode();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -44,7 +43,7 @@ export function Navbar() {
             </a>
           </li>
         ))}
-        <Button onClick={toggleDarkMode}>{darkMode ? <FaSun size={24} /> : <FaMoon size={24} />}</Button>
+        <DarkModeSwitch />
       </ul>
 
       <div className="relative flex xl:hidden">

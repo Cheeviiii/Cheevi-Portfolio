@@ -136,7 +136,7 @@ export function FormEditProject({ id }: FormProps) {
   return (
     <>
       {project ? (
-        <form className="w-full h-screen overflow-y-auto" onSubmit={onHandlePatch}>
+        <form className="w-full h-screen overflow-y-auto text-white" onSubmit={onHandlePatch}>
           <div className="w-[750px] m-auto p-auto p-10 py-10 bg-gray-400 border border-gray-300 rounded-xl">
             <div className="flex flex-col gap-1">
               <label className="text-base font-bold uppercase">Nome do projeto</label>

@@ -2,10 +2,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
-import { DarkModeProvider, useDarkMode } from "@/context/ThemeProvider";
+import { DarkModeProvider } from "@/context/ThemeProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
+  preload: true,
   weight: ["100", "300", "400", "500", "700", "900"],
 });
 
@@ -16,13 +17,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR">
-      <DarkModeProvider>
-        <body className={roboto.className}>
+    <html lang="pt-BR" className={roboto.className}>
+      <body>
+        <DarkModeProvider>
           {children}
           <Analytics />
-        </body>
-      </DarkModeProvider>
+        </DarkModeProvider>
+      </body>
     </html>
   );
 }

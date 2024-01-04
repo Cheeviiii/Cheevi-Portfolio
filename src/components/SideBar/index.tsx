@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { HiUser, HiClipboard } from "react-icons/hi2";
+import DarkModeSwitch from "../DarkModeSwitch";
 
 export default function Sidebar() {
   const [open, setOpen] = useState(true);
@@ -30,6 +31,8 @@ export default function Sidebar() {
           src="https://i.pinimg.com/originals/16/ab/c1/16abc1944e3b8971a7313aad627433af.jpg"
           alt="Image"
         />
+
+        <DarkModeSwitch />
 
         <div className="flex items-center justify-center my-10">
           <ul className="flex flex-col gap-5">

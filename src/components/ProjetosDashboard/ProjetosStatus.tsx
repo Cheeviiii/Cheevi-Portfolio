@@ -48,21 +48,21 @@ export function ProjetosStatus() {
 
   return (
     <div className="lg:max-w-full xl:max-w-[65%] m-auto flex flex-col md:flex-row gap-5 md:gap-0 items-center justify-around my-5 font-bold">
-      <div className="bg-black w-[250px] md:w-[200px] lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
+      <div className="bg-white dark:bg-black w-[250px] md:w-[200px] lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
         {Loading ? (
           <LoadingSpinner />
         ) : (
           <Status name="Postados" value={ProjetosPostados.length} />
         )}
       </div>
-      <div className="bg-black w-[250px] md:w-[200px] lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
+      <div className="bg-white dark:bg-black w-[250px] md:w-[200px] lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
         {Loading ? (
           <LoadingSpinner />
         ) : (
           <Status name="Não Postados" value={ProjetosNaoPostados.length} />
         )}
       </div>
-      <div className="bg-black w-[250px] md:w-[200px]  lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
+      <div className="bg-white dark:bg-black w-[250px] md:w-[200px]  lg:w-[250px] border border-gray-300 rounded-2xl text-center p-5">
         {Loading ? (
           <LoadingSpinner />
         ) : (
