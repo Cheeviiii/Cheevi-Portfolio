@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LoadingSpinner } from "../Loading";
+import { LoadingSpinner, ProjetoLoading } from "../Loading";
 import { ProjetoProps } from "@/types";
 import CardProjeto from "./CardProjeto";
 
@@ -44,7 +44,11 @@ export function Projetos() {
       </div>
 
       {Loading ? (
-        <LoadingSpinner />
+        <div className="grid  grid-rows-1 lg:grid-cols-4 gap-5 mt-5">
+          {Array.from({ length: 8 }, (_, index) => (
+            <ProjetoLoading key={index} />
+          ))}
+        </div>
       ) : (
         <>
           {projetosPublicados.length === 0 ? (
