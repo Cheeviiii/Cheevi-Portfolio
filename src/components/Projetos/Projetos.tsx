@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LoadingSpinner, ProjetoLoading } from "../Loading";
+import { ProjetoLoading } from "../Loading";
 import { ProjetoProps } from "@/types";
 import CardProjeto from "./CardProjeto";
 
@@ -21,11 +21,11 @@ export function Projetos() {
 
         if (!response.ok) {
           throw new Error("Erro na solicitação");
-        } else {
-          const data = await response.json();
-          setProjetos(data);
-          setLoading(false);
         }
+
+        const data = await response.json();
+        setProjetos(data);
+        setLoading(false);
       } catch (error) {
         console.error(error);
       }
@@ -34,10 +34,15 @@ export function Projetos() {
     getProjetos();
   }, []);
 
-  const projetosPublicados = projetos.filter((projetos) => projetos.published === true);
+  const projetosPublicados = projetos.filter(
+    (projetos) => projetos.published === true,
+  );
 
   return (
-    <section className="container m-auto p-auto flex flex-col items-center justify-center py-[156px]" id="projects">
+    <section
+      className="container m-auto p-auto flex flex-col items-center justify-center py-[156px]"
+      id="projects"
+    >
       <div className="w-full flex items-center pl-5 gap-[15px] md:gap-[5px]">
         <h1 className="text-3xl uppercase font-bold ">Projetos</h1>
         <div className="w-[180px] md:w-[522px] h-[2px] bg-red-100" />
@@ -52,12 +57,16 @@ export function Projetos() {
       ) : (
         <>
           {projetosPublicados.length === 0 ? (
-            <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
+            <h1 className="text-4xl font-bold py-10">
+              Nenhum projeto encontrado
+            </h1>
           ) : (
             <div className="grid grid-rows-1 lg:grid-cols-4 gap-5 mt-5">
-              {projetosPublicados.slice(0, 8).map((item: ProjetoProps, index) => (
-                <CardProjeto key={index} projeto={item} />
-              ))}
+              {projetosPublicados
+                .slice(0, 8)
+                .map((item: ProjetoProps, index) => (
+                  <CardProjeto key={index} projeto={item} />
+                ))}
             </div>
           )}
 

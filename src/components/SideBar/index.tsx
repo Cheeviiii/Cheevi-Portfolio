@@ -11,15 +11,30 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <div className={`${open ? "w-72" : "w-20"} hidden lg:block h-screen bg-gray-400 border-r border-gray-300 relative duration-700 transition-all`}>
+    <div
+      className={`${
+        open ? "w-72" : "w-20"
+      } hidden lg:block h-screen bg-gray-400 border-r border-gray-300 relative duration-700 transition-all`}
+    >
       <button
         className={`absolute rounded-full -right-3 top-9 w-7 border-2 bg-gray-400  border-white text-white  transition-all duration-700 hover:scale-110 ${
           open ? "rotate-180 " : ""
         }`}
         onClick={() => setOpen(!open)}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M8.25 4.5l7.5 7.5-7.5 7.5"
+          />
         </svg>
       </button>
 
@@ -32,7 +47,9 @@ export default function Sidebar() {
           alt="Image"
         />
 
-        <DarkModeSwitch />
+        <div className="mt-5">
+          <DarkModeSwitch />
+        </div>
 
         <div className="flex items-center justify-center my-10">
           <ul className="flex flex-col gap-5">
@@ -45,7 +62,13 @@ export default function Sidebar() {
               <div className="p-2 rounded-full">
                 <HiUser size={32} />
               </div>
-              <li className={`${open ? "scale-100" : "scale-50 hidden"} text-2xl font-medium`}>Dashboard</li>
+              <li
+                className={`${
+                  open ? "scale-100" : "scale-50 hidden"
+                } text-2xl font-medium`}
+              >
+                Dashboard
+              </li>
             </Link>
 
             <Link
@@ -57,7 +80,9 @@ export default function Sidebar() {
               <div className="p-2 rounded-full">
                 <HiClipboard size={32} />
               </div>
-              <li className={`${open ? "" : "hidden"} text-2xl font-medium`}>Projetos</li>
+              <li className={`${open ? "" : "hidden"} text-2xl font-medium`}>
+                Projetos
+              </li>
             </Link>
           </ul>
 
@@ -66,7 +91,14 @@ export default function Sidebar() {
             href="/api/auth/signout"
           >
             <div className="p-2 rounded-full">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-7 h-7 text-white"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -74,7 +106,9 @@ export default function Sidebar() {
                 />
               </svg>
             </div>
-            <p className={`${open ? "" : "hidden"} text-2xl font-medium`}>SIGN OUT</p>
+            <p className={`${open ? "" : "hidden"} text-2xl font-medium`}>
+              SIGN OUT
+            </p>
           </a>
         </div>
       </div>

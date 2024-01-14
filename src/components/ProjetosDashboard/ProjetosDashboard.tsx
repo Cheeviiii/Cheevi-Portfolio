@@ -5,6 +5,7 @@ import { CardProject } from ".";
 import { DeleteModal, ModalCreateProject } from "../Modals";
 import { LoadingSpinner } from "@/components/Loading";
 import { ProjetoProps } from "@/types";
+import { ToastError } from "@/lib/Toast";
 
 export function ProjetosDashboard() {
   const [projects, setProjects] = useState<ProjetoProps[]>([]);
@@ -31,6 +32,7 @@ export function ProjetosDashboard() {
       }
     } catch (error: any) {
       console.error(error);
+      ToastError(error.message);
     }
   };
 

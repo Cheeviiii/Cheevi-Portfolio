@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const ToastSuccess = (msg: string) => {
+const ToastSuccess = (msg: string) => {
   return toast.success(msg, {
     position: "top-right",
     autoClose: 5000,
@@ -12,7 +12,7 @@ export const ToastSuccess = (msg: string) => {
   });
 };
 
-export const ToastError = (msg: string) => {
+const ToastError = (msg: string) => {
   return toast.error(msg, {
     position: "top-right",
     autoClose: 5000,
@@ -23,3 +23,5 @@ export const ToastError = (msg: string) => {
     theme: "dark",
   });
 };
+
+export { ToastSuccess, ToastError };

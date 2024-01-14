@@ -1,7 +1,7 @@
 "use client";
 
 import { ToastSuccess } from "@/lib/Toast";
-import { useState } from "react";
+import React from "react";
 interface DeleteProps {
   isOpen: boolean;
   closeModal: () => void;
@@ -15,10 +15,10 @@ export function DeleteModal({
   closeModal,
   getProjects,
 }: DeleteProps) {
-  const [confirmText, setConfirmText] = useState("Confirmar");
+  const [loadingDelete, setLoadingDelete] = React.useState(false);
 
   const handleConfirm = async (id: string) => {
-    setConfirmText("Confirmando...");
+    setLoadingDelete(true);
     await fetch(`/api/projects/${id}`, {
       method: "DELETE",
       headers: {
@@ -27,7 +27,7 @@ export function DeleteModal({
     });
 
     ToastSuccess("Projeto deletado.");
-    setConfirmText("Confirmar");
+    setLoadingDelete(false);
     closeModal();
     getProjects();
   };
@@ -50,7 +50,7 @@ export function DeleteModal({
               className="bg-[#ff0000] text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-[#832424]"
               onClick={() => handleConfirm(id)}
             >
-              {confirmText}
+              {loadingDelete ? "Deletando..." : "Deletar"}
             </button>
             <button
               className="bg-blue-300 text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-blue-200"

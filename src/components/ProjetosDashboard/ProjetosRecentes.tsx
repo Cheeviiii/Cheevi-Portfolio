@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import { ToastError } from "@/lib/Toast";
 import { ProjetoProps } from "@/types";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 
 export function ProjetosRecentes() {
   const [Projetos, setProjetos] = useState<ProjetoProps[]>([]);
@@ -26,7 +26,7 @@ export function ProjetosRecentes() {
         }
       } catch (error: any) {
         console.error(error);
-        toast.error(error.message);
+        ToastError(error.message)
       }
     };
 

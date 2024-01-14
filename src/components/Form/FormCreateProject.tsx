@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import React from "react";
 import imageCompression from "browser-image-compression";
 import { ToastError, ToastSuccess } from "@/lib/Toast";
 import axios from "axios";
@@ -13,26 +13,29 @@ interface FormProps {
 }
 
 export function FormCreateProject({ closeModal, getProjects }: FormProps) {
-  const [image, setImage] = useState<string | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [buttonText, setButtonText] = useState("Enviar");
-  const [Repos, setRepos] = useState([]);
+  const [image, setImage] = React.useState<string | null>(null);
+  const [fileName, setFileName] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(false);
+  const [Repos, setRepos] = React.useState([]);
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [published, setPublished] = useState(false);
-  const [repository, setRepository] = useState("");
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [published, setPublished] = React.useState(false);
+  const [repository, setRepository] = React.useState("");
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     const getRepos = async () => {
-      const ReposResponse = await axios.get("https://api.github.com/users/cheeviz/repos", {
-        headers: {
-          Authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+      const ReposResponse = await axios.get(
+        "https://api.github.com/users/cheeviz/repos",
+        {
+          headers: {
+            Authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
+          },
         },
-      });
+      );
       const res = ReposResponse.data;
       const ReposURL = res.map((repo: any) => repo.html_url);
       setRepos(ReposURL);
@@ -46,7 +49,9 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
     if (file) {
       setFileName(file.name);
       try {
-        const compressedFile = await imageCompression(file, { maxSizeMB: 0.01 });
+        const compressedFile = await imageCompression(file, {
+          maxSizeMB: 0.01,
+        });
         const reader = new FileReader();
 
         reader.onloadend = () => {
@@ -72,10 +77,10 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
     setRepository(selectedValue);
   };
 
-  const onCreateProject = async (e: FormEvent) => {
+  const onCreateProject = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setButtonText("Enviando...");
+    setLoading(true);
 
     const dados = {
       title,
@@ -114,14 +119,17 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         ToastError(errorText || "Erro desconhecido.");
       }
 
-      setButtonText("Enviar");
+      setLoading(false);
     } catch (error) {
       console.error("Erro durante a solicitação", error);
     }
   };
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValues = Array.from(event.target.selectedOptions, (option) => option.value);
+    const selectedValues = Array.from(
+      event.target.selectedOptions,
+      (option) => option.value,
+    );
     setSelectedOptions(selectedValues);
   };
 
@@ -129,7 +137,9 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
     <form className="w-full text-white" onSubmit={onCreateProject}>
       <div className="w-[750px] p-10 bg-gray-400 rounded-2xl">
         <div className="flex flex-col gap-1">
-          <label className="text-base font-bold uppercase ">Nome do projeto</label>
+          <label className="text-base font-bold uppercase ">
+            Nome do projeto
+          </label>
           <input
             type="text"
             className="w-full bg-transparent text-white border border-gray-300 focus:border-white font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
@@ -140,7 +150,9 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
-          <label className="text-base font-bold uppercase">Descrição do projeto</label>
+          <label className="text-base font-bold uppercase">
+            Descrição do projeto
+          </label>
           <textarea
             className="h-[250px] resize-none bg-transparent text-white border border-gray-300 font-medium rounded p-2 transition-colors focus:outline-none focus:border-white placeholder:text-gray-300 shadow-xl"
             placeholder="Descrição bem legal"
@@ -150,8 +162,15 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="flex flex-col mt-5">
-          <label className="text-base font-bold uppercase">Linguagens/Frameworks usados</label>
-          <select className="bg-transparent border border-gray-300  p-2 focus:border-white" multiple value={selectedOptions} onChange={handleTypeChange}>
+          <label className="text-base font-bold uppercase">
+            Linguagens/Frameworks usados
+          </label>
+          <select
+            className="bg-transparent border border-gray-300  p-2 focus:border-white"
+            multiple
+            value={selectedOptions}
+            onChange={handleTypeChange}
+          >
             {options.map((option, index) => (
               <option className="text-white" key={index} value={option}>
                 {option}
@@ -169,7 +188,9 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
-          <label className="text-base font-bold uppercase">Imagem do projeto</label>
+          <label className="text-base font-bold uppercase">
+            Imagem do projeto
+          </label>
           <div className="flex items-center gap-2 bg-transparent border border-gray-300 rounded p-2">
             <button
               type="button"
@@ -181,11 +202,21 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
             {fileName ? (
               <span className="text-lg font-medium text-white">{fileName}</span>
             ) : (
-              <span className="text-lg font-medium text-gray-300">Nenhum arquivo</span>
+              <span className="text-lg font-medium text-gray-300">
+                Nenhum arquivo
+              </span>
             )}
           </div>
-          <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" ref={fileInputRef} />
-          <p className="mt-1 text-sm font-medium text-gray-300">SVG, PNG, JPG</p>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            className="hidden"
+            ref={fileInputRef}
+          />
+          <p className="mt-1 text-sm font-medium text-gray-300">
+            SVG, PNG, JPG
+          </p>
         </div>
 
         {image && (
@@ -195,13 +226,24 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         )}
 
         <div className="flex mt-5">
-          <label className="text-base font-bold uppercase">Deixar publico?</label>
-          <input type="checkbox" className="w-12" checked={published} onChange={() => setPublished(!published)} />
+          <label className="text-base font-bold uppercase">
+            Deixar publico?
+          </label>
+          <input
+            type="checkbox"
+            className="w-12"
+            checked={published}
+            onChange={() => setPublished(!published)}
+          />
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
           <label className="text-base font-bold uppercase">Repositório</label>
-          <select onChange={handleSelectChange} value={repository || ""} className="bg-transparent border border-gray-300  p-2 focus:border-white">
+          <select
+            onChange={handleSelectChange}
+            value={repository || ""}
+            className="bg-transparent border border-gray-300  p-2 focus:border-white"
+          >
             <option value="" className="bg-gray-400" disabled>
               Escolha um repositório
             </option>
@@ -214,8 +256,11 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="w-full flex items-center justify-center mt-5">
-          <button type="submit" className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase">
-            {buttonText}
+          <button
+            type="submit"
+            className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase"
+          >
+            {loading ? "Criando..." : "Criar"}
           </button>
         </div>
       </div>
