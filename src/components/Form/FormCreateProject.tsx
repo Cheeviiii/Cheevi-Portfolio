@@ -28,14 +28,11 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
 
   React.useEffect(() => {
     const getRepos = async () => {
-      const ReposResponse = await axios.get(
-        "https://api.github.com/users/cheeviz/repos",
-        {
-          headers: {
-            Authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
-          },
+      const ReposResponse = await axios.get("https://api.github.com/users/cheeviz/repos", {
+        headers: {
+          Authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_TOKEN}`,
         },
-      );
+      });
       const res = ReposResponse.data;
       const ReposURL = res.map((repo: any) => repo.html_url);
       setRepos(ReposURL);
@@ -126,23 +123,15 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
   };
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValues = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value,
-    );
+    const selectedValues = Array.from(event.target.selectedOptions, (option) => option.value);
     setSelectedOptions(selectedValues);
   };
 
   return (
-    <form
-      className="w-[100%] text-black dark:text-white"
-      onSubmit={onCreateProject}
-    >
+    <form className="w-[100%] text-black dark:text-white" onSubmit={onCreateProject}>
       <div className="w-[750px] p-10">
         <div className="flex flex-col gap-1">
-          <label className="text-base font-bold uppercase ">
-            Nome do projeto
-          </label>
+          <label className="text-base font-bold uppercase ">Nome do projeto</label>
           <input
             type="text"
             className="w-full bg-transparent text-black dark:text-white border border-gray-300 focus:border-gray-400 dark:focus:border-white font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
@@ -153,9 +142,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
-          <label className="text-base font-bold uppercase">
-            Descrição do projeto
-          </label>
+          <label className="text-base font-bold uppercase">Descrição do projeto</label>
           <textarea
             className="h-[250px] resize-none bg-transparent text-black dark:text-white border border-gray-300 focus:border-gray-400  font-medium rounded p-2 transition-colors focus:outline-none dark:focus:border-white placeholder:text-gray-300 shadow-xl"
             placeholder="Descrição bem legal"
@@ -165,21 +152,10 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="flex flex-col mt-5">
-          <label className="text-base font-bold uppercase">
-            Linguagens/Frameworks usados
-          </label>
-          <select
-            className="bg-transparent border border-gray-300  p-2 focus:border-white"
-            multiple
-            value={selectedOptions}
-            onChange={handleTypeChange}
-          >
+          <label className="text-base font-bold uppercase">Linguagens/Frameworks usados</label>
+          <select className="bg-transparent border border-gray-300  p-2 focus:border-white" multiple value={selectedOptions} onChange={handleTypeChange}>
             {options.map((option, index) => (
-              <option
-                className="text-black dark:text-white"
-                key={index}
-                value={option}
-              >
+              <option className="text-black dark:text-white" key={index} value={option}>
                 {option}
               </option>
             ))}
@@ -195,35 +171,15 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
-          <label className="text-base font-bold uppercase">
-            Imagem do projeto
-          </label>
+          <label className="text-base font-bold uppercase">Imagem do projeto</label>
           <div className="flex items-center gap-2 bg-transparent border border-gray-300 rounded p-2">
-            <button
-              type="button"
-              className="w-[150px] p-2 rounded bg-blue-300 text-white font-medium transition-colors hover:bg-blue-200"
-              onClick={handleButtonClick}
-            >
+            <button type="button" className="w-[150px] p-2 rounded bg-blue-300 text-white font-medium transition-colors hover:bg-blue-200" onClick={handleButtonClick}>
               Escolher Arquivo
             </button>
-            {fileName ? (
-              <span className="text-lg font-medium text-white">{fileName}</span>
-            ) : (
-              <span className="text-lg font-medium text-gray-300">
-                Nenhum arquivo
-              </span>
-            )}
+            {fileName ? <span className="text-lg font-medium text-white">{fileName}</span> : <span className="text-lg font-medium text-gray-300">Nenhum arquivo</span>}
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="hidden"
-            ref={fileInputRef}
-          />
-          <p className="mt-1 text-sm font-medium text-gray-300">
-            SVG, PNG, JPG
-          </p>
+          <input type="file" accept="image/*" onChange={handleFileChange} className="hidden" ref={fileInputRef} />
+          <p className="mt-1 text-sm font-medium text-gray-300">SVG, PNG, JPG</p>
         </div>
 
         {image && (
@@ -233,24 +189,13 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         )}
 
         <div className="flex mt-5">
-          <label className="text-base font-bold uppercase">
-            Deixar publico?
-          </label>
-          <input
-            type="checkbox"
-            className="w-12"
-            checked={published}
-            onChange={() => setPublished(!published)}
-          />
+          <label className="text-base font-bold uppercase">Deixar publico?</label>
+          <input type="checkbox" className="w-12" checked={published} onChange={() => setPublished(!published)} />
         </div>
 
         <div className="flex flex-col gap-1 mt-5">
           <label className="text-base font-bold uppercase">Repositório</label>
-          <select
-            onChange={handleSelectChange}
-            value={repository || ""}
-            className="bg-transparent border border-gray-300  p-2 focus:border-white"
-          >
+          <select onChange={handleSelectChange} value={repository || ""} className="bg-transparent border border-gray-300  p-2 focus:border-white">
             <option value="" className="bg-gray-400" disabled>
               Escolha um repositório
             </option>
@@ -263,11 +208,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         </div>
 
         <div className="w-full flex items-center justify-center mt-5">
-          <button
-            type="submit"
-            className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase"
-            disabled={loading}
-          >
+          <button type="submit" className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase" disabled={loading}>
             {loading ? "Criando..." : "Criar"}
           </button>
         </div>

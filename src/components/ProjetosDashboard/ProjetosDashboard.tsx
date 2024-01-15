@@ -72,21 +72,10 @@ export function ProjetosDashboard() {
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      <DeleteDialog
-        isOpen={OpenDeleteDialog}
-        closeModal={DeleteDialogClose}
-        id={idProject}
-        getProjects={getProjects}
-      />
+      <DeleteDialog isOpen={OpenDeleteDialog} closeModal={DeleteDialogClose} id={idProject} getProjects={getProjects} />
 
-      <ModalCreateProject
-        isOpen={CreateModal}
-        closeModal={OpenAndCloseCreateModal}
-      >
-        <FormCreateProject
-          closeModal={OpenAndCloseCreateModal}
-          getProjects={getProjects}
-        />
+      <ModalCreateProject isOpen={CreateModal} closeModal={OpenAndCloseCreateModal}>
+        <FormCreateProject closeModal={OpenAndCloseCreateModal} getProjects={getProjects} />
       </ModalCreateProject>
 
       <ModalViewProject isOpen={ViewModal} closeModal={ViewModalClose}>
@@ -94,10 +83,7 @@ export function ProjetosDashboard() {
       </ModalViewProject>
 
       <div className="h-full flex flex-col gap-5 overflow-y-auto">
-        <button
-          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-red-900 transition-colors hover:bg-red-500"
-          onClick={OpenAndCloseCreateModal}
-        >
+        <button className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-red-900 transition-colors hover:bg-red-500" onClick={OpenAndCloseCreateModal}>
           Criar projeto
         </button>
         {loading ? (
@@ -105,15 +91,9 @@ export function ProjetosDashboard() {
         ) : (
           <div>
             {projects.length > 0 ? (
-              <TableProjetos
-                Projetos={projects}
-                onDelete={onDelete}
-                viewModal={OpenViewModal}
-              />
+              <TableProjetos Projetos={projects} onDelete={onDelete} viewModal={OpenViewModal} />
             ) : (
-              <h1 className="text-2xl font-medium">
-                Nenhum projeto encontrado!
-              </h1>
+              <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
             )}
           </div>
         )}

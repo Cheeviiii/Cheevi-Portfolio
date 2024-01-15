@@ -4,7 +4,7 @@
 
 import { ProjetoProps } from "@/types";
 import React from "react";
-import { LoadingSpinner } from "../Loading";
+import { LoadingCard } from "../Loading";
 
 interface CardProps {
   id: string;
@@ -32,15 +32,10 @@ export function CardProject({ id }: CardProps) {
     getProject(id);
   }, [id]);
 
-  const noRepo =
-    projeto?.repository === ""
-      ? "opacity-25 cursor-not-allowed"
-      : "opacity-100";
-
   return (
     <>
       {Loading ? (
-        <LoadingSpinner />
+        <LoadingCard />
       ) : (
         <div className="border border-gray-300 text-twhite dark:text-white rounded-xl flex flex-col items-center justify-between p-5 gap-5">
           <div className="w-full flex flex-col gap-5">
@@ -66,13 +61,15 @@ export function CardProject({ id }: CardProps) {
           </div>
 
           <div className="w-full flex gap-2 md:left-0 mt-3">
-            <a
-              href={projeto?.repository}
-              target="_blank"
-              className={`${noRepo} bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors shadow-lg`}
-            >
-              repositório
-            </a>
+            {projeto?.repository ? (
+              <a href={projeto?.repository} target="_blank" className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300">
+                Repositório
+              </a>
+            ) : (
+              <button className="bg-gray-300 opacity-25 cursor-not-allowed mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors" disabled={true}>
+                Sem Repositório
+              </button>
+            )}
           </div>
         </div>
       )}
