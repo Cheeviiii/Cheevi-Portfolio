@@ -1,18 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { CardProject } from ".";
-import { DeleteModal, ModalCreateProject } from "../Modals";
+import React from "react";
+import { ModalCreateProject, ModalViewProject } from "@/components/Modal";
 import { LoadingSpinner } from "@/components/Loading";
 import { ProjetoProps } from "@/types";
 import { ToastError } from "@/lib/Toast";
+import { TableProjetos } from "./TableProjetos";
+import { DeleteDialog } from "@/components/Dialog";
+import { FormCreateProject } from "@/components/Form";
+import { CardProject } from ".";
 
 export function ProjetosDashboard() {
-  const [projects, setProjects] = useState<ProjetoProps[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
-  const [OpenCreateModal, setCreateOpenModal] = useState(false);
-  const [idDelete, setIDDelete] = useState("");
+  const [projects, setProjects] = React.useState<ProjetoProps[]>([]);
+  const [loading, setLoading] = React.useState(true);
+  const [idProject, setIDProject] = React.useState("");
+
+  //Modal and Dialog States
+  const [OpenDeleteDialog, setDeleteDialog] = React.useState(false);
+  const [CreateModal, setCreateModal] = React.useState(false);
+  const [ViewModal, setViewModal] = React.useState(false);
 
   const getProjects = async () => {
     try {
@@ -36,34 +42,61 @@ export function ProjetosDashboard() {
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     getProjects();
   }, []);
 
   const onDelete = async (id: string) => {
-    setIsOpen(!isOpen);
-    setIDDelete(id);
-    getProjects();
+    setDeleteDialog(!OpenDeleteDialog);
+    setIDProject(id);
   };
 
-  const OpenModalCreate = () => {
-    setCreateOpenModal(!OpenCreateModal);
+  const DeleteDialogClose = () => {
+    setDeleteDialog(!DeleteDialog);
+    setIDProject("");
   };
 
-  const closeModal = () => {
-    setIsOpen(!isOpen);
-    setIDDelete("");
+  const OpenAndCloseCreateModal = () => {
+    setCreateModal(!CreateModal);
+  };
+
+  const OpenViewModal = (id: string) => {
+    setViewModal(!ViewModal);
+    setIDProject(id);
+  };
+
+  const ViewModalClose = () => {
+    setViewModal(!ViewModal);
+    setIDProject("");
   };
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      <DeleteModal isOpen={isOpen} closeModal={closeModal} id={idDelete} getProjects={getProjects} />
-      <ModalCreateProject isOpen={OpenCreateModal} closeModal={OpenModalCreate} getProjects={getProjects} />
+      <DeleteDialog
+        isOpen={OpenDeleteDialog}
+        closeModal={DeleteDialogClose}
+        id={idProject}
+        getProjects={getProjects}
+      />
+
+      <ModalCreateProject
+        isOpen={CreateModal}
+        closeModal={OpenAndCloseCreateModal}
+      >
+        <FormCreateProject
+          closeModal={OpenAndCloseCreateModal}
+          getProjects={getProjects}
+        />
+      </ModalCreateProject>
+
+      <ModalViewProject isOpen={ViewModal} closeModal={ViewModalClose}>
+        <CardProject id={idProject} />
+      </ModalViewProject>
 
       <div className="h-full flex flex-col gap-5 overflow-y-auto">
         <button
-          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-blue-300 transition-colors hover:bg-blue-200"
-          onClick={OpenModalCreate}
+          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-red-900 transition-colors hover:bg-red-500"
+          onClick={OpenAndCloseCreateModal}
         >
           Criar projeto
         </button>
@@ -72,13 +105,15 @@ export function ProjetosDashboard() {
         ) : (
           <div>
             {projects.length > 0 ? (
-              <div className="grid grid-row-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
-                {projects.map((item, index) => (
-                  <CardProject key={index} projeto={item} onDelete={onDelete} />
-                ))}
-              </div>
+              <TableProjetos
+                Projetos={projects}
+                onDelete={onDelete}
+                viewModal={OpenViewModal}
+              />
             ) : (
-              <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
+              <h1 className="text-2xl font-medium">
+                Nenhum projeto encontrado!
+              </h1>
             )}
           </div>
         )}

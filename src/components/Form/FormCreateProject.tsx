@@ -8,7 +8,7 @@ import axios from "axios";
 import { options } from ".";
 
 interface FormProps {
-  closeModal: () => void;
+  closeModal: any;
   getProjects: () => void;
 }
 
@@ -134,15 +134,18 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
   };
 
   return (
-    <form className="w-full text-white" onSubmit={onCreateProject}>
-      <div className="w-[750px] p-10 bg-gray-400 rounded-2xl">
+    <form
+      className="w-[100%] text-black dark:text-white"
+      onSubmit={onCreateProject}
+    >
+      <div className="w-[750px] p-10">
         <div className="flex flex-col gap-1">
           <label className="text-base font-bold uppercase ">
             Nome do projeto
           </label>
           <input
             type="text"
-            className="w-full bg-transparent text-white border border-gray-300 focus:border-white font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
+            className="w-full bg-transparent text-black dark:text-white border border-gray-300 focus:border-gray-400 dark:focus:border-white font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
             placeholder="Portfolio Pessoal"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -154,7 +157,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
             Descrição do projeto
           </label>
           <textarea
-            className="h-[250px] resize-none bg-transparent text-white border border-gray-300 font-medium rounded p-2 transition-colors focus:outline-none focus:border-white placeholder:text-gray-300 shadow-xl"
+            className="h-[250px] resize-none bg-transparent text-black dark:text-white border border-gray-300 focus:border-gray-400  font-medium rounded p-2 transition-colors focus:outline-none dark:focus:border-white placeholder:text-gray-300 shadow-xl"
             placeholder="Descrição bem legal"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
@@ -172,7 +175,11 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
             onChange={handleTypeChange}
           >
             {options.map((option, index) => (
-              <option className="text-white" key={index} value={option}>
+              <option
+                className="text-black dark:text-white"
+                key={index}
+                value={option}
+              >
                 {option}
               </option>
             ))}
@@ -180,7 +187,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
 
           <ul className="flex gap-2 mt-2">
             {selectedOptions.map((item, index) => (
-              <li className="text-white" key={index}>
+              <li className="text-black dark:text-white" key={index}>
                 {item}
               </li>
             ))}
@@ -194,7 +201,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
           <div className="flex items-center gap-2 bg-transparent border border-gray-300 rounded p-2">
             <button
               type="button"
-              className="w-[150px] p-2 rounded bg-blue-300 text-white-300 font-medium transition-colors hover:bg-blue-200"
+              className="w-[150px] p-2 rounded bg-blue-300 text-white font-medium transition-colors hover:bg-blue-200"
               onClick={handleButtonClick}
             >
               Escolher Arquivo
@@ -259,6 +266,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
           <button
             type="submit"
             className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase"
+            disabled={loading}
           >
             {loading ? "Criando..." : "Criar"}
           </button>

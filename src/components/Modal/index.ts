@@ -1,2 +1,2 @@
-export { DeleteModal } from "./DeleteModal";
 export { ModalCreateProject } from "./ModalCreateProject";
+export { ModalViewProject } from "./ModalViewProject";

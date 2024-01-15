@@ -9,7 +9,7 @@ interface DeleteProps {
   id: string;
 }
 
-export function DeleteModal({
+export function DeleteDialog({
   isOpen,
   id,
   closeModal,
@@ -47,10 +47,10 @@ export function DeleteModal({
           </h1>
           <div className="absolute bottom-0 my-4 flex gap-5">
             <button
-              className="bg-[#ff0000] text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-[#832424]"
-              onClick={() => handleConfirm(id)}
+              className="bg-gray-300 text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-[#832424]"
+              onClick={() => handleConfirm(id)} disabled={loadingDelete}
             >
-              {loadingDelete ? "Deletando..." : "Deletar"}
+              {loadingDelete ? "Deletando..." : "Continuar"}
             </button>
             <button
               className="bg-blue-300 text-white text-xl font-medium p-2 px-5 rounded transition-colors hover:bg-blue-200"
