@@ -1,36 +1,16 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-
-import { ProjetoProps } from "@/types";
 import React from "react";
 import { LoadingCard } from "../Loading";
+import { useFetchProjectID } from "@/hooks/useFetchProjects";
 
 interface CardProps {
   id: string;
 }
 
 export function CardProject({ id }: CardProps) {
-  const [projeto, setProjeto] = React.useState<ProjetoProps>();
-  const [Loading, setLoading] = React.useState<Boolean>(false);
-
-  const getProject = async (id: string) => {
-    setLoading(true);
-    const response = await fetch(`/api/projects/${id}`, {
-      method: "GET",
-      headers: {
-        "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
-      },
-    });
-
-    const data = await response.json();
-    setProjeto(data);
-    setLoading(false);
-  };
-
-  React.useEffect(() => {
-    getProject(id);
-  }, [id]);
+  const { Project, Loading } = useFetchProjectID(id);
 
   return (
     <>
@@ -42,27 +22,27 @@ export function CardProject({ id }: CardProps) {
             <img
               className="w-[100%] h-[25rem] rounded-xl shadow-lg border border-gray-300"
               src={
-                projeto?.image == ""
+                Project?.image == ""
                   ? "https://www.pallenz.co.nz/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
-                  : projeto?.image
+                  : Project?.image
               }
-              alt={projeto?.title}
+              alt={Project?.title}
             />
-            <h1 className="text-3xl font-bold text-left">{projeto?.title}</h1>
+            <h1 className="text-3xl font-bold text-left">{Project?.title}</h1>
 
             <div className="w-full flex items-start gap-2">
-              {projeto?.types?.map((type, index) => (
+              {Project?.types?.map((type, index) => (
                 <p className="bg-red-200 p-1 rounded text-white" key={index}>
                   {type}
                 </p>
               ))}
             </div>
-            <p className="text-lg font-medium">{projeto?.description}</p>
+            <p className="text-lg font-medium">{Project?.description}</p>
           </div>
 
           <div className="w-full flex gap-2 md:left-0 mt-3">
-            {projeto?.repository ? (
-              <a href={projeto?.repository} target="_blank" className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300">
+            {Project?.repository ? (
+              <a href={Project?.repository} target="_blank" className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300">
                 Repositório
               </a>
             ) : (

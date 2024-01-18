@@ -108,8 +108,8 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
         setRepository("");
         setSelectedOptions([]);
 
-        getProjects();
         closeModal();
+        getProjects();
       } else {
         const errorText = await response.text();
         console.log("Erro na solicitação", response.status);
