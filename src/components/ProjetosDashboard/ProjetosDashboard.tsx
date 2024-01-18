@@ -8,40 +8,11 @@ import { DeleteDialog } from "@/components/Dialog";
 import { FormCreateProject } from "@/components/Form";
 import { CardProject } from ".";
 import { useFetchProject } from "@/hooks/useFetchProjects";
+import useProjectModals from "@/hooks/useProjectsModal";
 
 export function ProjetosDashboard() {
-  const [idProject, setIDProject] = React.useState("");
-
-  //Modal and Dialog States
-  const [OpenDeleteDialog, setDeleteDialog] = React.useState(false);
-  const [CreateModal, setCreateModal] = React.useState(false);
-  const [ViewModal, setViewModal] = React.useState(false);
-
   const { Projects, Loading, updateProjects } = useFetchProject();
-
-  const onDelete = async (id: string) => {
-    setDeleteDialog(!OpenDeleteDialog);
-    setIDProject(id);
-  };
-
-  const DeleteDialogClose = () => {
-    setDeleteDialog(!DeleteDialog);
-    setIDProject("");
-  };
-
-  const OpenAndCloseCreateModal = () => {
-    setCreateModal(!CreateModal);
-  };
-
-  const OpenViewModal = (id: string) => {
-    setViewModal(!ViewModal);
-    setIDProject(id);
-  };
-
-  const ViewModalClose = () => {
-    setViewModal(!ViewModal);
-    setIDProject("");
-  };
+  const { OpenDeleteDialog, CreateModal, ViewModal, idProject, onDelete, DeleteDialogClose, OpenAndCloseCreateModal, OpenViewModal, ViewModalClose } = useProjectModals();
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
