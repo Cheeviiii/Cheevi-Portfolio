@@ -6,6 +6,7 @@ import { Projetos } from "@/components/Projetos";
 import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/Scroll";
 
 export default function Home() {
   useEffect(() => {
@@ -21,6 +22,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <ScrollToTop />
       <main className="w-full m-auto p-auto" id="home">
         <About />
         <Projetos />
