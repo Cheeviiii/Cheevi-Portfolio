@@ -27,7 +27,7 @@ export function Projetos() {
           {projetosPublicados.length === 0 ? (
             <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
           ) : (
-            <div className="grid grid-rows-1 lg:grid-cols-4 gap-5 mt-5">
+            <div className="grid grid-rows-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 mt-5">
               {projetosPublicados.slice(0, 8).map((item: ProjetoProps, index) => (
                 <CardProjeto key={index} projeto={item} />
               ))}
