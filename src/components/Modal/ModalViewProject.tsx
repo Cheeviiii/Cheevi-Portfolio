@@ -3,17 +3,14 @@
 import { ScrollArea } from "../ui/scroll-area";
 
 interface CreateProjectProps {
-  isOpen: boolean;
   closeModal: () => void;
   children: React.ReactNode;
 }
 
-export function ModalViewProject({ isOpen, closeModal, children }: CreateProjectProps) {
-  const open = isOpen ? "absolute w-full flex items-center justify-center bg-[#00000069] backdrop-blur-sm inset-0 z-10" : "absolute h-0 opacity-0";
-  const scale = isOpen ? "scale-100" : "scale-0";
+export function ModalViewProject({ closeModal, children }: CreateProjectProps) {
   return (
-    <div className={open}>
-      <div className={`duration-500 transition ${scale} bg-white dark:bg-gray-400 w-[50%] border border-gray-300 p-5 m-auto p-auto rounded-2xl shadow-2xl`}>
+    <div className="absolute w-full flex items-center justify-center bg-[#00000069] backdrop-blur-sm inset-0 z-10">
+      <div className="duration-500 transition bg-white dark:bg-gray-400 w-[50%] border border-gray-300 p-5 m-auto p-auto rounded-2xl shadow-2xl">
         <button className="bg-red-200 text-white my-2 p-2 px-5 text-base uppercase font-bold rounded-xl hover:bg-red-100" onClick={closeModal}>
           fechar
         </button>
