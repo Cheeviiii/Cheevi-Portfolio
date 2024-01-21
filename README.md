@@ -31,8 +31,6 @@ cd portfolio
 3. **Instale as dependências:**
 
 ```bash
-yarn install
-# ou
 npm install
 ```
 
@@ -52,8 +50,6 @@ DATABASE_URL=URL_DO_POSTGRES
 5. **Inicie o servidor de desenvolvimento:**
 
 ```bash
-yarn run start
-# ou
 npm run start
 ```
 
