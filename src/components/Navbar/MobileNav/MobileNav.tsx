@@ -29,7 +29,9 @@ export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
                     </Link>
                   </li>
                 ))}
-                <DarkModeSwitch />
+                <li className="p-2">
+                  <DarkModeSwitch />
+                </li>
               </ul>
             </div>
           </div>

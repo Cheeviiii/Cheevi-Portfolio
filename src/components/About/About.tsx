@@ -5,7 +5,7 @@ import { scrollTo } from "@/lib/scrollTo";
 
 export function About() {
   return (
-    <section className="relative w-full h-[50rem] md:h-[60rem] lg:h-[50rem] bg-cover bg-no-repeat flex justify-center" id="about">
+    <section className="relative w-full h-[50rem] md:h-[60rem] lg:h-[50rem] bg-cover bg-no-repeat flex justify-center mb-[156px]" id="about">
       <div className="relative md:w-2/3 flex flex-col gap-5 md:gap-10 md:flex-row items-center justify-center md:justify-between text-center md:text-left inset-0 z-20">
         <div className="w-full flex flex-col items-center md:items-start">
           <p className="text-3xl xl:text-4xl font-medium tracking-wider text-red-200">Olá, eu sou</p>
