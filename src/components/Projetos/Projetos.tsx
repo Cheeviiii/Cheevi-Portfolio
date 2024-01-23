@@ -5,12 +5,44 @@ import { ProjetoProps } from "@/types";
 import CardProjeto from "./CardProjeto";
 import { useFetchProject } from "@/hooks/useFetchProjects";
 import React from "react";
+import { Button } from "../ui/button";
 
 export function Projetos() {
   const [numberPage, setNumberPage] = React.useState(8);
+  const [Filtro, setFiltro] = React.useState("");
 
   const { Projects, Loading } = useFetchProject();
+
   const projetosPublicados = Projects.filter((projetos) => projetos.published === true);
+  const projetosFiltrados = projetosPublicados.filter((projeto) => projeto.types.find((type) => type === Filtro));
+
+  const handleFiltro = (name: string) => {
+    setFiltro(name);
+  };
+
+  const filtroActive = (name: string) => {
+    return `${
+      Filtro === name
+        ? "bg-red-900 hover:bg-red-900 text-white"
+        : "bg-[#2b2b2b] hover:bg-[#000] dark:bg-[#252729] text-white"
+    }`;
+  };
+
+  const Buttons = () => {
+    return (
+      <>
+        {projetosPublicados.length >= numberPage ? (
+          <Button onClick={() => setNumberPage(numberPage + 8)} className="mt-10 text-xl">
+            Mais projetos
+          </Button>
+        ) : (
+          <Button onClick={() => setNumberPage(numberPage - 8)} className="mt-10 text-xl">
+            Menos projetos
+          </Button>
+        )}
+      </>
+    );
+  };
 
   return (
     <section className="container m-auto p-auto flex flex-col items-center justify-center pt-10" id="projects">
@@ -27,23 +59,44 @@ export function Projetos() {
         </div>
       ) : (
         <>
+          <div className="flex gap-5 p-5">
+            <Button className={`${filtroActive("")}`} onClick={() => handleFiltro("")}>
+              Todos
+            </Button>
+            <Button className={`${filtroActive("React")}`} onClick={() => handleFiltro("React")}>
+              React
+            </Button>
+            <Button className={`${filtroActive("Next")}`} onClick={() => handleFiltro("Next")}>
+              Next
+            </Button>
+            <Button className={`${filtroActive("Vite")}`} onClick={() => handleFiltro("Vite")}>
+              Vite
+            </Button>
+          </div>
           {projetosPublicados.length === 0 ? (
             <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
           ) : (
             <div className="grid grid-rows-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 mt-5">
-              {projetosPublicados.slice(0, numberPage).map((item: ProjetoProps, index) => (
-                <CardProjeto key={index} projeto={item} />
-              ))}
+              {Filtro === "" ? (
+                <>
+                  {projetosPublicados.slice(0, numberPage).map((item: ProjetoProps, index) => (
+                    <CardProjeto key={index} projeto={item} />
+                  ))}
+                </>
+              ) : (
+                <>
+                  {projetosFiltrados.slice(0, numberPage).map((item: ProjetoProps, index) => (
+                    <CardProjeto key={index} projeto={item} />
+                  ))}
+                </>
+              )}
             </div>
           )}
 
-          {projetosPublicados.length > 8 ? (
-            <button
-              onClick={() => setNumberPage(numberPage + 8)}
-              className="text-xl font-bold text-white bg-red-200 p-2 px-5 rounded-lg cursor-pointer transition-colors hover:bg-red-100 mt-10 uppercase"
-            >
-              Mais projetos
-            </button>
+          {Filtro === "" && projetosPublicados.length > 8 ? (
+            <Buttons />
+          ) : Filtro !== "" && projetosFiltrados.length > 8 ? (
+            <Buttons />
           ) : null}
         </>
       )}

@@ -14,7 +14,11 @@ const DarkModeSwitch = () => {
     return null;
   }
 
-  return <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>{theme === "dark" ? <FaSun size={24} /> : <FaMoon size={24} />}</button>;
+  return (
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      {theme === "dark" ? <FaSun size={24} /> : <FaMoon size={24} />}
+    </button>
+  );
 };
 
 export default DarkModeSwitch;

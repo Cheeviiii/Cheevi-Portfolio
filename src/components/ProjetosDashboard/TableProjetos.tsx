@@ -28,7 +28,9 @@ export function TableProjetos({ Projetos, onDelete, viewModal }: TableProps) {
             <TableCell>{index + 1}</TableCell>
             <TableCell className="font-medium text-lg">{item.title}</TableCell>
             <TableCell>
-              <p className={`${item.published ? "text-green-500" : "text-red-500"} font-bold text-base`}>{item.published ? "Publicado" : "Não Publicado"}</p>
+              <p className={`${item.published ? "text-green-500" : "text-red-500"} font-bold text-base`}>
+                {item.published ? "Publicado" : "Não Publicado"}
+              </p>
             </TableCell>
             <TableCell className="w-[50px] flex gap-2">
               {item.types.slice(0, 5).map((type, index) => (
