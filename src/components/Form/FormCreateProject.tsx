@@ -6,6 +6,7 @@ import imageCompression from "browser-image-compression";
 import useFetchRepos from "@/hooks/useFetchRepos";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ProjetoProps } from "@/types";
+import { ToastSuccess } from "@/lib/Toast";
 
 interface FormProps {
   closeModal: any;
@@ -80,6 +81,7 @@ export function FormCreateProject({ closeModal, getProjects }: FormProps) {
       });
 
       if (res.ok) {
+        ToastSuccess("Projeto criado com sucesso.");
         closeModal();
         getProjects();
       }
