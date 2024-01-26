@@ -6,6 +6,7 @@ import CardProjeto from "./CardProjeto";
 import { useFetchProject } from "@/hooks/useFetchProjects";
 import React from "react";
 import { Button } from "../ui/button";
+import { FilterOptions } from ".";
 
 export function Projetos() {
   const [numberPage, setNumberPage] = React.useState(8);
@@ -14,7 +15,9 @@ export function Projetos() {
   const { Projects, Loading } = useFetchProject();
 
   const projetosPublicados = Projects.filter((projetos) => projetos.published === true);
-  const projetosFiltrados = projetosPublicados.filter((projeto) => projeto.types.find((type) => type === Filtro));
+  const projetosFiltrados = projetosPublicados.filter((projeto) =>
+    projeto.types.find((type: string) => type === Filtro),
+  );
 
   const handleFiltro = (name: string) => {
     setFiltro(name);
@@ -32,11 +35,11 @@ export function Projetos() {
     return (
       <>
         {projetosPublicados.length >= numberPage ? (
-          <Button onClick={() => setNumberPage(numberPage + 8)} className="mt-10 text-xl">
+          <Button onClick={() => setNumberPage(numberPage + 8)} className="bg-red-900 hover:bg-red-500 mt-10 text-xl">
             Mais projetos
           </Button>
         ) : (
-          <Button onClick={() => setNumberPage(numberPage - 8)} className="mt-10 text-xl">
+          <Button onClick={() => setNumberPage(numberPage - 8)} className="bg-red-900 hover:bg-red-500 mt-10 text-xl">
             Menos projetos
           </Button>
         )}
@@ -63,15 +66,13 @@ export function Projetos() {
             <Button className={`${filtroActive("")}`} onClick={() => handleFiltro("")}>
               Todos
             </Button>
-            <Button className={`${filtroActive("React")}`} onClick={() => handleFiltro("React")}>
-              React
-            </Button>
-            <Button className={`${filtroActive("Next")}`} onClick={() => handleFiltro("Next")}>
-              Next
-            </Button>
-            <Button className={`${filtroActive("Vite")}`} onClick={() => handleFiltro("Vite")}>
-              Vite
-            </Button>
+            {FilterOptions.map((option) => (
+              <>
+                <Button className={`${filtroActive(option.Value)}`} onClick={() => handleFiltro(option.Value)}>
+                  {option.Value}
+                </Button>
+              </>
+            ))}
           </div>
           {projetosPublicados.length === 0 ? (
             <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
