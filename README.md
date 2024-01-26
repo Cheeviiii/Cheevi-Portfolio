@@ -7,6 +7,7 @@ Esse é meu portfolio pessoal, onde mostro meus projetos, sobre mim e minhas ski
 - NextJS
 - TailwindCSS
 - Prisma
+- MongoDB
 
 ## Pré-requisitos
 
@@ -41,10 +42,10 @@ NEXTAUTH_SECRET=SECRET_KEY
 
 AUTH_USERNAME=SEU_USERNAME
 AUTH_PASSWORD=SUA_SENHA
-NEXT_PUBLIC_API_KEY=SUA_API_KEY_AQUI
+NEXT_PUBLIC_API_KEY=SUA_API_KEY_AQUI(Crie uma key)
 NEXT_PUBLIC_GITHUB_TOKEN=SEU_TOKEN_DO_GITHUB
 
-DATABASE_URL=URL_DO_POSTGRES
+DATABASE_URL=URL_DO_MONGODB
 ```
 
 5. **Inicie o servidor de desenvolvimento:**
