@@ -31,7 +31,7 @@ export function CardProject({ id }: CardProps) {
             <h1 className="text-3xl font-bold text-left">{Project?.title}</h1>
 
             <div className="w-full flex items-start gap-2">
-              {Project?.types?.map((type, index) => (
+              {Project?.types?.map((type: string, index: number) => (
                 <p className="bg-red-200 p-1 rounded text-white" key={index}>
                   {type}
                 </p>
@@ -42,11 +42,18 @@ export function CardProject({ id }: CardProps) {
 
           <div className="w-full flex gap-2 md:left-0 mt-3">
             {Project?.repository ? (
-              <a href={Project?.repository} target="_blank" className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300">
+              <a
+                href={Project?.repository}
+                target="_blank"
+                className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300"
+              >
                 Repositório
               </a>
             ) : (
-              <button className="bg-gray-300 opacity-25 cursor-not-allowed mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors" disabled={true}>
+              <button
+                className="bg-gray-300 opacity-25 cursor-not-allowed mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors"
+                disabled={true}
+              >
                 Sem Repositório
               </button>
             )}

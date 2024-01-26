@@ -19,7 +19,7 @@ export default function CardProjeto({ projeto }: Projeto) {
         />
         <h1 className="w-full text-4xl font-bold text-left">{projeto.title}</h1>
         <div className="w-full flex items-start gap-2">
-          {projeto.types.slice(0, 4).map((type, index) => (
+          {projeto.types.slice(0, 4).map((type: string, index: number) => (
             <p className="bg-red-200 text-white font-bold p-1 rounded" key={index}>
               {type}
             </p>
