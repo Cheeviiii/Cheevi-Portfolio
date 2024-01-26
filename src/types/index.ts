@@ -1,5 +1,5 @@
 export interface ProjetoProps {
-  id?: string;
+  id: string;
   title: string;
   image: string;
   description: string;

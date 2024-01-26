@@ -1,4 +1,4 @@
-import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FaTrashAlt, FaEye, FaPencilAlt } from "react-icons/fa";
 import { ProjetoProps } from "@/types";
 import { useRouter } from "next/navigation";
@@ -33,7 +33,7 @@ export function TableProjetos({ Projetos, onDelete, viewModal }: TableProps) {
               </p>
             </TableCell>
             <TableCell className="w-[50px] flex gap-2">
-              {item.types.slice(0, 5).map((type, index) => (
+              {item.types.slice(0, 5).map((type: string, index: number) => (
                 <p className="bg-red-200 p-1 rounded text-white" key={index}>
                   {type}
                 </p>

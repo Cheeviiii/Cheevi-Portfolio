@@ -12,7 +12,17 @@ import useProjectModals from "@/hooks/useProjectsModal";
 
 export function ProjetosDashboard() {
   const { Projects, Loading, updateProjects } = useFetchProject();
-  const { OpenDeleteDialog, CreateModal, ViewModal, idProject, onDelete, DeleteDialogClose, OpenAndCloseCreateModal, OpenViewModal, ViewModalClose } = useProjectModals();
+  const {
+    OpenDeleteDialog,
+    CreateModal,
+    ViewModal,
+    idProject,
+    onDelete,
+    DeleteDialogClose,
+    OpenAndCloseCreateModal,
+    OpenViewModal,
+    ViewModalClose,
+  } = useProjectModals();
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
@@ -31,7 +41,10 @@ export function ProjetosDashboard() {
       )}
 
       <div className="h-full flex flex-col gap-5 overflow-y-auto">
-        <button className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-red-900 transition-colors hover:bg-red-500" onClick={OpenAndCloseCreateModal}>
+        <button
+          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-red-900 transition-colors hover:bg-red-500"
+          onClick={OpenAndCloseCreateModal}
+        >
           Criar projeto
         </button>
         {Loading ? (
