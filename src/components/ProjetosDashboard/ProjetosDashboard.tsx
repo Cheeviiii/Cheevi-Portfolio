@@ -5,58 +5,43 @@ import { ModalCreateProject, ModalViewProject } from "@/components/Modal";
 import { LoadingSpinner } from "@/components/Loading";
 import { TableProjetos } from "./TableProjetos";
 import { DeleteDialog } from "@/components/Dialog";
-import { FormCreateProject } from "@/components/Form";
-import { CardProject } from ".";
 import { useFetchProject } from "@/hooks/useFetchProjects";
 import useProjectModals from "@/hooks/useProjectsModal";
 
 export function ProjetosDashboard() {
   const { Projects, Loading, updateProjects } = useFetchProject();
   const {
-    OpenDeleteDialog,
-    CreateModal,
-    ViewModal,
-    idProject,
-    onDelete,
-    DeleteDialogClose,
-    OpenAndCloseCreateModal,
-    OpenViewModal,
-    ViewModalClose,
+    isDeleteDialogOpen,
+    isCreateModalOpen,
+    isViewModalOpen,
+    currentProjectId,
+    handleDelete,
+    handleCloseDeleteDialog,
+    toggleCreateModal,
+    openViewModal,
+    handleCloseViewModal,
   } = useProjectModals();
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      {OpenDeleteDialog && <DeleteDialog closeModal={DeleteDialogClose} id={idProject} getProjects={updateProjects} />}
+      {isDeleteDialogOpen && <DeleteDialog closeModal={handleCloseDeleteDialog} id={currentProjectId} getProjects={updateProjects} />}
 
-      {CreateModal && (
-        <ModalCreateProject closeModal={OpenAndCloseCreateModal}>
-          <FormCreateProject closeModal={OpenAndCloseCreateModal} getProjects={updateProjects} />
-        </ModalCreateProject>
-      )}
+      <ModalViewProject open={isViewModalOpen} onOpen={handleCloseViewModal} currentProjectId={currentProjectId} />
 
-      {ViewModal && (
-        <ModalViewProject closeModal={ViewModalClose}>
-          <CardProject id={idProject} />
-        </ModalViewProject>
-      )}
-
-      <div className="h-full flex flex-col gap-5 overflow-y-auto">
-        <button
-          className="sticky w-32 text-center text-white font-medium text-xl p-2 rounded  bg-red-900 transition-colors hover:bg-red-500"
-          onClick={OpenAndCloseCreateModal}
-        >
-          Criar projeto
-        </button>
+      <div className="h-full flex flex-col gap-5">
         {Loading ? (
           <LoadingSpinner />
         ) : (
-          <div>
+          <>
+            <ModalCreateProject open={isCreateModalOpen} onOpen={toggleCreateModal} updateProjects={updateProjects}>
+              Criar Novo Projeto
+            </ModalCreateProject>
             {Projects.length > 0 ? (
-              <TableProjetos Projetos={Projects} onDelete={onDelete} viewModal={OpenViewModal} />
+              <TableProjetos Projetos={Projects} handleDelete={handleDelete} isViewModal={openViewModal} />
             ) : (
               <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
             )}
-          </div>
+          </>
         )}
       </div>
     </div>

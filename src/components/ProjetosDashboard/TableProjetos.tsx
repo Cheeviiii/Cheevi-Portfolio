@@ -2,14 +2,17 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { FaTrashAlt, FaEye, FaPencilAlt } from "react-icons/fa";
 import { ProjetoProps } from "@/types";
 import { useRouter } from "next/navigation";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "../ui/dropdown-menu";
+import { DropdownMenuGroup, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
+import { Button } from "../ui/button";
 
 interface TableProps {
   Projetos: ProjetoProps[];
-  onDelete: (id: string) => void;
-  viewModal: (id: string) => void;
+  handleDelete: (id: string) => void;
+  isViewModal: (id: string) => void;
 }
 
-export function TableProjetos({ Projetos, onDelete, viewModal }: TableProps) {
+export function TableProjetos({ Projetos, handleDelete, isViewModal }: TableProps) {
   const router = useRouter();
   return (
     <Table>
@@ -28,38 +31,35 @@ export function TableProjetos({ Projetos, onDelete, viewModal }: TableProps) {
             <TableCell>{index + 1}</TableCell>
             <TableCell className="font-medium text-lg">{item.title}</TableCell>
             <TableCell>
-              <p className={`${item.published ? "text-green-500" : "text-red-500"} font-bold text-base`}>
-                {item.published ? "Publicado" : "Não Publicado"}
-              </p>
+              <p className={`${item.published ? "text-green-500" : "text-red-500"} font-bold text-base`}>{item.published ? "Publicado" : "Não Publicado"}</p>
             </TableCell>
             <TableCell className="w-[50px] flex gap-2">
               {item.types.slice(0, 5).map((type: string, index: number) => (
-                <p className="bg-red-200 p-1 rounded text-white" key={index}>
+                <p className="bg-blue-200 p-1 rounded text-white" key={index}>
                   {type}
                 </p>
               ))}
             </TableCell>
             <TableCell className="text-right">
-              <button
-                onClick={() => onDelete(item.id)}
-                className="bg-[#ff1818] m-1 rounded-xl text-xl cursor-pointer text-white px-3 text-center py-2 transition-colors hover:bg-[#571919] shadow-lg"
-              >
-                <FaTrashAlt size={20} />
-              </button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="bg-[#d4d4d4] hover:bg-[#b4b4b4] dark:bg-[#1b1b1b] text-black dark:text-white dark:hover:bg-gray-400">...</Button>
+                </DropdownMenuTrigger>
 
-              <button
-                onClick={() => viewModal(item.id)}
-                className="bg-green-500 m-1 rounded-xl text-xl cursor-pointer text-white px-3 text-center py-2 transition-colors hover:bg-green-700 shadow-lg"
-              >
-                <FaEye size={20} />
-              </button>
-
-              <button
-                onClick={() => router.push(`/admin/projects/${item.id}`)}
-                className="bg-blue-400 m-1 rounded-xl text-xl cursor-pointer text-white px-3 text-center py-2 transition-colors hover:bg-blue-500 shadow-lg"
-              >
-                <FaPencilAlt size={20} />
-              </button>
+                <DropdownMenuContent className="dark:bg-gray-400 dark:text-white dark:border-gray-300">
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => handleDelete(item.id)}>
+                      Delete
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isViewModal(item.id)}>
+                      Olhar projeto
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => router.push(`/admin/projects/${item.id}`)}>
+                      Editar
+                    </DropdownMenuItem>
+                  </DropdownMenuGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </TableCell>
           </TableRow>
         ))}

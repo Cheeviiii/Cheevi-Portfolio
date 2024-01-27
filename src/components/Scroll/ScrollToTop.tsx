@@ -39,7 +39,7 @@ export function ScrollToTop() {
     <>
       {visible && (
         <div className="fixed bottom-0 right-0 p-3 z-30">
-          <Button onClick={() => scrollTo("about")} className="bg-red-500 text-white w-20 h-14 rounded-xl hover:bg-transparent hover:border hover:border-red-500">
+          <Button onClick={() => scrollTo("about")} className="bg-blue-500 text-white w-20 h-14 rounded-xl hover:bg-transparent hover:border hover:border-blue-500">
             <MdKeyboardDoubleArrowUp size={72} />
           </Button>
         </div>

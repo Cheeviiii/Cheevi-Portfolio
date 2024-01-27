@@ -1,24 +1,26 @@
 "use client";
 
-import { ScrollArea } from "../ui/scroll-area";
+import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import { FormCreateProject } from "../Form";
 
 interface CreateProjectProps {
-  closeModal: any;
+  open: boolean;
+  onOpen: () => void;
+  updateProjects: () => void;
   children: React.ReactNode;
 }
 
-export function ModalCreateProject({ closeModal, children }: CreateProjectProps) {
+export function ModalCreateProject({ open, onOpen, children, updateProjects }: CreateProjectProps) {
   return (
-    <div className="absolute w-full flex items-center justify-center bg-[#00000069] backdrop-blur-sm inset-0 z-10">
-      <div className="duration-500 transition bg-white dark:bg-gray-400 border border-gray-300 p-5 m-auto p-auto rounded-2xl drop-shadow-2xl">
-        <button
-          className="absolute bg-red-200 text-white my-2 p-2 px-5 text-base uppercase font-bold rounded-xl hover:bg-red-100"
-          onClick={closeModal}
-        >
-          fechar
-        </button>
-        <ScrollArea className="w-full mt-[100px] rounded-2xl">{children}</ScrollArea>
-      </div>
-    </div>
+    <Dialog open={open} onOpenChange={onOpen}>
+      <DialogTrigger asChild>
+        <Button className="w-[12%] bg-blue-900 hover:bg-blue-500">{children}</Button>
+      </DialogTrigger>
+
+      <DialogContent className="max-w-[80%] bg-white dark:bg-gray-400 border border-gray-300">
+        <FormCreateProject closeModal={onOpen} updateProjects={updateProjects} />
+      </DialogContent>
+    </Dialog>
   );
 }

@@ -1,45 +1,50 @@
 import React from "react";
 
 const useProjectModals = () => {
-  const [OpenDeleteDialog, setOpenDeleteDialog] = React.useState(false);
-  const [CreateModal, setCreateModal] = React.useState(false);
-  const [ViewModal, setViewModal] = React.useState(false);
-  const [idProject, setIDProject] = React.useState("");
+  const [isDeleteDialogOpen, setDeleteDialogOpen] = React.useState(false);
+  const [isCreateModalOpen, setCreateModalOpen] = React.useState(false);
+  const [isViewModalOpen, setViewModalOpen] = React.useState(false);
+  const [currentProjectId, setCurrentProjectId] = React.useState("");
 
-  const onDelete = async (id: string) => {
-    setOpenDeleteDialog(!OpenDeleteDialog);
-    setIDProject(id);
+  // Function for open delete dialog and set id for project
+  const handleDelete = async (id: string) => {
+    setDeleteDialogOpen(!isDeleteDialogOpen);
+    setCurrentProjectId(id);
   };
 
-  const DeleteDialogClose = () => {
-    setOpenDeleteDialog(!OpenDeleteDialog);
-    setIDProject("");
+  // Function for close delete dialog and remove id for project
+  const handleCloseDeleteDialog = () => {
+    setDeleteDialogOpen(!isDeleteDialogOpen);
+    setCurrentProjectId("");
   };
 
-  const OpenAndCloseCreateModal = () => {
-    setCreateModal(!CreateModal);
+  // Function for open and close modal to the create new project
+  const toggleCreateModal = () => {
+    setCreateModalOpen(!isCreateModalOpen);
   };
 
-  const OpenViewModal = (id: string) => {
-    setViewModal(!ViewModal);
-    setIDProject(id);
+  // Function for open view project modal and set id for project
+  const openViewModal = (id: string) => {
+    setViewModalOpen(!isViewModalOpen);
+    setCurrentProjectId(id);
   };
 
-  const ViewModalClose = () => {
-    setViewModal(!ViewModal);
-    setIDProject("");
+  // Function for close view modal and remove id for project
+  const handleCloseViewModal = () => {
+    setViewModalOpen(!isViewModalOpen);
+    setCurrentProjectId("");
   };
 
   return {
-    OpenDeleteDialog,
-    CreateModal,
-    ViewModal,
-    idProject,
-    onDelete,
-    DeleteDialogClose,
-    OpenAndCloseCreateModal,
-    OpenViewModal,
-    ViewModalClose,
+    isDeleteDialogOpen,
+    isCreateModalOpen,
+    isViewModalOpen,
+    currentProjectId,
+    handleDelete,
+    handleCloseDeleteDialog,
+    toggleCreateModal,
+    openViewModal,
+    handleCloseViewModal,
   };
 };
 

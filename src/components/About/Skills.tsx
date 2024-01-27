@@ -70,7 +70,7 @@ export function Skills() {
   };
 
   const skillSelected = (name: string) => {
-    return `${selected === name ? "bg-red-200 text-white" : "bg-[#e9e9e9] dark:bg-[#252729]"}`;
+    return `${selected === name ? "bg-blue-200 text-white" : "bg-[#e9e9e9] dark:bg-[#252729]"}`;
   };
 
   return (

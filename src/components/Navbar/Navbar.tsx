@@ -29,7 +29,7 @@ export function Navbar() {
 
   return (
     <header className={`absolute rounded flex items-center m-auto justify-between lg:justify-around z-50 inset-x-0 duration-700 p-5`}>
-      <a className="text-2xl md:text-2xl font-bold text-red-200" href="/" aria-label="home">
+      <a className="text-2xl md:text-4xl font-bold text-blue-200" href="/" aria-label="home">
         {"<diogo />"}
       </a>
       <ul className="gap-5 hidden xl:flex lg:p-2 ">

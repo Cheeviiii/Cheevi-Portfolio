@@ -67,7 +67,7 @@ export function Sidebar() {
           <Link
             className={`absolute duration-700 ${
               open ? " w-32" : " w-16"
-            } flex items-center gap-2 bottom-0 my-2 p-2 transition-all text-white hover:bg-blue-300 rounded-2xl cursor-pointer`}
+            } flex items-center gap-2 bottom-0 my-2 p-2 transition-all dark:text-white hover:bg-blue-300 rounded-2xl cursor-pointer`}
             href="/api/auth/signout"
           >
             <div className="p-2">
