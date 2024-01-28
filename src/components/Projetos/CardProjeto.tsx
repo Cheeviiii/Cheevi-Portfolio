@@ -10,7 +10,7 @@ export default function CardProjeto({ projeto }: Projeto) {
   const noRepository = projeto?.repository === "" ? "hidden" : "flex";
 
   return (
-    <div className="relative w-full bg-[#e9e9e9] dark:bg-[#17181a] rounded-xl flex flex-col items-center justify-between p-5 gap-3 shadow-xl">
+    <div className="relative w-full bg-[#e9e9e9] dark:bg-[#141414] rounded-xl flex flex-col items-center justify-between p-5 gap-3 shadow-xl">
       <div className="flex items-center flex-col gap-3">
         <img
           className="w-[650px] h-[240px] sm:h-[150px] lg:w-[658px] lg:h-[250px] xl:h-[200px] rounded-xl shadow-lg border border-gray-300"

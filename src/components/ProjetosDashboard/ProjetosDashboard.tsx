@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ModalCreateProject, ModalViewProject } from "@/components/Modal";
+import { ModalCreateProject, ModalEditProject, ModalViewProject } from "@/components/Modal";
 import { LoadingSpinner } from "@/components/Loading";
 import { TableProjetos } from "./TableProjetos";
 import { DeleteDialog } from "@/components/Dialog";
@@ -20,6 +20,9 @@ export function ProjetosDashboard() {
     toggleCreateModal,
     openViewModal,
     handleCloseViewModal,
+    openEditModal,
+    isEditModalOpen,
+    handleCloseEditModal,
   } = useProjectModals();
 
   return (
@@ -27,6 +30,7 @@ export function ProjetosDashboard() {
       {isDeleteDialogOpen && <DeleteDialog closeModal={handleCloseDeleteDialog} id={currentProjectId} getProjects={updateProjects} />}
 
       <ModalViewProject open={isViewModalOpen} onOpen={handleCloseViewModal} currentProjectId={currentProjectId} />
+      <ModalEditProject open={isEditModalOpen} onOpen={handleCloseEditModal} currentProjectId={currentProjectId} updateProjects={updateProjects} />
 
       <div className="h-full flex flex-col gap-5">
         {Loading ? (
@@ -37,7 +41,7 @@ export function ProjetosDashboard() {
               Criar Novo Projeto
             </ModalCreateProject>
             {Projects.length > 0 ? (
-              <TableProjetos Projetos={Projects} handleDelete={handleDelete} isViewModal={openViewModal} />
+              <TableProjetos Projetos={Projects} handleDelete={handleDelete} isViewModal={openViewModal} isEditModal={openEditModal} />
             ) : (
               <h1 className="text-2xl font-medium">Nenhum projeto encontrado!</h1>
             )}

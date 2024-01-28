@@ -11,12 +11,12 @@ export function About() {
           <p className="text-2xl xl:text-4xl font-medium tracking-wider text-blue-200">Olá, eu sou</p>
           <h1 className="text-6xl md:text-7xl font-bold">Diogo</h1>
 
-          <p className="max-w-2xl text-base lg:text-xl font-medium mt-3">
+          <p className="max-w-2xl text-lg lg:text-xl font-medium mt-3">
             Sou um desenvolvedor frontend em busca de aprendizado e aprimoramento, estou constantemente procurando transformar ideias em codigos.
           </p>
 
           <button
-            className="w-[30%] lg:w-[20%] 2xl:w-[15%] text-center py-2 lg:py-3 mt-5 text-base xl:text-xl font-bold border-2 border-blue-200 text-blue-200 hover:text-white transition duration-200 hover:bg-blue-200 ease-in-out rounded-xl"
+            className="w-[30%] lg:w-[20%] 2xl:w-[15%] text-center py-2 lg:py-3 mt-5 text-base xl:text-xl font-bold border-2 border-blue-200 text-blue-200 hover:text-white transition duration-200 hover:bg-blue-200 ease-in-out rounded"
             onClick={() => scrollTo("projects")}
           >
             Meus Projetos
@@ -33,7 +33,7 @@ export function About() {
         </div>
 
         <div className="md:absolute bottom-0 w-full flex flex-col items-center justify-center md:my-[150px] gap-3">
-          <h1 className="text-4xl font-bold uppercase">Skills</h1>
+          <h1 className="text-2xl font-bold uppercase">Tecnologias</h1>
           <Skills />
         </div>
       </div>

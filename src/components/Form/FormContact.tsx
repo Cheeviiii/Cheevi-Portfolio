@@ -2,7 +2,7 @@ import sendEmail from "@/lib/sendEmail";
 
 export function FormContact() {
   return (
-    <form className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-[#17181a] rounded-[26px] md:rounded-[46px]" onSubmit={sendEmail}>
+    <form className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-[#161616] rounded" onSubmit={sendEmail}>
       <div className="flex flex-col md:flex-row gap-[14px]">
         <input
           className="w-[298px] h-[40px] rounded px-1 text-black dark:bg-white font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"

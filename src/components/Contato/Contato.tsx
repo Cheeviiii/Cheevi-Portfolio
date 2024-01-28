@@ -10,11 +10,11 @@ export function Contato() {
       </div>
       <div className="flex items-center lg:items-start flex-col lg:flex-row gap-[51px] mt-[69px]">
         <div className="flex flex-col gap-[22px] pt-2">
-          <a href="https://www.linkedin.com/in/diogo-souza-alves" target="_blank" className="flex items-center gap-2 text-2xl font-bold hover:text-red-100">
+          <a href="https://www.linkedin.com/in/diogo-souza-alves" target="_blank" className="flex items-center gap-2 text-2xl font-bold hover:text-blue-500">
             <BsLinkedin size={32} />
             Linkedin
           </a>
-          <h1 className="flex items-center gap-2 text-2xl font-bold hover:text-red-100">
+          <h1 className="flex items-center gap-2 text-2xl font-bold hover:text-blue-500">
             <BsDiscord size={32} />
             Cheevi
           </h1>

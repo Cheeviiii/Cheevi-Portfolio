@@ -10,9 +10,10 @@ interface TableProps {
   Projetos: ProjetoProps[];
   handleDelete: (id: string) => void;
   isViewModal: (id: string) => void;
+  isEditModal: (id: string) => void;
 }
 
-export function TableProjetos({ Projetos, handleDelete, isViewModal }: TableProps) {
+export function TableProjetos({ Projetos, handleDelete, isViewModal, isEditModal }: TableProps) {
   const router = useRouter();
   return (
     <Table>
@@ -54,7 +55,7 @@ export function TableProjetos({ Projetos, handleDelete, isViewModal }: TableProp
                     <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isViewModal(item.id)}>
                       Olhar projeto
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => router.push(`/admin/projects/${item.id}`)}>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isEditModal(item.id)}>
                       Editar
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
