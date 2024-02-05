@@ -1,7 +1,6 @@
 "use client";
 
 import useProjectModals from "@/hooks/useProjectsModal";
-import { ToastSuccess } from "@/lib/Toast";
 import React from "react";
 interface DeleteProps {
   closeModal: () => void;
@@ -21,7 +20,6 @@ export function DeleteDialog({ id, closeModal, getProjects }: DeleteProps) {
       },
     });
 
-    ToastSuccess("Projeto deletado.");
     setLoadingDelete(false);
 
     closeModal();

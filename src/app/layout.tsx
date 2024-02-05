@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { DarkModeProvider } from "@/context/ThemeProvider";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -21,8 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={roboto.className}>
       <body>
-        <ToastContainer />
         <DarkModeProvider>
+          <Toaster />
           {children}
           <Analytics />
         </DarkModeProvider>

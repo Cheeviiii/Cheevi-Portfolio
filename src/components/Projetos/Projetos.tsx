@@ -61,11 +61,11 @@ export function Projetos() {
               Todos
             </Button>
             {FilterOptions.map((option, index) => (
-              <>
-                <Button key={index} className={`${filtroActive(option.Value)}`} onClick={() => handleFiltro(option.Value)}>
+              <div key={index}>
+                <Button className={`${filtroActive(option.Value)}`} onClick={() => handleFiltro(option.Value)}>
                   {option.Value}
                 </Button>
-              </>
+              </div>
             ))}
           </div>
           {projetosPublicados.length === 0 ? (

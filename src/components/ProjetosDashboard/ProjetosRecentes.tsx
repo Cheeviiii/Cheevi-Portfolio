@@ -1,7 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
-import { ToastError } from "@/lib/Toast";
 import { ProjetoProps } from "@/types";
 import { useEffect, useState } from "react";
 
@@ -26,7 +24,6 @@ export function ProjetosRecentes() {
         }
       } catch (error: any) {
         console.error(error);
-        ToastError(error.message)
       }
     };
 

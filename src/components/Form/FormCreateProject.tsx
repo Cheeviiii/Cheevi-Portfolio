@@ -6,7 +6,7 @@ import imageCompression from "browser-image-compression";
 import useFetchRepos from "@/hooks/useFetchRepos";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ProjetoProps } from "@/types";
-import { ToastSuccess } from "@/lib/Toast";
+import { useToast } from "../ui/use-toast";
 
 interface FormProps {
   closeModal: () => void;
@@ -27,6 +27,7 @@ export function FormCreateProject({ closeModal, updateProjects }: FormProps) {
   const [loading, setLoading] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
   const { Repos } = useFetchRepos();
+  const { toast } = useToast();
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -81,14 +82,15 @@ export function FormCreateProject({ closeModal, updateProjects }: FormProps) {
       });
 
       if (res.ok) {
-        ToastSuccess("Projeto criado com sucesso.");
+        toast({ title: "Projeto criado com sucesso" });
         updateProjects();
       }
 
       setLoading(false);
       closeModal();
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      toast({ title: error.message });
     }
   };
 
