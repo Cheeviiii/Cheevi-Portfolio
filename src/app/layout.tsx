@@ -1,15 +1,13 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { DarkModeProvider } from "@/context/ThemeProvider";
 import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const roboto = Roboto({
+const Fonte = Inter({
   subsets: ["latin"],
-  preload: true,
-  weight: ["100", "300", "400", "500", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -19,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={roboto.className}>
+    <html lang="pt-BR" className={Fonte.className}>
       <body>
         <DarkModeProvider>
           <Toaster />

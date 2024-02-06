@@ -14,7 +14,7 @@ export function MobileNav({ isOpen, toggleMenu, menu }: MobileNavProps) {
   return (
     <div className={`${isOpen ? "block" : "hidden"} relative`}>
       <div className="flex items-center justify-center">
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-md">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-md" onClick={toggleMenu}>
           <Button className="absolute text-white right-0 z-50 p-5 " onClick={toggleMenu}>
             <HiXMark size={32} />
           </Button>

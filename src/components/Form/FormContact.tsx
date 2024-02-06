@@ -1,6 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useToast } from "../ui/use-toast";
 import React from "react";
+import { Button } from "../ui/button";
 
 export function FormContact() {
   const [Loading, setLoading] = React.useState(false);
@@ -23,10 +24,10 @@ export function FormContact() {
   };
 
   return (
-    <form className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-[#e9e9e9] dark:bg-[#161616] rounded-2xl shadow-xl" onSubmit={sendEmail}>
+    <form className="flex md:w-[700px] md:h-[482px] flex-col items-center justify-center p-5 gap-[19px] bg-transparent border border-gray-300 rounded-2xl" onSubmit={sendEmail}>
       <div className="flex flex-col md:flex-row gap-[14px]">
         <input
-          className="w-[298px] h-[40px] rounded px-1 text-black dark:bg-white font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
+          className="w-[298px] h-[40px] px-1 bg-transparent border-b-2 border-gray-300 font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors  placeholder:font-bold placeholder:text-xl placeholder:text-black dark:placeholder:text-white focus:placeholder:opacity-0"
           type="text"
           name="user_name"
           placeholder="Nome"
@@ -34,7 +35,7 @@ export function FormContact() {
         />
 
         <input
-          className="w-[298px] h-[40px] rounded px-1 text-black dark:bg-white font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
+          className="w-[298px] h-[40px] px-1 bg-transparent border-b-2 border-gray-300 font-bold text-lg focus:outline focus:outline-blue outline-none transition-colors  placeholder:font-bold placeholder:text-xl placeholder:text-black dark:placeholder:text-white focus:placeholder:opacity-0"
           type="email"
           name="user_email"
           placeholder="Email"
@@ -44,7 +45,7 @@ export function FormContact() {
 
       <div className="flex">
         <input
-          className="w-[298px] md:w-[610px] h-[40px] rounded px-1 text-black dark:bg-white font-bold focus:outline text-lg focus:outline-blue outline-none transition-colors pl-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
+          className="w-[298px] md:w-[610px] h-[40px] px-1 bg-transparent border-b-2 border-gray-300 font-bold focus:outline text-lg focus:outline-blue outline-none transition-colors placeholder:font-bold placeholder:text-xl placeholder:text-black dark:placeholder:text-white focus:placeholder:opacity-0"
           type="text"
           name="user_sobre"
           placeholder="Sobre"
@@ -54,16 +55,14 @@ export function FormContact() {
 
       <div className="flex">
         <textarea
-          className="w-[298px] md:w-[610px] h-[228px] resize-none rounded font-bold text-black dark:bg-white text-lg focus:outline focus:outline-blue outline-none pl-5 pt-5 placeholder:font-bold placeholder:text-xl placeholder:text-black"
+          className="w-[298px] md:w-[610px] h-[228px] resize-none font-bold bg-transparent border-2 border-gray-300 text-lg focus:outline focus:outline-blue rounded outline-none pl-2 pt-5 placeholder:font-bold placeholder:text-xl placeholder:text-black dark:placeholder:text-white focus:placeholder:opacity-0"
           name="message"
           placeholder="Assunto"
           required
         />
       </div>
 
-      <button className="w-[107px] h-[42px] bg-blue-600 rounded-[13px] text-white font-bold uppercase mt-2  transition-colors hover:bg-blue-900">
-        {Loading ? "Enviando..." : "Enviar"}
-      </button>
+      <Button className="bg-black text-white dark:bg-white dark:text-black text-xl transition-transform hover:scale-110">{Loading ? "Enviando..." : "Enviar"}</Button>
     </form>
   );
 }

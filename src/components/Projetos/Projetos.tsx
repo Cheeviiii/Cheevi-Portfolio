@@ -22,18 +22,20 @@ export function Projetos() {
   };
 
   const filtroActive = (name: string) => {
-    return `${Filtro === name ? "bg-blue-600 hover:bg-blue-900 text-white" : "bg-[#e9e9e9] hover:bg-[#e2e2e2] text-black  dark:bg-[#252729] dark:text-white font-bold"}`;
+    return `${
+      Filtro === name ? "bg-gray-400 dark:bg-white text-white dark:text-black" : "bg-gray-100 text-black dark:bg-black dark:border dark:border-gray-300 dark:text-white font-bold"
+    }`;
   };
 
   const Buttons = () => {
     return (
       <>
         {projetosPublicados.length >= numberPage ? (
-          <Button onClick={() => setNumberPage(numberPage + 8)} className="bg-blue-600 hover:bg-blue-900 mt-10 text-xl">
+          <Button onClick={() => setNumberPage(numberPage + 8)} className="bg-gray-400 dark:bg-white text-white dark:text-black mt-10 text-xl">
             Mais projetos
           </Button>
         ) : (
-          <Button onClick={() => setNumberPage(numberPage - 8)} className="bg-blue-600 hover:bg-blue-900 mt-10 text-xl">
+          <Button onClick={() => setNumberPage(numberPage - 8)} className="bg-gray-400 dark:bg-white text-white dark:text-black mt-10 text-xl">
             Menos projetos
           </Button>
         )}
@@ -45,7 +47,7 @@ export function Projetos() {
     <section className="container m-auto p-auto flex flex-col items-center justify-center pt-10" id="projects">
       <div className="w-full flex items-center pl-5 gap-[15px] md:gap-[5px]">
         <h1 className="text-3xl uppercase font-bold ">Projetos</h1>
-        <div className="w-[180px] md:w-[522px] h-[2px] bg-blue-600" />
+        <div className="w-[180px] md:w-[522px] h-[2px] bg-black dark:bg-white" />
       </div>
 
       {Loading ? (
