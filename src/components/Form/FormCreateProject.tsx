@@ -1,12 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React from "react";
+import { useRef, useState } from "react";
 import imageCompression from "browser-image-compression";
 import useFetchRepos from "@/hooks/useFetchRepos";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { ProjetoProps } from "@/types";
 import { useToast } from "../ui/use-toast";
+import axios from "axios";
+import useCreateProject from "@/hooks/useCreateProject";
 
 interface FormProps {
   closeModal: () => void;
@@ -22,10 +24,10 @@ export function FormCreateProject({ closeModal, updateProjects }: FormProps) {
     formState: { errors },
   } = useForm<ProjetoProps>();
 
-  const [image, setImage] = React.useState<string | null>("");
-  const [fileName, setFileName] = React.useState<string | null>(null);
-  const [loading, setLoading] = React.useState(false);
-  const fileInputRef = React.useRef<HTMLInputElement | null>(null);
+  const [image, setImage] = useState<string | null>("");
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
   const { Repos } = useFetchRepos();
   const { toast } = useToast();
 
@@ -60,6 +62,7 @@ export function FormCreateProject({ closeModal, updateProjects }: FormProps) {
     }
   };
 
+  const createProject = useCreateProject();
   const onSubmit: SubmitHandler<ProjetoProps> = async (data) => {
     setLoading(true);
 
@@ -73,20 +76,11 @@ export function FormCreateProject({ closeModal, updateProjects }: FormProps) {
     };
 
     try {
-      const res = await fetch("/api/projects", {
-        method: "POST",
-        headers: {
-          "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
-        },
-        body: JSON.stringify(dados),
-      });
+      await createProject(dados);
 
-      if (res.ok) {
-        toast({ title: "Projeto criado com sucesso" });
-        updateProjects();
-      }
-
+      toast({ title: "Projeto criado com sucesso" });
       setLoading(false);
+      updateProjects();
       closeModal();
     } catch (error: any) {
       console.log(error);

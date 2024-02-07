@@ -1,34 +1,30 @@
 import { ProjetoProps } from "@/types";
-import React from "react";
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
 
-const useFetchProject = () => {
-  const [Projects, setProject] = React.useState<ProjetoProps[]>([]);
-  const [Loading, setLoading] = React.useState<Boolean>(true);
+const useFetchProject = (includePublished = false) => {
+  const [Projects, setProject] = useState<ProjetoProps[]>([]);
+  const [Loading, setLoading] = useState<Boolean>(true);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
+    const url = includePublished ? "/api/projects?published=true" : "/api/projects";
+
     try {
-      const response = await fetch("/api/projects", {
-        method: "GET",
+      const res = await axios.get(url, {
         headers: {
           "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
         },
       });
-
-      if (!response.ok) {
-        throw new Error("Erro na solicitação");
-      }
-
-      const data = await response.json();
-      setProject(data);
+      setProject(res.data);
       setLoading(false);
     } catch (error) {
       console.error(error);
     }
-  };
+  }, [includePublished]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const updateProjects = () => {
     fetchData();
@@ -38,10 +34,10 @@ const useFetchProject = () => {
 };
 
 const useFetchProjectID = (id: string) => {
-  const [Project, setProject] = React.useState<ProjetoProps>();
-  const [Loading, setLoading] = React.useState<Boolean>(true);
+  const [Project, setProject] = useState<ProjetoProps>();
+  const [Loading, setLoading] = useState<Boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const FetchData = async () => {
       const response = await fetch(`/api/projects/${id}`, {
         method: "GET",

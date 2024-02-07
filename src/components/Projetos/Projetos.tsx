@@ -12,10 +12,9 @@ export function Projetos() {
   const [numberPage, setNumberPage] = React.useState(8);
   const [Filtro, setFiltro] = React.useState("");
 
-  const { Projects, Loading } = useFetchProject();
+  const { Projects, Loading } = useFetchProject(true);
 
-  const projetosPublicados = Projects.filter((projetos) => projetos.published === true);
-  const projetosFiltrados = projetosPublicados.filter((projeto) => projeto.types.find((type: string) => type === Filtro));
+  const projetosFiltrados = Projects.filter((projeto) => projeto.types.find((type: string) => type === Filtro));
 
   const handleFiltro = (name: string) => {
     setFiltro(name);
@@ -30,7 +29,7 @@ export function Projetos() {
   const Buttons = () => {
     return (
       <>
-        {projetosPublicados.length >= numberPage ? (
+        {Projects.length >= numberPage ? (
           <Button onClick={() => setNumberPage(numberPage + 8)} className="bg-gray-400 dark:bg-white text-white dark:text-black mt-10 text-xl">
             Mais projetos
           </Button>
@@ -70,13 +69,13 @@ export function Projetos() {
               </div>
             ))}
           </div>
-          {projetosPublicados.length === 0 ? (
+          {Projects.length === 0 ? (
             <h1 className="text-4xl font-bold py-10">Nenhum projeto encontrado</h1>
           ) : (
             <div className="grid grid-rows-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 mt-5 px-5 md:px-0">
               {Filtro === "" ? (
                 <>
-                  {projetosPublicados.slice(0, numberPage).map((item: ProjetoProps, index) => (
+                  {Projects.slice(0, numberPage).map((item: ProjetoProps, index) => (
                     <CardProjeto key={index} projeto={item} />
                   ))}
                 </>
@@ -90,7 +89,7 @@ export function Projetos() {
             </div>
           )}
 
-          {Filtro === "" && projetosPublicados.length > 8 ? <Buttons /> : Filtro !== "" && projetosFiltrados.length > 8 ? <Buttons /> : null}
+          {Filtro === "" && Projects.length > 8 ? <Buttons /> : Filtro !== "" && projetosFiltrados.length > 8 ? <Buttons /> : null}
         </>
       )}
     </section>

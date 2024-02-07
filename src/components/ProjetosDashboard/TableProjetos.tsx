@@ -36,7 +36,7 @@ export function TableProjetos({ Projetos, handleDelete, isViewModal, isEditModal
             </TableCell>
             <TableCell className="w-[50px] flex gap-2">
               {item.types.slice(0, 5).map((type: string, index: number) => (
-                <p className="bg-blue-200 p-1 rounded text-white" key={index}>
+                <p className="bg-gray-400 text-white dark:bg-white dark:text-black p-1 rounded" key={index}>
                   {type}
                 </p>
               ))}
@@ -44,7 +44,7 @@ export function TableProjetos({ Projetos, handleDelete, isViewModal, isEditModal
             <TableCell className="text-right">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button className="bg-[#d4d4d4] hover:bg-[#b4b4b4] dark:bg-[#1b1b1b] text-black dark:text-white dark:hover:bg-gray-400">...</Button>
+                  <Button className="bg-gray-400 hover:bg-gray-300 dark:bg-white text-white dark:text-black dark:hover:bg-gray-100 font-bold text-xl">...</Button>
                 </DropdownMenuTrigger>
 
                 <DropdownMenuContent className="dark:bg-gray-400 dark:text-white dark:border-gray-300">

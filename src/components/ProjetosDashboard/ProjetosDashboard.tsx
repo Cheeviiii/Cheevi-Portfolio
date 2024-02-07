@@ -27,7 +27,7 @@ export function ProjetosDashboard() {
 
   return (
     <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
-      {isDeleteDialogOpen && <DeleteDialog closeModal={handleCloseDeleteDialog} id={currentProjectId} getProjects={updateProjects} />}
+      {isDeleteDialogOpen && <DeleteDialog closeModal={handleCloseDeleteDialog} id={currentProjectId} updateProjects={updateProjects} />}
 
       <ModalViewProject open={isViewModalOpen} onOpen={handleCloseViewModal} currentProjectId={currentProjectId} />
       <ModalEditProject open={isEditModalOpen} onOpen={handleCloseEditModal} currentProjectId={currentProjectId} updateProjects={updateProjects} />

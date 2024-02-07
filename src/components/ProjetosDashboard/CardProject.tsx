@@ -17,10 +17,10 @@ export function CardProject({ id }: CardProps) {
       {Loading ? (
         <LoadingCard />
       ) : (
-        <div className="border border-gray-300 text-twhite dark:text-white rounded-xl flex flex-col items-center justify-between p-5 gap-5">
+        <div className="w-full rounded-xl flex flex-col items-center justify-between gap-5">
           <div className="w-full flex flex-col gap-5">
             <img
-              className="w-[100%] h-[25rem] rounded-xl shadow-lg border border-gray-300"
+              className="w-[100%] h-[25rem] rounded-xl"
               src={
                 Project?.image == ""
                   ? "https://www.pallenz.co.nz/assets/camaleon_cms/image-not-found-4a963b95bf081c3ea02923dceaeb3f8085e1a654fc54840aac61a57a60903fef.png"
@@ -32,7 +32,7 @@ export function CardProject({ id }: CardProps) {
 
             <div className="w-full flex items-start gap-2">
               {Project?.types?.map((type: string, index: number) => (
-                <p className="bg-red-200 p-1 rounded text-white" key={index}>
+                <p className="bg-gray-400 dark:bg-white p-1 rounded text-white dark:text-black" key={index}>
                   {type}
                 </p>
               ))}
@@ -42,18 +42,11 @@ export function CardProject({ id }: CardProps) {
 
           <div className="w-full flex gap-2 md:left-0 mt-3">
             {Project?.repository ? (
-              <a
-                href={Project?.repository}
-                target="_blank"
-                className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300"
-              >
+              <a href={Project?.repository} target="_blank" className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300">
                 Repositório
               </a>
             ) : (
-              <button
-                className="bg-gray-300 opacity-25 cursor-not-allowed mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors"
-                disabled={true}
-              >
+              <button className="bg-gray-300 opacity-25 cursor-not-allowed mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors" disabled={true}>
                 Sem Repositório
               </button>
             )}

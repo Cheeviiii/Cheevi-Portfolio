@@ -15,7 +15,7 @@ export function ModalCreateProject({ open, onOpen, children, updateProjects }: C
   return (
     <Dialog open={open} onOpenChange={onOpen}>
       <DialogTrigger asChild>
-        <Button className="w-[12%] bg-blue-900 hover:bg-blue-500">{children}</Button>
+        <Button className="w-[12%] bg-gray-400 text-white dark:bg-white dark:text-black hover:bg-blue-500">{children}</Button>
       </DialogTrigger>
 
       <DialogContent className="max-w-[80%] bg-white dark:bg-gray-400 border border-gray-300">

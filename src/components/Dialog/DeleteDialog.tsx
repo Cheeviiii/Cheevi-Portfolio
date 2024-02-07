@@ -1,14 +1,13 @@
 "use client";
 
-import useProjectModals from "@/hooks/useProjectsModal";
 import React from "react";
 interface DeleteProps {
   closeModal: () => void;
-  getProjects: () => void;
+  updateProjects: () => void;
   id: string;
 }
 
-export function DeleteDialog({ id, closeModal, getProjects }: DeleteProps) {
+export function DeleteDialog({ id, closeModal, updateProjects }: DeleteProps) {
   const [loadingDelete, setLoadingDelete] = React.useState(false);
 
   const handleConfirm = async (id: string) => {
@@ -21,9 +20,8 @@ export function DeleteDialog({ id, closeModal, getProjects }: DeleteProps) {
     });
 
     setLoadingDelete(false);
-
     closeModal();
-    getProjects();
+    updateProjects();
   };
 
   return (

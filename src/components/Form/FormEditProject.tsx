@@ -9,6 +9,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import useFetchRepos from "@/hooks/useFetchRepos";
 import { useFetchProjectID } from "@/hooks/useFetchProjects";
 import { useToast } from "../ui/use-toast";
+import usePatchProject from "@/hooks/usePatchProject";
 
 interface FormProps {
   idProject: string;
@@ -70,6 +71,9 @@ export function FormEditProject({ idProject, closeModal, updateProjects }: FormP
   };
 
   // Atualizar projeto
+
+  const patchProject = usePatchProject();
+
   const onHandlePatch: SubmitHandler<ProjetoProps> = async (data) => {
     setLoading(true);
 
@@ -82,22 +86,11 @@ export function FormEditProject({ idProject, closeModal, updateProjects }: FormP
       published: data.published,
     };
 
-    setLoading(false);
-
     try {
-      const response = await fetch(`/api/projects/${idProject}`, {
-        method: "PATCH",
-        body: JSON.stringify(dados),
-        headers: {
-          "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
-        },
-      });
+      await patchProject(dados, idProject);
 
-      if (response.ok) {
-        toast({ title: "Projeto editado com sucesso..." });
-        updateProjects();
-      }
-
+      toast({ title: "Projeto editado com sucesso..." });
+      updateProjects();
       setLoading(false);
       closeModal();
     } catch (error) {
