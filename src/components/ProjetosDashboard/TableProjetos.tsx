@@ -49,13 +49,13 @@ export function TableProjetos({ Projetos, handleDelete, isViewModal, isEditModal
 
                 <DropdownMenuContent className="dark:bg-gray-400 dark:text-white dark:border-gray-300">
                   <DropdownMenuGroup>
-                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => handleDelete(item.id)}>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => handleDelete(item.id as string)}>
                       Delete
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isViewModal(item.id)}>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isViewModal(item.id as string)}>
                       Olhar projeto
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isEditModal(item.id)}>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isEditModal(item.id as string)}>
                       Editar
                     </DropdownMenuItem>
                   </DropdownMenuGroup>
