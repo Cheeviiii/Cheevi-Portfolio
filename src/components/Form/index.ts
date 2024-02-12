@@ -1,4 +1,3 @@
 export { FormSignIn } from "./FormSignIn";
-export { FormCreateProject } from "./FormCreateProject";
-export { FormEditProject } from "./FormEditProject";
+export { FormProject } from "./FormProject";
 export { FormContact } from "./FormContact";

@@ -11,7 +11,7 @@ import { FilterOptions } from ".";
 export function Projetos() {
   const [numberPage, setNumberPage] = React.useState(8);
   const [Filtro, setFiltro] = React.useState("");
-
+  
   const { Projects, Loading } = useFetchProject(true);
 
   const projetosFiltrados = Projects.filter((projeto) => projeto.types.find((type: string) => type === Filtro));

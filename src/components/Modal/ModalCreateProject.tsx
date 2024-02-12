@@ -2,9 +2,10 @@
 
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
-import { FormCreateProject } from "../Form";
+import { FormProject } from "../Form";
 
 interface CreateProjectProps {
+  currentProjectId?: string;
   open: boolean;
   onOpen: () => void;
   updateProjects: () => void;
@@ -19,7 +20,7 @@ export function ModalCreateProject({ open, onOpen, children, updateProjects }: C
       </DialogTrigger>
 
       <DialogContent className="max-w-[80%] bg-white dark:bg-gray-400 border border-gray-300">
-        <FormCreateProject closeModal={onOpen} updateProjects={updateProjects} />
+        <FormProject closeModal={onOpen} updateProjects={updateProjects} />
       </DialogContent>
     </Dialog>
   );

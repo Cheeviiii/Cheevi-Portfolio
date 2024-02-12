@@ -5,16 +5,20 @@ import { useRouter } from "next/navigation";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "../ui/dropdown-menu";
 import { DropdownMenuGroup, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "../ui/button";
+import { useFormProject } from "@/context/FormContext";
 
 interface TableProps {
   Projetos: ProjetoProps[];
   handleDelete: (id: string) => void;
   isViewModal: (id: string) => void;
-  isEditModal: (id: string) => void;
 }
 
-export function TableProjetos({ Projetos, handleDelete, isViewModal, isEditModal }: TableProps) {
+export function TableProjetos({ Projetos, handleDelete, isViewModal }: TableProps) {
   const router = useRouter();
+
+  let edit = true;
+
+  const { openFormModal } = useFormProject();
   return (
     <Table>
       <TableHeader>
@@ -55,7 +59,7 @@ export function TableProjetos({ Projetos, handleDelete, isViewModal, isEditModal
                     <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isViewModal(item.id as string)}>
                       Olhar projeto
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => isEditModal(item.id as string)}>
+                    <DropdownMenuItem className="dark:hover:bg-[#1b1b1b] dark:text-white cursor-pointer" onClick={() => openFormModal(item.id as string, edit as boolean)}>
                       Editar
                     </DropdownMenuItem>
                   </DropdownMenuGroup>

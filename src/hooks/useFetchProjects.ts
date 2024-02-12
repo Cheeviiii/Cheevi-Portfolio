@@ -28,6 +28,7 @@ const useFetchProject = (includePublished = false) => {
 
   const updateProjects = () => {
     fetchData();
+    console.log("Chamei rsrs");
   };
 
   return { Projects, Loading, updateProjects };
@@ -56,4 +57,20 @@ const useFetchProjectID = (id: string) => {
 
   return { Project, Loading };
 };
-export { useFetchProject, useFetchProjectID };
+
+const useFetchCurrentProject = () => {
+  const FetchData = async (id: string) => {
+    const response = await fetch(`/api/projects/${id}`, {
+      method: "GET",
+      headers: {
+        "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
+      },
+    });
+
+    const data = await response.json();
+    return data;
+  };
+
+  return { FetchData };
+};
+export { useFetchProject, useFetchProjectID, useFetchCurrentProject };
