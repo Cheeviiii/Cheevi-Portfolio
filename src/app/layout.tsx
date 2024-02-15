@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { DarkModeProvider } from "@/context/ThemeProvider";
-import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "@/components/ui/toaster";
+import TopScrollAutomator from "@/components/TopScrollAutomator";
+import Layout from "@/components/Layout";
 
 const Fonte = Inter({
   subsets: ["latin"],
@@ -21,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <DarkModeProvider>
           <Toaster />
-          {children}
+          <TopScrollAutomator>{children}</TopScrollAutomator>
           <Analytics />
         </DarkModeProvider>
       </body>

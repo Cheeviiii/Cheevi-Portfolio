@@ -4,17 +4,11 @@ import { NextRequest } from "next/server";
 const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
-  const secretKey = req.headers.get("x-api-key");
-
   //params
   const searchParams = req.nextUrl.searchParams;
   const published = searchParams.get("published");
 
   const where = published === "true" ? { published: true } : {};
-
-  if (!secretKey || secretKey !== process.env.NEXT_PUBLIC_API_KEY) {
-    return new Response("Sem autorização", { status: 401 });
-  }
 
   try {
     const projects = await prisma.project.findMany({

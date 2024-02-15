@@ -12,7 +12,11 @@ export function Skills() {
   };
 
   const skillSelected = (name: string) => {
-    return `${selected === name ? "bg-black text-white dark:bg-white dark:text-black" : "bg-gray-100 dark:text-white dark:bg-black dark:border dark:border-gray-300"}`;
+    return `${
+      selected === name
+        ? "bg-black text-white dark:bg-white dark:text-black"
+        : "bg-gray-100 dark:text-white dark:bg-black dark:border dark:border-gray-300"
+    }`;
   };
 
   return (
@@ -20,7 +24,10 @@ export function Skills() {
       <div className="grid grid-cols-2 2xl:grid-cols-4 gap-2">
         {skills.map((item: any, index: number) => (
           <div key={index}>
-            <Button className={`w-full px-5 py-1 text-base text-black dark:text-white font-bold ${skillSelected(item.value)}`} onClick={() => handleCategoryChange(item.value)}>
+            <Button
+              className={`w-full px-5 py-1 text-base text-black dark:text-white font-bold ${skillSelected(item.value)}`}
+              onClick={() => handleCategoryChange(item.value)}
+            >
               {item.title}
             </Button>
           </div>

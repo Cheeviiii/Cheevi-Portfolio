@@ -1,3 +1,5 @@
+"use client"
+
 import { scrollTo } from "@/lib/scrollTo";
 import React from "react";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";

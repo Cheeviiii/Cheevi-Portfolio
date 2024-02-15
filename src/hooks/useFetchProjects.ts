@@ -8,11 +8,12 @@ const useFetchProject = (includePublished = false) => {
 
   const fetchData = useCallback(async () => {
     const url = includePublished ? "/api/projects?published=true" : "/api/projects";
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
     try {
       const res = await axios.get(url, {
         headers: {
-          "x-api-key": process.env.NEXT_PUBLIC_API_KEY as string,
+          "Content-Type": "application/json",
         },
       });
       setProject(res.data);
@@ -28,7 +29,6 @@ const useFetchProject = (includePublished = false) => {
 
   const updateProjects = () => {
     fetchData();
-    console.log("Chamei rsrs");
   };
 
   return { Projects, Loading, updateProjects };
