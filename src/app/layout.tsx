@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { DarkModeProvider } from "@/context/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import TopScrollAutomator from "@/components/TopScrollAutomator";
-import Layout from "@/components/Layout";
 
 const Fonte = Inter({
   subsets: ["latin"],
