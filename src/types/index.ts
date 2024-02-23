@@ -7,3 +7,9 @@ export interface ProjetoProps {
   repository: string;
   types: any;
 }
+
+export interface ContactProps {
+  name: string;
+  email: string;
+  content: string;
+}

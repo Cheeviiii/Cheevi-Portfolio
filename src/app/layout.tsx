@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { DarkModeProvider } from "@/context/ThemeProvider";
 import { Toaster } from "@/components/ui/toaster";
 import TopScrollAutomator from "@/components/TopScrollAutomator";
+import { ScrollProvider } from "@/context/ScrollContext";
 
 const Fonte = Inter({
   subsets: ["latin"],
@@ -21,7 +22,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <DarkModeProvider>
           <Toaster />
-          <TopScrollAutomator>{children}</TopScrollAutomator>
+          <TopScrollAutomator>
+            <ScrollProvider>{children}</ScrollProvider>
+          </TopScrollAutomator>
           <Analytics />
         </DarkModeProvider>
       </body>

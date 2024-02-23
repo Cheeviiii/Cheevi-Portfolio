@@ -157,15 +157,25 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
 
               <div className="flex flex-col gap-1 mt-5">
                 <label className="text-base font-bold uppercase">Imagem do projeto</label>
-                <div className={`flex items-center gap-2 bg-transparent border border-gray-300 rounded p-2 ${errors.image ? "border-red-400" : ""}`}>
+                <div
+                  className={`flex items-center gap-2 bg-transparent border border-gray-300 rounded p-2 ${
+                    errors.image ? "border-red-400" : ""
+                  }`}
+                >
                   <button
                     type="button"
-                    className={`w-[150px] p-2 rounded bg-blue-300 text-white font-medium transition-colors hover:bg-blue-200 ${errors.image ? "bg-red-400 hover:bg-red-500" : ""}`}
+                    className={`w-[150px] p-2 rounded bg-blue-300 text-white font-medium transition-colors hover:bg-blue-200 ${
+                      errors.image ? "bg-red-400 hover:bg-red-500" : ""
+                    }`}
                     onClick={handleButtonClick}
                   >
                     Escolher Arquivo
                   </button>
-                  {fileName ? <span className="text-lg font-medium text-white">{fileName}</span> : <span className="text-lg font-medium text-gray-300">Nenhum arquivo</span>}
+                  {fileName ? (
+                    <span className="text-lg font-medium text-white">{fileName}</span>
+                  ) : (
+                    <span className="text-lg font-medium text-gray-300">Nenhum arquivo</span>
+                  )}
                 </div>
                 <input
                   type="file"
@@ -190,7 +200,10 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
 
               <div className="flex flex-col gap-1 mt-5">
                 <label className="text-base font-bold uppercase">Repositório</label>
-                <select {...register("repository", { value: "" })} className="bg-transparent border border-gray-300  p-2 focus:border-white">
+                <select
+                  {...register("repository", { value: "" })}
+                  className="bg-transparent border border-gray-300  p-2 focus:border-white"
+                >
                   <option value="" className="bg-gray-400" disabled>
                     Escolha um repositório
                   </option>
@@ -205,7 +218,11 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
           </div>
 
           <div className="w-full flex items-center justify-center mt-5">
-            <button type="submit" className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase" disabled={loading}>
+            <button
+              type="submit"
+              className=" w-32 bg-blue-300 p-2 text-xl font-medium text-white transition-colors rounded-lg hover:bg-blue-200 uppercase"
+              disabled={loading}
+            >
               {isEdit ? "Editar" : "Criar"}
             </button>
           </div>
