@@ -6,6 +6,7 @@ import { Button } from "./Button";
 import { MobileNav } from "./MobileNav";
 import { scrollTo } from "@/lib/scrollTo";
 import DarkModeSwitch from "../DarkModeSwitch";
+import { useScroll } from "@/context/ScrollContext";
 
 const menu = [
   { title: "Sobre", to: "#about" },
@@ -15,6 +16,7 @@ const menu = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { visible } = useScroll();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -26,8 +28,14 @@ export function Navbar() {
     }
   };
 
+  const animationScale = visible
+    ? " xl:border xl:border-black dark:border-gray-300 xl:w-[50%] duration-500  xl:mt-5 p-5 xl:p-2"
+    : "duration-500 w-full p-5";
+
   return (
-    <header className={`absolute rounded flex items-center m-auto justify-between lg:justify-around z-50 inset-x-0 duration-700 p-5`}>
+    <header
+      className={`fixed bg-white dark:bg-black ${animationScale} rounded flex items-center m-auto justify-between lg:justify-around z-50 inset-x-0`}
+    >
       <a className="text-2xl md:text-4xl font-bold text-black dark:text-white" href="/" aria-label="home">
         {"<diogo />"}
       </a>

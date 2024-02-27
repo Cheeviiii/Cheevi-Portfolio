@@ -36,7 +36,7 @@ export const ScrollProvider = ({ children }: ScrollProviderProps) => {
   }, []);
 
   useEffect(() => {
-    if (prevScroll.y > 250) {
+    if (prevScroll.y > 0) {
       setVisible(true);
     } else {
       setVisible(false);
