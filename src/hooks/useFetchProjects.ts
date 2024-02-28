@@ -8,7 +8,6 @@ const useFetchProject = (includePublished = false) => {
 
   const fetchData = useCallback(async () => {
     const url = includePublished ? "/api/projects?published=true" : "/api/projects";
-    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
     try {
       const res = await axios.get(url, {
@@ -27,8 +26,15 @@ const useFetchProject = (includePublished = false) => {
     fetchData();
   }, [fetchData]);
 
-  const updateProjects = () => {
-    fetchData();
+  const updateProjects = async () => {
+    setLoading(true);
+
+    try {
+      await fetchData();
+      setLoading(false);
+    } catch (error) {
+      console.error("Ocorreu um erro interno", error);
+    }
   };
 
   return { Projects, Loading, updateProjects };

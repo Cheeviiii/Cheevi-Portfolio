@@ -10,6 +10,7 @@ import { useToast } from "../ui/use-toast";
 import { useFormProject } from "@/context/FormContext";
 import { useProject } from "@/hooks/useProject";
 import { LoadingSpinner } from "../Loading";
+import { useFetchProject } from "@/hooks/useFetchProjects";
 
 interface FormProps {
   closeModal: () => void;
@@ -95,19 +96,17 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
       if (isEdit) {
         patchProject(dados, currentProjectId);
         toast({ title: "Projeto editado com sucesso" });
-        updateProjects();
-        closeModal();
       } else {
         createProject(dados);
-
         toast({ title: "Projeto criado com sucesso" });
-        updateProjects();
-        closeModal();
       }
     } catch (error: any) {
       console.log(error);
       toast({ title: error.message });
     }
+
+    updateProjects();
+    closeModal();
   };
 
   return (
