@@ -41,15 +41,27 @@ export function CardProject({ id }: CardProps) {
           </div>
 
           <div className="w-full flex gap-2 md:left-0 mt-3">
-            {Project?.repository ? (
-              <a href={Project?.repository} target="_blank" className="bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors hover:bg-blue-300">
-                Repositório
-              </a>
-            ) : (
-              <button className="bg-gray-300 opacity-25 cursor-not-allowed mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors" disabled={true}>
-                Sem Repositório
+            <a href={Project?.repository} target="_blank">
+              <button
+                className={`bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors  ${
+                  Project?.repository ? "hover:bg-blue-300" : "opacity-20 cursor-not-allowed"
+                }`}
+                disabled={Project?.repository ? false : true}
+              >
+                {Project?.repository ? "Repositório" : "Sem repositório"}
               </button>
-            )}
+            </a>
+
+            <a href={Project?.preview_url} target="_blank">
+              <button
+                className={`bg-gray-300 mt-2 rounded-xl text-xl text-white px-3 text-center py-2 transition-colors  ${
+                  Project?.repository ? "hover:bg-blue-300" : "opacity-20 cursor-not-allowed"
+                }`}
+                disabled={Project?.preview_url ? false : true}
+              >
+                {Project?.preview_url ? "Preview" : "Sem preview"}
+              </button>
+            </a>
           </div>
         </div>
       )}

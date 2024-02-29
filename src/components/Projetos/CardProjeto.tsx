@@ -1,18 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProjetoProps } from "@/types";
 import { BsGithub } from "react-icons/bs";
+import { MdPreview } from "react-icons/md";
 
 interface Projeto {
   projeto: ProjetoProps;
 }
 
 export default function CardProjeto({ projeto }: Projeto) {
-  const noRepository = projeto?.repository === "" ? "hidden" : "flex";
-
   return (
     <div className="relative w-full bg-transparent border border-gray-300 rounded-lg flex flex-col items-center justify-between gap-3">
       <div className="flex items-center flex-col gap-3">
-        <img className="w-[650px] h-[240px] sm:h-[150px] lg:w-[658px] lg:h-[250px] xl:h-[200px] rounded-t-lg shadow-lg" src={projeto.image} alt={projeto.title} />
+        <img
+          className="w-[650px] h-[240px] sm:h-[150px] lg:w-[658px] lg:h-[250px] xl:h-[200px] rounded-t-lg shadow-lg"
+          src={projeto.image}
+          alt={projeto.title}
+        />
         <div className="w-full flex flex-col gap-2 px-2">
           <h1 className="w-full text-2xl font-bold text-left">{projeto.title}</h1>
           <div className="w-full flex items-start gap-2">
@@ -27,13 +30,23 @@ export default function CardProjeto({ projeto }: Projeto) {
       </div>
 
       <div className="absolute left-0 px-2 flex gap-2">
-        <a
-          href={projeto.repository}
-          target="_blank"
-          className={`${noRepository} items-center gap-2  bg-gray-300 mt-2 rounded-xl text-base cursor-pointer text-white px-3 text-center py-2 transition duration-200 hover:bg-blue-600 shadow-lg`}
-        >
-          <BsGithub size={24} /> Repositório
-        </a>
+        {projeto.repository && (
+          <a href={projeto.repository} target="_blank">
+            <button className="flex items-center gap-2 bg-gray-300 mt-2 rounded-xl text-base cursor-pointer text-white px-3 text-center py-2 transition duration-200 hover:bg-blue-600 shadow-lg">
+              <BsGithub size={24} /> Repositório
+            </button>
+          </a>
+        )}
+
+        {projeto.preview_url && (
+          <a href={projeto.preview_url} target="_blank">
+            <button
+              className={`flex items-center gap-2  bg-gray-300 mt-2 rounded-xl text-base cursor-pointer text-white px-3 text-center py-2 transition duration-200 hover:bg-blue-600 shadow-lg`}
+            >
+              <MdPreview size={24} /> Demo
+            </button>
+          </a>
+        )}
       </div>
     </div>
   );

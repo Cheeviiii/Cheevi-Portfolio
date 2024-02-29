@@ -15,6 +15,7 @@ const useFetchProject = (includePublished = false) => {
           "Content-Type": "application/json",
         },
       });
+      
       setProject(res.data);
       setLoading(false);
     } catch (error) {

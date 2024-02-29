@@ -88,6 +88,7 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
       description: data.description,
       image: data.image,
       repository: data.repository,
+      preview_url: data.preview_url,
       types: data.types.split(",").map((type: string) => type.trim()),
       published: data.published,
     };
@@ -131,7 +132,7 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
               <div className="flex flex-col gap-1 mt-5">
                 <label className="text-base font-bold uppercase">Descrição do projeto</label>
                 <textarea
-                  className={`h-[230px] resize-none bg-transparent text-black dark:text-white border border-gray-300 focus:border-gray-400 font-medium rounded p-2 transition-colors focus:outline-none dark:focus:border-white placeholder:text-gray-300 shadow-xl ${
+                  className={`h-[320px] resize-none bg-transparent text-black dark:text-white border border-gray-300 focus:border-gray-400 font-medium rounded p-2 transition-colors focus:outline-none dark:focus:border-white placeholder:text-gray-300 shadow-xl ${
                     errors.description ? "border-red-400" : ""
                   }`}
                   placeholder="Descrição"
@@ -195,6 +196,16 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
               <div className="flex items-center mt-5">
                 <label className="text-base font-bold uppercase">Deixar publico?</label>
                 <input type="checkbox" className="w-12" {...register("published")} />
+              </div>
+
+              <div className="flex flex-col gap-1 mt-5">
+                <label className="text-base font-bold uppercase">Site preview</label>
+                <input
+                  type="text"
+                  className="w-full bg-transparent text-black dark:text-white border border-gray-300 font-medium rounded p-2 transition-colors focus:outline-none placeholder:text-gray-300 shadow-xl"
+                  placeholder="https://cheevidev.tech"
+                  {...register("preview_url")}
+                />
               </div>
 
               <div className="flex flex-col gap-1 mt-5">

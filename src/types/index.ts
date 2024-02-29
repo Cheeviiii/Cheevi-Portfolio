@@ -5,6 +5,7 @@ export interface ProjetoProps {
   description: string;
   published: boolean;
   repository: string;
+  preview_url: string;
   types: any;
 }
 

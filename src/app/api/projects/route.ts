@@ -34,7 +34,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const { title, image, description, repository, published, types } = await req.json();
+    const { title, image, description, repository, published, types, preview_url } = await req.json();
 
     if (!title || !image || !description) {
       return new Response("Verfique se todas as informações estão preenchidas", { status: 400 });
@@ -42,12 +42,13 @@ export async function POST(req: Request) {
 
     const projects = await prisma.project.create({
       data: {
-        title: title,
-        image: image || "",
-        description: description,
-        published: published,
-        repository: repository,
-        types: types,
+        title: title as string,
+        image: image as string,
+        description: description as string,
+        published: published as boolean,
+        repository: repository as string, 
+        preview_url: preview_url as string,
+        types: types as string[],
       },
     });
 

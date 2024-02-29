@@ -1,6 +1,6 @@
 "use client";
 
-import { useFetchCurrentProject, useFetchProjectID } from "@/hooks/useFetchProjects";
+import { useFetchCurrentProject } from "@/hooks/useFetchProjects";
 import { ProjetoProps } from "@/types";
 import React, { createContext, useContext, useState } from "react";
 
