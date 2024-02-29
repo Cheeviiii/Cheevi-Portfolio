@@ -43,6 +43,7 @@ export function FormProject({ closeModal, updateProjects }: FormProps) {
       setImage(Project.image || "");
       setValue("repository", Project.repository);
       setValue("published", Project.published);
+      setValue("preview_url", Project.preview_url);
       setValue("types", Project.types.join(", "));
     }
   }, [isEdit, Project, setValue]);
