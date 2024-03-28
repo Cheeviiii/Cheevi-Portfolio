@@ -1,8 +1,6 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { FaTrashAlt, FaEye, FaPencilAlt } from "react-icons/fa";
 import { ProjetoProps } from "@/types";
-import { useRouter } from "next/navigation";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from "../ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem } from "../ui/dropdown-menu";
 import { DropdownMenuGroup, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { Button } from "../ui/button";
 import { useFormProject } from "@/context/FormContext";
