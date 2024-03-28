@@ -11,7 +11,7 @@ export default async function page() {
 
   const contacts = await response.json();
   return (
-    <div className="w-[70%] h-screen flex justify-center px-10 m-auto">
+    <div className="w-[70%] flex justify-center px-10 m-auto">
       <Table>
         <TableHeader>
           <TableRow>
@@ -22,7 +22,7 @@ export default async function page() {
         </TableHeader>
         <TableBody>
           {contacts.map((item: ContactProps, index: number) => (
-            <TableRow key={index} className="cursor-pointer hover:bg-gray-400">
+            <TableRow key={index} className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-400">
               <TableCell>{item.name}</TableCell>
               <TableCell>{item.email}</TableCell>
               <TableCell>

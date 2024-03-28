@@ -23,7 +23,7 @@ export function ProjetosDashboard() {
   const { isOpenProjectFormModal, openFormModal } = useFormProject();
 
   return (
-    <div className="h-screen px-10 pt-5 w-full m-auto p-auto overflow-y-auto">
+    <div className="px-10 pt-5 w-full m-auto p-auto">
       {isDeleteDialogOpen && (
         <DeleteDialog closeModal={handleCloseDeleteDialog} id={currentProjectId} updateProjects={updateProjects} />
       )}

@@ -13,7 +13,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <html lang="pt-BR">
       <body>
-        <section className="max-w-screen flex">
+        <section className="">
           <Toaster />
           <Sidebar />
           {children}
